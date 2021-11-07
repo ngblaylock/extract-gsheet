@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get GSheet Data</title>
+  </head>
+  <body>
+    <h1>Getting Sheet</h1>
+    <script src="./index.js"></script>
+    <script>
+      extractGSheet(
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSB4PU-EfzraMpAWZ61XFIoAhgV_cgAWYql9uHi266tEWFSHaFIqO2ILHbEFRTnO8iY6MPlBV2tBY_E/pubhtml"
+      ).then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>

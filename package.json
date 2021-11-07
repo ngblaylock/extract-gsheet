@@ -1,0 +1,14 @@
+{
+  "name": "extract-gsheet",
+  "version": "1.0.0",
+  "description": "A semi-reliable way to extract data from a google spreadsheet",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "Google",
+    "Sheets"
+  ],
+  "author": "Nathan Blaylock",
+  "license": "ISC"
+}

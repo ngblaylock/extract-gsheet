@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="google" content="notranslate" />
+    <meta
+      name="viewport"
+      content="target-densitydpi=device-dpi,user-scalable=1,minimum-scale=1,maximum-scale=2.5,initial-scale=1,width=device-width"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Extract Example - Google Drive</title>
+    <link
+      rel="shortcut icon"
+      href="//ssl.gstatic.com/docs/spreadsheets/favicon3.ico"
+    />
+    <link
+      href="/static/spreadsheets2/client/css/1565939912-waffle_k_ltr.css"
+      type="text/css"
+      rel="stylesheet"
+      nonce="0j5oWEUS0m/2dBmM1JZp5g"
+    />
+    <style type="text/css" nonce="0j5oWEUS0m/2dBmM1JZp5g">
+      html {
+        overflow: visible;
+      }
+      #sheets-viewport {
+        overflow: auto;
+      }
+      #sheets-viewport.widget-viewport {
+        overflow: hidden;
+      }
+      .grid-container {
+        overflow: visible;
+        background: white;
+      }
+      .grid-table-container {
+        overflow: visible;
+      }
+      #top-bar {
+        margin: 0;
+        overflow: hidden;
+      }
+      #top-bar {
+        border-bottom: 1px solid #ccc;
+        padding: 6px 6px 0;
+      }
+      #doc-title {
+        padding-bottom: 5px;
+      }
+      #doc-title .name {
+        font-size: 15px;
+      }
+      #sheet-menu {
+        font-size: 13px;
+        margin: 6px 0 0;
+        padding: 0 0 5px;
+      }
+      #sheet-menu li {
+        display: inline;
+        list-style-type: none;
+        margin: 0;
+        padding: 5px 8px;
+      }
+      #sheet-menu li.active {
+        background-color: #fff;
+        font-weight: bold;
+        border: 1px solid #999;
+      }
+      #top-bar #sheet-menu li.active {
+        border-bottom: 0;
+      }
+      #sheet-menu a,
+      #sheet-menu a:visited {
+        color: #07c;
+      }
+      #footer {
+        background: #f0f0f0;
+        border-top: 1px #ccc solid;
+        border-bottom: 1px #ccc solid;
+        font-size: 13;
+        padding: 10px 10px;
+      }
+      .dash {
+        padding: 0 6px;
+      }
+      .ritz .waffle a {
+        color: inherit;
+      }
+      .ritz .waffle .s3 {
+        background-color: #990000;
+        text-align: center;
+        font-weight: bold;
+        color: #ffffff;
+        font-family: "Arial";
+        font-size: 10pt;
+        vertical-align: bottom;
+        white-space: nowrap;
+        direction: ltr;
+        padding: 2px 3px 2px 3px;
+      }
+      .ritz .waffle .s2 {
+        background-color: #ffffff;
+        text-align: right;
+        color: #000000;
+        font-family: "Arial";
+        font-size: 10pt;
+        vertical-align: bottom;
+        white-space: nowrap;
+        direction: ltr;
+        padding: 2px 3px 2px 3px;
+      }
+      .ritz .waffle .s0 {
+        background-color: #f3f3f3;
+        text-align: left;
+        font-weight: bold;
+        color: #134f5c;
+        font-family: "Arial";
+        font-size: 10pt;
+        vertical-align: bottom;
+        white-space: nowrap;
+        direction: ltr;
+        padding: 2px 3px 2px 3px;
+      }
+      .ritz .waffle .s1 {
+        background-color: #ffffff;
+        text-align: left;
+        color: #000000;
+        font-family: "Arial";
+        font-size: 10pt;
+        vertical-align: bottom;
+        white-space: nowrap;
+        direction: ltr;
+        padding: 2px 3px 2px 3px;
+      }
+    </style>
+    <script type="text/javascript" nonce="NbRYXp08cIXfAGerAKf7/w">
+      var activeSheetId;
+
+      function switchToSheet(id) {
+        if (document.getElementById("sheet-menu")) {
+          document.getElementById("sheet-button-" + activeSheetId).className =
+            "";
+          document.getElementById("sheet-button-" + id).className = "active";
+        }
+
+        document.getElementById(activeSheetId).style.display = "none";
+        document.getElementById(id).style.display = "";
+        activeSheetId = id;
+
+        // posObjs() is defined in embeddedObjectJs (see EmbeddedObjectHtmlBuilder.java)
+        posObjs();
+        return false;
+      }
+
+      function init() {
+        var optPageSwitcher;
+
+        function resize() {
+          var optMobileWebHeader = document.getElementById("docs-ml-header-id");
+          var optTopBar = document.getElementById("top-bar");
+          var optFooter = document.getElementById("footer");
+          var sheetsViewport = document.getElementById("sheets-viewport");
+
+          if (optMobileWebHeader) {
+            sheetsViewport.style.marginTop =
+              optMobileWebHeader.offsetHeight +
+              (optTopBar ? optTopBar.offsetHeight : 0) +
+              "px";
+          }
+          var adjustedHeight =
+            window.innerHeight -
+            (optTopBar ? optTopBar.offsetHeight : 0) -
+            (optFooter ? optFooter.offsetHeight : 0);
+          var adjustedWidth = window.innerWidth;
+          sheetsViewport.style.width = adjustedWidth + "px";
+          sheetsViewport.style.height = adjustedHeight + "px";
+          if (optPageSwitcher) {
+            optPageSwitcher.resize(adjustedWidth, adjustedHeight);
+          }
+        }
+        resize();
+        window.onresize = resize;
+        var currentUrl = window.location.href;
+        var newUrl = currentUrl.replace("?sle=true&", "?");
+        newUrl = newUrl.replace("?sle=true", "");
+        newUrl = newUrl.replace("&sle=true&", "&");
+        newUrl = newUrl.replace("&sle=true", "");
+        window.history.replaceState(null, "", newUrl);
+      }
+    </script>
+    <script nonce="NbRYXp08cIXfAGerAKf7/w">
+      _docs_flag_initialData = {
+        "docs-mwid": true,
+        "docs-smheo": true,
+        info_params: {
+          token: "AC4w5ViyaaVJdlubJd_qeFv_sdPc75jEqA:1636252642802",
+          includes_info_params: true,
+        },
+        ilcm: {
+          eui: "ADFN-csBUbEn-M6bE2YlMk1Xhy_dhmHDCTvpAQgrk9ltL-3IRrpRYq73SaHL7vvCC2VnkJtIuNvV",
+          je: 1,
+          sstu: 1636252642803000,
+          si: "CK79pYychfQCFUgaCAUdsu0Ksw",
+          gsc: 2,
+          ei: [
+            5706270, 5743550, 5751461, 5712146, 5715515, 5723987, 5720788,
+            5741734, 5706661, 5734393, 5748290, 5709673, 5703591, 5703259,
+            5717157, 5725052, 5710542, 5712525, 5735134, 5713049, 5746724,
+            5712469, 5732449, 5746563, 5703837, 5714674, 5708974, 5709357,
+            5709085, 5706786, 5714802, 5707385, 5711550, 5706523, 5744348,
+            5720060, 5700019, 5738649, 5715364, 5712635, 5728807, 5702936,
+            5720568, 5728515, 5750313, 5739897, 5727257, 5707047, 5704641,
+            5741994, 5711808, 5700559, 5705777, 5749387, 5747942, 5706007,
+            5707204, 5746312, 5710692, 5744691, 5721344, 5717161, 5736531,
+            5719418, 5735670, 5711708, 5710745, 5713605, 5737153, 5724896,
+            5713195, 5714796, 5708886, 5716457, 5747881, 5742522, 5744128,
+            5709709, 5708870, 5732541, 5732251, 5752734, 5728475, 5707137,
+            5736243, 5719462, 5706169, 5701927, 5733203, 5736431, 5713542,
+            5725300, 5705891, 5714550, 5716145, 5713597, 5716149, 5746603,
+            5707609, 5720714, 5711230, 5710933, 5711099, 5702912, 5710938,
+            5709476, 5738081, 5714326, 5713207, 5750372, 5741522, 5705649,
+            5705040, 5713550, 5736924, 5711826, 5734352, 5703940, 5715246,
+            5720516, 5725511, 5719535, 5748488, 5703182, 5746864, 5706133,
+            5743144, 13702623, 5702445, 5705493, 5730225, 5712909, 5724085,
+            5700422, 5702785, 5713657, 5732341, 5704063, 5714628, 5737421,
+            5709381, 5705223, 5701903, 5701034, 5711522, 5727042, 5726438,
+            5708568, 5747351, 5745003, 5727901, 5740048, 5743610, 5713223,
+            5703839, 5711957, 5722346, 5711769, 5724533, 5719482, 5737897,
+            5750294, 5728945, 5707711, 5720595, 5709661, 5708479, 5740814,
+            5701650, 5711471, 5746502, 5743058, 5714839, 5723284, 5745622,
+            5748468, 5703913, 5720925, 5703762, 5712473, 5739308, 5737254,
+            5740342, 5717118, 5702135, 5735509, 5740731, 5711765, 5722567,
+            5748950, 5721307, 5706069, 5734632, 5739152, 5730285, 5746764,
+            5724435, 5700884, 5723679, 5750790, 5725338, 5740186, 5711155,
+            5712913, 5712033, 5739837, 5700333, 5753813, 5749140, 5717949,
+            5714843, 5738509, 5712352, 5731174, 5741579, 5723365, 5716416,
+            5743452, 5719527, 5725240, 5711889, 5713554, 5734994, 5734571,
+            5747256, 5744793, 5700579, 5719170, 5713333, 5731783, 5714330,
+            5741775, 5745602, 5710893, 5704883, 5704144, 5710645, 5707986,
+            5735806, 5714967, 5700103, 5710677, 5735281, 5738894, 5738413,
+            5727624, 5729092, 5715824, 5704621, 5704351, 5712477, 5729206,
+            5721814, 5723871, 5716028, 5745438, 5727853, 5706933, 5707445,
+            5751257, 5722189, 5727063, 5719531, 5712298, 5700057, 5714465,
+            5715526, 5743104, 5715637, 5700893, 5710637, 5709330, 5714310,
+            5713152, 5739778, 5707819,
+          ],
+          crc: 1,
+          cvi: [
+            3300101, 3300130, 3313321, 3328402, 3340651, 3340655, 3341470,
+            3342260, 3342950, 3343029, 3343103, 3343563,
+          ],
+        },
+        drive_url: "//drive.google.com/u/1?usp\u003dsheets_web",
+        "docs-sup": "/spreadsheets/u/1",
+      };
+      _docs_flag_cek = "aMCEwlZheBJpVUphsRE6Tw\x3d\x3d";
+      if (window["DOCS_timing"]) {
+        DOCS_timing["ifdld"] = new Date().getTime();
+      }
+    </script>
+  </head>
+  <script nonce="NbRYXp08cIXfAGerAKf7/w">
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+  <body class="docs-gm">
+    <div id="top-bar">
+      <div id="doc-title"><span class="name">Extract Example</span></div>
+      <ul id="sheet-menu">
+        <li id="sheet-button-0"><a href="#">People</a></li>
+        <script nonce="NbRYXp08cIXfAGerAKf7/w">
+          document.addEventListener("DOMContentLoaded", function () {
+            document
+              .getElementById("sheet-button-0")
+              .addEventListener("click", function () {
+                return switchToSheet("0");
+              });
+          });
+        </script>
+        <li id="sheet-button-87328595"><a href="#">Items</a></li>
+        <script nonce="NbRYXp08cIXfAGerAKf7/w">
+          document.addEventListener("DOMContentLoaded", function () {
+            document
+              .getElementById("sheet-button-87328595")
+              .addEventListener("click", function () {
+                return switchToSheet("87328595");
+              });
+          });
+        </script>
+      </ul>
+    </div>
+    <div id="sheets-viewport">
+      <div id="0" style="display: none; position: relative" dir="ltr">
+        <div class="ritz grid-container" dir="ltr">
+          <table class="waffle" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th
+                  class="
+                    row-header
+                    freezebar-origin-ltr
+                    header-shim
+                    row-header-shim
+                  "
+                ></th>
+                <th id="0C0" style="width: 100px" class="header-shim"></th>
+                <th id="0C1" style="width: 100px" class="header-shim"></th>
+                <th id="0C2" style="width: 100px" class="header-shim"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="height: 20px">
+                <th
+                  id="0R0"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    1
+                  </div>
+                </th>
+                <td class="s0" dir="ltr">Name</td>
+                <td class="s0" dir="ltr">Age</td>
+                <td class="s0" dir="ltr">Hobby</td>
+              </tr>
+              <tr style="height: 20px">
+                <th
+                  id="0R1"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    2
+                  </div>
+                </th>
+                <td class="s1" dir="ltr">Sam</td>
+                <td class="s2" dir="ltr">20</td>
+                <td class="s1" dir="ltr">Soccer</td>
+              </tr>
+              <tr style="height: 20px">
+                <th
+                  id="0R2"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    3
+                  </div>
+                </th>
+                <td class="s1" dir="ltr">Bill</td>
+                <td class="s2" dir="ltr">45</td>
+                <td class="s1" dir="ltr">Skiing</td>
+              </tr>
+              <tr style="height: 20px">
+                <th
+                  id="0R3"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    4
+                  </div>
+                </th>
+                <td class="s1" dir="ltr">Sally</td>
+                <td class="s2" dir="ltr">24</td>
+                <td class="s1" dir="ltr">Scrapbooking</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="87328595" style="display: none; position: relative" dir="ltr">
+        <div class="ritz grid-container" dir="ltr">
+          <table class="waffle" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th
+                  class="
+                    row-header
+                    freezebar-origin-ltr
+                    header-shim
+                    row-header-shim
+                  "
+                ></th>
+                <th
+                  id="87328595C0"
+                  style="width: 100px"
+                  class="header-shim"
+                ></th>
+                <th
+                  id="87328595C1"
+                  style="width: 100px"
+                  class="header-shim"
+                ></th>
+                <th
+                  id="87328595C2"
+                  style="width: 100px"
+                  class="header-shim"
+                ></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="height: 20px">
+                <th
+                  id="87328595R0"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    1
+                  </div>
+                </th>
+                <td class="s3" dir="ltr">Item Name</td>
+                <td class="s3" dir="ltr">Price</td>
+                <td class="s3" dir="ltr">Quantity</td>
+              </tr>
+              <tr style="height: 20px">
+                <th
+                  id="87328595R1"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    2
+                  </div>
+                </th>
+                <td class="s1" dir="ltr">Shovel</td>
+                <td class="s2" dir="ltr">$20.00</td>
+                <td class="s2" dir="ltr">12</td>
+              </tr>
+              <tr style="height: 20px">
+                <th
+                  id="87328595R2"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    3
+                  </div>
+                </th>
+                <td class="s1" dir="ltr">Saw</td>
+                <td class="s2" dir="ltr">$12.00</td>
+                <td class="s2" dir="ltr">45</td>
+              </tr>
+              <tr style="height: 20px">
+                <th
+                  id="87328595R3"
+                  style="height: 20px"
+                  class="row-headers-background row-header-shim"
+                >
+                  <div class="row-header-wrapper" style="line-height: 20px">
+                    4
+                  </div>
+                </th>
+                <td class="s1" dir="ltr">Screw driver</td>
+                <td class="s2" dir="ltr">$108.40</td>
+                <td class="s2" dir="ltr">8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <span
+        >Published by
+        <a
+          target="_blank"
+          title="Learn more about Google Sheets"
+          href="https://docs.google.com/spreadsheets/u/1/?authuser=1&amp;usp=sheets_web"
+          >Google Sheets</a
+        ></span
+      ><span class="dash">&ndash;</span
+      ><a
+        href="https://docs.google.com/u/1/abuse?id=AKkXjoyDVUSgXjfzTmJawjLpcnrDeLYYK3awLeXDPH32leuXfiIDzPey-272iA1hKFX05LVpT6XSS31y39PrKoE:0"
+        >Report Abuse</a
+      ><span class="dash">&ndash;</span
+      ><span>Updated automatically every 5 minutes</span>
+    </div>
+    <script type="text/javascript" nonce="NbRYXp08cIXfAGerAKf7/w">
+      activeSheetId = "0";
+      switchToSheet("0");
+    </script>
+  </body>
+</html>
