@@ -1,13 +1,15 @@
 {
   "name": "extract-gsheet",
-  "version": "1.0.0",
-  "description": "A semi-reliable way to extract data from a google spreadsheet",
+  "version": "0.1.0",
+  "description": "A semi-reliable half-hacky way to extract data from a Google Sheet.",
   "main": "index.js",
   "scripts": {
   },
   "keywords": [
     "Google",
-    "Sheets"
+    "Sheets",
+    "Spreadsheets",
+    "Prototype"
   ],
   "author": "Nathan Blaylock",
   "license": "ISC"
