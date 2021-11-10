@@ -26,8 +26,10 @@
       </div>
     </div>
   </div>
+  {% endraw %}
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="/js/extract-gsheet.min.js"></script>
+  <script src="{{root}}/js/extract-gsheet.min.js"></script>
+  {% raw %}
   <script>
     var app = new Vue({
       el: "#app",

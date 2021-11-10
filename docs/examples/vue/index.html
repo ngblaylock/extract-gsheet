@@ -9,14 +9,14 @@
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles/custom.css" />
+    <link rel="stylesheet" href="/extract-gsheet/styles/custom.css" />
     <title> | 11ty Sandbox</title>
   </head>
   <body>
     <nav class='bg-primary py-3 mb-3'>
-      <a class="text-white p-3 text-decoration-none" href="/">Home</a>
-      <a class="text-white p-3 text-decoration-none" href="/examples/vue/">Vue Example</a>
-      <a class="text-white p-3 text-decoration-none" href="/uikit/">UI Kit</a>
+      <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/">Home</a>
+      <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/examples/vue/">Vue Example</a>
+      <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/uikit/">UI Kit</a>
     </nav>
     <div class="container">
   
@@ -47,7 +47,7 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="/js/extract-gsheet.min.js"></script>
+  <script src="{{global.pathPrefix}}js/extract-gsheet.min.js"></script>
   <script>
     var app = new Vue({
       el: "#app",

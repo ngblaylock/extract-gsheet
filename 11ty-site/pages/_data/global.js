@@ -1,3 +1,2 @@
 module.exports = {
-  name: "Foobar"
 }
