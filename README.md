@@ -29,8 +29,17 @@ This project was inspired by [Tabletop](https://github.com/jsoma/tabletop#readme
 ## To Do
 
 - Make Favicon
-- Minify the Build
-- Documentation Page
+- Documentation
+  - CDN
+  - NPM
+  - Add your own published Google Doc to see results
+  - Files Organization
+- Examples
+    - Link to GitHub Repo page
+  - ~~Vue~~
+  - React
+  - Handlebars
+  - Angular
 
 ## Resources
 
