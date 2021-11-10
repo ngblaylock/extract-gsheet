@@ -1,0 +1,12 @@
+@import "egs-variables";
+@import "bootstrap-config";
+@import "bootstrap-options";
+
+[v-cloak] {
+  display: none;
+}
+.small, small{
+  font-size: .6em;
+  font-weight: 500;
+  color: grey;
+}

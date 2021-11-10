@@ -1,3 +1,14 @@
 {
-  "liveServer.settings.port": 5502
+  "liveServer.settings.port": 5502,
+  "files.associations": {
+    "*.njk": "html-nunjucks"
+  },
+  "emmet.includeLanguages": {
+    "html-nunjucks": "html"
+  },
+  "path-autocomplete.pathMappings": {
+    "partials": "${folder}/11ty-site/pages/_includes/_partials",
+    "$root": ["${folder}/dev"]
+  },
+  "prettier.documentSelectors": ["**/*.njk"]
 }
