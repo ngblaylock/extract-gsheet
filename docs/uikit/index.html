@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/custom.css" />
-    <title>Home | 11ty Sandbox</title>
+    <title>UI Kit | 11ty Sandbox</title>
   </head>
   <body>
     <nav class='bg-primary py-3 mb-3'>
@@ -19,16 +19,40 @@
       <a class="text-white p-3 text-decoration-none" href="/uikit/">UI Kit</a>
     </nav>
     
-<div class="container pt-5">
-  <h1>11ty Test</h1>
-  <h2>Foobar</h2>
+<style>
+.display{
+  font-family: monospace;
+  color: grey;
+  font-weight: 800;
+  border-bottom: 1px solid grey;
+}
+</style>
+
+<div class="container">
+  <h2 class="display">Typography</h2>
+  <h1>Header 1</h1>
+  <h2>Header 2</h2>
+  <h3>Header 3</h3>
+  <h4>Header 4</h4>
+  <h5>Header 5</h5>
+  <h6>Header 6</h6>
+
   <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem animi
-    cumque perferendis quisquam totam incidunt vel eaque. Modi laboriosam
-    quisquam fugit deserunt dolorem ducimus, cumque nisi sed. Aperiam, quam
-    incidunt.
+    Lorem ipsum dolor, sit amet <a href="#">consectetur</a> adipisicing elit.
+    Minus architecto alias perferendis ad, aut, delectus tenetur quidem, libero
+    inventore rem eveniet vero impedit laudantium et saepe eos autem suscipit
+    in?
   </p>
+
+  <h2 class="display">Colors</h2>
+  <div class="d-flex mx-n4">
+    <div class="p-5 mx-4 bg-dark text-white">dark</div>
+    <div class="p-5 mx-4 bg-primary text-white">primary</div>
+    <div class="p-5 mx-4 bg-light">light</div>
+    <div class="p-5 mx-4 bg-white">white</div>
+  </div>
 </div>
+
     <!-- JS, Popper.js, and jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
