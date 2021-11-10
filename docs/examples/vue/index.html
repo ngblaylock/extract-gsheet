@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="/extract-gsheet/styles/custom.css" />
     <title> | 11ty Sandbox</title>
+    <link rel="stylesheet" href="/extract-gsheet/">
   </head>
   <body>
     <nav class='bg-primary py-3 mb-3'>
@@ -46,8 +47,10 @@
       </div>
     </div>
   </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="{{global.pathPrefix}}js/extract-gsheet.min.js"></script>
+  <script src="/extract-gsheet/js/extract-gsheet.min.js"></script>
+  
   <script>
     var app = new Vue({
       el: "#app",
