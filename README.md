@@ -24,6 +24,7 @@ This project was inspired by [Tabletop](https://github.com/jsoma/tabletop#readme
 - Checkboxes are not preserved (but you can bind the value to another cell for true/false)
 - Images, charts, comments, etc are not included
 - Some changes may take up to 5 minuts to reflect in the browser
+- Node Module (/src/main.js) and available as a browser script (/dist/extract-gsheet)
 
 ## To Do
 
@@ -31,3 +32,6 @@ This project was inspired by [Tabletop](https://github.com/jsoma/tabletop#readme
 - Minify the Build
 - Documentation Page
 
+## Resources
+
+- [Good article on Rollup](https://risanb.com/code/bundling-your-javascript-library-with-rollup/)

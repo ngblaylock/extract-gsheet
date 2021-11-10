@@ -1,6 +1,5 @@
-var extractGSheet = (function () {
-  const extractGSheet = async function (pubHTML) {
-    let page = await FetchHtml(pubHTML).then((text) => {
+  const extractGSheet = async function (url) {
+    let page = await FetchHtml(url).then((text) => {
       return text;
     });
     var doc = new DOMParser().parseFromString(page, "text/html");
@@ -10,8 +9,8 @@ var extractGSheet = (function () {
     };
   };
 
-  async function FetchHtml(pubHTML) {
-    let response = await fetch(pubHTML);
+  async function FetchHtml(url) {
+    let response = await fetch(url);
     return await response.text(); // Returns it as Promise
   }
 
@@ -86,5 +85,4 @@ var extractGSheet = (function () {
     return data;
   };
 
-  return extractGSheet
-})();
+export default extractGSheet;

@@ -4,6 +4,8 @@
   "description": "A semi-reliable half-hacky way to extract data from a Google Sheet.",
   "main": "index.js",
   "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w"
   },
   "keywords": [
     "Google",
@@ -12,5 +14,9 @@
     "Prototype"
   ],
   "author": "Nathan Blaylock",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^2.59.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }
