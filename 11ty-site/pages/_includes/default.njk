@@ -10,14 +10,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{{root}}/styles/custom.css" />
-    <title>{{ title }} | 11ty Sandbox</title>
-    <link rel="stylesheet" href="{{root}}/">
+    {% if title %}
+    <title>{{ title }} | Extract GSheet</title>
+    {% else %}
+    <title>Extract GSheet</title>
+    {% endif %}
+    <link rel="stylesheet" href="{{root}}/" />
   </head>
   <body>
-    <nav class='bg-primary py-3 mb-3'>
+    <nav class="bg-primary py-3 mb-3">
       <a class="text-white p-3 text-decoration-none" href="{{root}}/">Home</a>
-      <a class="text-white p-3 text-decoration-none" href="{{root}}/examples/vue/">Vue Example</a>
-      <a class="text-white p-3 text-decoration-none" href="{{root}}/uikit/">UI Kit</a>
+      <a
+        class="text-white p-3 text-decoration-none"
+        href="{{root}}/examples/vue/"
+        >Vue Example</a
+      >
+      <a class="text-white p-3 text-decoration-none" href="{{root}}/uikit/"
+        >UI Kit</a
+      >
     </nav>
     {{ content | safe }}
     <!-- JS, Popper.js, and jQuery -->

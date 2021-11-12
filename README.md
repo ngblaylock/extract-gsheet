@@ -29,6 +29,9 @@ This project was inspired by [Tabletop](https://github.com/jsoma/tabletop#readme
 ## To Do
 
 - Make Favicon
+- Add Options
+  - Checkbox
+  - Images
 - Documentation
   - CDN
   - NPM
