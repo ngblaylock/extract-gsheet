@@ -10,32 +10,181 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/extract-gsheet/styles/custom.css" />
-    <title>Home | 11ty Sandbox</title>
-    <link rel="stylesheet" href="/extract-gsheet/">
+    
+    <title>Extract GSheet</title>
+    
+    <link rel="stylesheet" href="/extract-gsheet/" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-twilight.min.css"
+      integrity="sha512-ch9ThmrGmkVrVm9tL/puGmSfzQps4yk9LDrWuswb65ZnPOIKuYZBen1yn3ez/fEbgeBqrU/IJ443OqgallfE9Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
   </head>
   <body>
-    <nav class='bg-primary py-3 mb-3'>
+    <nav class="bg-primary py-3 mb-3">
       <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/">Home</a>
-      <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/examples/vue/">Vue Example</a>
-      <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/uikit/">UI Kit</a>
+      <a
+        class="text-white p-3 text-decoration-none"
+        href="/extract-gsheet/examples/vue/"
+        >Vue Example</a
+      >
+      <a class="text-white p-3 text-decoration-none" href="/extract-gsheet/uikit/"
+        >UI Kit</a
+      >
     </nav>
     
 <div class="container pt-5">
-  <h1>11ty Test</h1>
-  <h2></h2>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem animi
-    cumque perferendis quisquam totam incidunt vel eaque. Modi laboriosam
-    quisquam fugit deserunt dolorem ducimus, cumque nisi sed. Aperiam, quam
-    incidunt.
-  </p>
+  <h1>Extract GSheet</h1>
+  <p>Quickly extract data from a public Google Sheet without any API keys.</p>
+  <h2>Preview</h2>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="single-tab"
+        data-toggle="tab"
+        href="#single"
+        role="tab"
+        aria-controls="single"
+        aria-selected="true"
+        >Single Tab</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="multiple-tab"
+        data-toggle="tab"
+        href="#multiple"
+        role="tab"
+        aria-controls="multiple"
+        aria-selected="false"
+        >Multiple Tabs</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="custom-tab"
+        data-toggle="tab"
+        href="#custom"
+        role="tab"
+        aria-controls="custom"
+        aria-selected="false"
+        >Custom</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="single"
+      role="tabpanel"
+      aria-labelledby="single-tab"
+    >
+      <div class="alert alert-primary mt-3 text-break">
+        <strong class="d-block">Public Sheet URL:</strong>
+        <a id="single-link" href="#" target="_blank"></a>
+      </div>
+      <pre><code class="language-json" id="single-json"></code></pre>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="multiple"
+      role="tabpanel"
+      aria-labelledby="multiple-tab"
+    >
+      <div class="alert alert-primary mt-3 text-break">
+        <strong class="d-block">Public Sheet URL:</strong>
+        <a id="multiple-link" href="#" target="_blank"></a>
+      </div>
+      <pre><code class="language-json" id="multiple-json"></code></pre>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="custom"
+      role="tabpanel"
+      aria-labelledby="custom-tab"
+    >
+      <form class="mt-3" id="custom-form">
+        <label for="custom-url" class="col-form-label">Custom URL</label>
+        <div class="form-group d-flex">
+          <div class="flex-grow-1">
+            <input
+              type="text"
+              class="form-control"
+              id="custom-url"
+              placeholder="https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+            />
+          </div>
+          <div class="pl-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+      <pre><code class="language-json" id="custom-json"></code></pre>
+      <div
+        class="alert alert-danger"
+        id="custom-error"
+        style="display: none"
+      ></div>
+    </div>
+  </div>
 </div>
+
+<script src="/extract-gsheet/js/extract-gsheet.min.js"></script>
+<script>
+  var singleLink =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true";
+  var multipleLink =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSB4PU-EfzraMpAWZ61XFIoAhgV_cgAWYql9uHi266tEWFSHaFIqO2ILHbEFRTnO8iY6MPlBV2tBY_E/pubhtml";
+  extractGSheet(multipleLink).then((res) => {
+    var mj = $("#multiple-json");
+    var ml = $("#multiple-link");
+    mj.html(JSON.stringify(res, null, 2));
+    ml.attr("href", multipleLink).html(multipleLink);
+  });
+  extractGSheet(singleLink).then((res) => {
+    var sj = $("#single-json");
+    var sl = $("#single-link");
+    sj.html(JSON.stringify(res, null, 2));
+    sl.attr("href", singleLink).html(singleLink);
+  });
+  $("#custom-form").submit(function (e) {
+    e.preventDefault();
+    var customURL = $("#custom-url").val();
+    if (customURL) {
+      $("#custom-error").slideUp();
+      extractGSheet(customURL)
+        .then((res) => {
+          var cj = $("#custom-json");
+          cj.html(JSON.stringify(res, null, 2));
+          Prism.highlightAll();
+        })
+        .catch((err) => {
+          console.log("Error?", err)
+          $("#custom-error")
+            .html(
+              "<strong>Error:</strong> There is no public Google Sheet at that URL."
+            )
+            .slideDown();
+        });
+    } else {
+      $("#custom-error")
+        .html("<strong>Error:</strong> Please enter a URL.")
+        .slideDown();
+    }
+  });
+</script>
+
     <!-- JS, Popper.js, and jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -46,5 +195,9 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
   </body>
 </html>
