@@ -15,7 +15,8 @@
 - Preserves text formatting from the sheet ('$1.00' does not transform to '1')
 
 <div class="alert alert-warning">
-  <p class="text-uppercase pt-2"><strong>Warning</strong></p>
+  
+### Warning
 
 - This is not thoroughly tested, so I would not recommend this for production, unless maybe your user base is super small and they can let you know when things change.
 - This heavily depends on the output HTML that Google provides. If Googles page changes a little bit, this script will break as well.

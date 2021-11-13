@@ -40,6 +40,11 @@ header {
     }
   }
   .documentation {
+    .alert-warning h3{
+      color: #856404;
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
     img {
       display: block;
       margin: 2rem auto;
