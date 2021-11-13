@@ -7,7 +7,7 @@
     "html-nunjucks": "html"
   },
   "path-autocomplete.pathMappings": {
-    "partials": "${folder}/11ty-site/pages/_includes/_partials",
+    "_partials": "${folder}/11ty-site/pages/_includes/_partials",
     "$root": [
       "${folder}/dev"
     ],

@@ -1,0 +1,24 @@
+<nav class="bg-primary py-2 d-flex justify-content-center shadow">
+  <a class="text-white px-3 py-2 text-decoration-none" href="{{root}}/">Home</a>
+  <a
+    class="text-white px-3 py-2 text-decoration-none"
+    href="{{root}}/documentation"
+    >Documentation</a
+  >
+  <a
+    class="text-white px-3 py-2 text-decoration-none"
+    href="{{root}}/examples/vue/"
+    >Vue Example</a
+  >
+  <a
+    class="text-white px-3 py-2 text-decoration-none"
+    href="https://github.com/ngblaylock/extract-gsheet"
+    target="_blank"
+    >GitHub</a
+  >
+  {% if global.env == 'dev' %}
+  <a class="text-white px-3 py-2 text-decoration-none" href="{{root}}/uikit/"
+    >UI Kit</a
+  >
+  {% endif %}
+</nav>

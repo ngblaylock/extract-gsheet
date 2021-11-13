@@ -1,7 +1,13 @@
 <div class="container">
   {% raw %}
   <h1>Vue.js Example</h1>
-  <hr>
+  <a
+    href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/vue/index.html"
+    target="_blank"
+    class="btn btn-secondary"
+    ><span class="fab fa-github"></span> See Code on GitHub</a
+  >
+  <hr />
   <div id="app" v-cloak>
     <div v-if="sheet != 'loading'">
       <h2>{{sheet.title}} <small>Sheet Title</small></h2>
@@ -28,7 +34,6 @@
   </div>
   {% endraw %}
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="{{root}}/js/extract-gsheet.min.js"></script>
   {% raw %}
   <script>
     var app = new Vue({

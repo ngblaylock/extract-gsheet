@@ -2,10 +2,20 @@
 prism: true
 ---
 
+<div class="bg-light p-5 mt-n3">
+  <div class="container">
+    <div class="d-flex align-items-center py-4">
+      <img src="https://via.placeholder.com/150" alt="" />
+      <div class="mx-4">
+        <h1>Extract GSheet</h1>
+        <p>
+          Quickly extract data from a public Google Sheet without any API keys.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container pt-5">
-  <h1>Extract GSheet</h1>
-  <p>Quickly extract data from a public Google Sheet without any API keys.</p>
-  <h2>Preview</h2>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <a
@@ -51,7 +61,7 @@ prism: true
       role="tabpanel"
       aria-labelledby="single-tab"
     >
-      <div class="alert alert-primary mt-3 text-break">
+      <div class="mt-3 text-break">
         <strong class="d-block">Public Sheet URL:</strong>
         <a id="single-link" href="#" target="_blank"></a>
       </div>
@@ -63,7 +73,7 @@ prism: true
       role="tabpanel"
       aria-labelledby="multiple-tab"
     >
-      <div class="alert alert-primary mt-3 text-break">
+      <div class="mt-3 text-break">
         <strong class="d-block">Public Sheet URL:</strong>
         <a id="multiple-link" href="#" target="_blank"></a>
       </div>
@@ -101,7 +111,6 @@ prism: true
   </div>
 </div>
 
-<script src="{{root}}/js/extract-gsheet.min.js"></script>
 <script>
   var singleLink =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true";
@@ -112,12 +121,14 @@ prism: true
     var ml = $("#multiple-link");
     mj.html(JSON.stringify(res, null, 2));
     ml.attr("href", multipleLink).html(multipleLink);
+    Prism.highlightAll();
   });
   extractGSheet(singleLink).then((res) => {
     var sj = $("#single-json");
     var sl = $("#single-link");
     sj.html(JSON.stringify(res, null, 2));
     sl.attr("href", singleLink).html(singleLink);
+    Prism.highlightAll();
   });
   $("#custom-form").submit(function (e) {
     e.preventDefault();
@@ -131,7 +142,7 @@ prism: true
           Prism.highlightAll();
         })
         .catch((err) => {
-          console.log("Error?", err)
+          console.log("Error?", err);
           $("#custom-error")
             .html(
               "<strong>Error:</strong> There is no public Google Sheet at that URL."
