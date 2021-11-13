@@ -2,20 +2,31 @@
 prism: true
 ---
 
-<div class="bg-light p-5 mt-n3">
+<div class="bg-gradient-primary p-5 mt-n3">
   <div class="container">
     <div class="d-flex align-items-center py-4">
-      <img src="https://via.placeholder.com/150" alt="" />
+      <img
+        src="{{root}}/img/EGS-Logo-medium.png"
+        alt="Extract GSheet Logo"
+      />
       <div class="mx-4">
-        <h1>Extract GSheet</h1>
+        <h1 class="text-white mt-0">Extract GSheet</h1>
+        <p class="text-white">
+          Quickly extract JSON data from a public Google Sheet without any API
+          keys.
+        </p>
         <p>
-          Quickly extract data from a public Google Sheet without any API keys.
+          <a href="{{root}}/documentation/" class="btn btn-light"
+            >Documentation</a
+          >
+          <a href="https://github.com/ngblaylock/extract-gsheet" target="_blank" class="btn btn-outline-light"><span class="fab fa-github"></span> GitHub</a>
         </p>
       </div>
     </div>
   </div>
 </div>
-<div class="container pt-5">
+<div class="container pt-3">
+<h2 class="mb-4">Try It Out</h2>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <a
@@ -50,7 +61,7 @@ prism: true
         role="tab"
         aria-controls="custom"
         aria-selected="false"
-        >Custom</a
+        >Try Your Published Sheeet</a
       >
     </li>
   </ul>

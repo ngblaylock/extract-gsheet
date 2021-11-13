@@ -3,6 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/extract-gsheet/favicon.ico" type="image/x-icon" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/extract-gsheet/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/extract-gsheet/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/extract-gsheet/favicon-16x16.png"
+/>
+<link rel="manifest" href="/extract-gsheet/site.webmanifest" />
+<link rel="mask-icon" href="/extract-gsheet/safari-pinned-tab.svg" color="#5bbad5" />
+<meta name="msapplication-TileColor" content="#00641d" />
+<meta name="theme-color" content="#ffffff" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,48 +54,91 @@
     <script src="/extract-gsheet/js/extract-gsheet.min.js"></script>
   </head>
   <body class='d-flex flex-column'>
-    <header class="bg-dark text-center">
-      <div class="d-flex justify-content-center align-items-center p-2">
-        <img src="https://via.placeholder.com/45" alt="" />
-        <div class="h2 text-white p-0 my-0 mx-3">Extract GSheet</div>
-      </div>
-      <nav class="bg-primary py-2 d-flex justify-content-center shadow">
-  <a class="text-white px-3 py-2 text-decoration-none" href="/extract-gsheet/">Home</a>
-  <a
-    class="text-white px-3 py-2 text-decoration-none"
-    href="/extract-gsheet/documentation"
-    >Documentation</a
+    <header>
+      
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/extract-gsheet/"
+    ><div class="d-flex justify-content-center align-items-center pl-3">
+      <img
+        src="/extract-gsheet/img/EGS-Logo-small-stroke.png"
+        alt="Extract GSheet Logo"
+      />
+      <div class="h6 text-white p-0 my-0 mx-3">Extract GSheet</div>
+    </div></a
   >
-  <a
-    class="text-white px-3 py-2 text-decoration-none"
-    href="/extract-gsheet/examples/vue/"
-    >Vue Example</a
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
   >
-  <a
-    class="text-white px-3 py-2 text-decoration-none"
-    href="https://github.com/ngblaylock/extract-gsheet"
-    target="_blank"
-    >GitHub</a
-  >
-  
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/extract-gsheet/">Home</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/extract-gsheet/documentation/">Documentation</a>
+      </li>
+      <li class="nav-item dropdown ">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Examples
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <a class="dropdown-item" href="/extract-gsheet/examples/vue/">Vue</a>
+          <a class="dropdown-item" href="#">React (Coming Soon)</a>
+          <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
+          <a class="dropdown-item" href="#">Handlebars (Coming Soon)</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
 </nav>
 
     </header>
     <main class="egs py-3 flex-grow-1">
-<div class="bg-light p-5 mt-n3">
+<div class="bg-gradient-primary p-5 mt-n3">
   <div class="container">
     <div class="d-flex align-items-center py-4">
-      <img src="https://via.placeholder.com/150" alt="" />
+      <img
+        src="/extract-gsheet/img/EGS-Logo-medium.png"
+        alt="Extract GSheet Logo"
+      />
       <div class="mx-4">
-        <h1>Extract GSheet</h1>
+        <h1 class="text-white mt-0">Extract GSheet</h1>
+        <p class="text-white">
+          Quickly extract JSON data from a public Google Sheet without any API
+          keys.
+        </p>
         <p>
-          Quickly extract data from a public Google Sheet without any API keys.
+          <a href="/extract-gsheet/documentation/" class="btn btn-light"
+            >Documentation</a
+          >
+          <a href="https://github.com/ngblaylock/extract-gsheet" target="_blank" class="btn btn-outline-light"><span class="fab fa-github"></span> GitHub</a>
         </p>
       </div>
     </div>
   </div>
 </div>
-<div class="container pt-5">
+<div class="container pt-3">
+<h2 class="mb-4">Try It Out</h2>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <a
@@ -107,7 +173,7 @@
         role="tab"
         aria-controls="custom"
         aria-selected="false"
-        >Custom</a
+        >Try Your Published Sheeet</a
       >
     </li>
   </ul>
@@ -214,11 +280,18 @@
   });
 </script>
 </main>
-    <footer class="bg-dark text-light mt-4">
+    <footer class="bg-gradient-light mt-4">
   <div class="container py-3">
-    <div class="d-flex justify-content-center">
-      <div class='px-3'>&copy; Nathan Blaylock 2021</div>
-      <div class='px-3'>Last Updated: November 12, 2021</div>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="d-flex align-items-center">
+        <img
+          src="https://nathanblaylock.com/img/logo-black-nathan-blaylock-media.svg"
+          alt="Nathan Blaylock Logo"
+          style="height: 20px"
+        />
+      </div>
+      <div class="px-3">&copy; Nathan Blaylock 2021</div>
+      <div class="px-3">Last Updated: November 13, 2021</div>
     </div>
   </div>
 </footer>

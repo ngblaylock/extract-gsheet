@@ -15,6 +15,9 @@ body{
   min-height: 100vh;
 }
 header {
+  img{
+    max-height: 30px;
+  }
   nav {
     position: relative;
     z-index: 1;
@@ -73,4 +76,8 @@ code {
   border: rgba($gray-300, 0.625) 1px solid;
   color: $primary;
   font-weight: bold;
+}
+
+footer{
+  border-top: 2px solid rgba($dark, 0.1);
 }

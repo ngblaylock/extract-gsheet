@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include "_partials/favicons.njk" %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,11 +34,7 @@
     <script src="{{root}}/js/extract-gsheet.min.js"></script>
   </head>
   <body class='d-flex flex-column'>
-    <header class="bg-dark text-center">
-      <div class="d-flex justify-content-center align-items-center p-2">
-        <img src="https://via.placeholder.com/45" alt="" />
-        <div class="h2 text-white p-0 my-0 mx-3">Extract GSheet</div>
-      </div>
+    <header>
       {% include "_partials/nav.njk" %}
     </header>
     <main class="egs py-3 flex-grow-1">{{ content | safe }}</main>
