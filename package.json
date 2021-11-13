@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
-    "build": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
+    "build": "npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
     "clean:dev": "npx rimraf ./dev",
     "clean": "npx rimraf ./docs ./dev",
+    "move-readme": "node move-readme",
     "rollup": "rollup -c",
     "rollup:watch": "rollup -c -w"
   },
