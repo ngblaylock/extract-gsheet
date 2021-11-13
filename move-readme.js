@@ -4,7 +4,7 @@ fs.readFile('./11ty-site/pages/documentation.md', 'utf8', function (err,data) {
     return console.error(err);
   }
   var result = data.replace(/^---((.|\n)*)---(\n*)/g, '');
-  var result = result.replace(/# Documentation/g, '# Extract GSheet Documentation')
+  var result = result.replace(/# Documentation/g, '# Extract GSheet Documentation\n\n[Examples & Documentation](https://ngblaylock.github.io/extract-gsheet/)')
   var result = result.replace(/^<div class="container documentation">\n*/g, '')
   var result = result.replace(/\n*<\/div>\n*$/g, '')
 
