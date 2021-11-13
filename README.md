@@ -1,11 +1,4 @@
----
-title: Documentation
-prism: true
----
-
-<div class="container documentation">
-
-# Documentation
+# Extract GSheet Documentation
 
 ## Features
 
@@ -86,5 +79,3 @@ That's it. Options will be coming soon. How you consume the data is up to you.
 ## Issue Reporting
 
 If you find a bug with this project, please report them on [GitHub](https://github.com/ngblaylock/extract-gsheet/issues). Pull requests are welcome.
-
-</div>
