@@ -8,6 +8,7 @@ fs.readFile('./11ty-site/pages/documentation.md', 'utf8', function (err,data) {
   var result = result.replace(/^<div class="container documentation">\n*/g, '')
   var result = result.replace(/\n*<\/div>\n*$/g, '')
   var result = result.replace(/{{root}}/g, 'https://ngblaylock.github.io/extract-gsheet')
+  var result = result.replace(/{{global.gitHubRepoURL}}/g, 'https://github.com/ngblaylock/extract-gsheet')
 
   fs.writeFile("./README.md", result, 'utf8', function (err) {
      if (err) return console.error(err);

@@ -31,6 +31,14 @@ header {
         background: rgba(0, 0, 0, 0.12);
       }
     }
+    .fa-sm{
+      display: inline-block;
+      font-size: .8em;
+      position: relative;
+      top: -1px;
+      padding-left: 2px;
+      opacity: .5;
+    }
   }
 }
 .egs {

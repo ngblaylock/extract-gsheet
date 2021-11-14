@@ -66,7 +66,7 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 
 ### Download from GitHub
 
-Download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
+Download the JS from this <a href="{{global.gitHubRepoURL}}/tree/master/dist" target="_blank">GitHub repo</a>.
 
 ## Use the Script
 
@@ -90,6 +90,6 @@ That's it. Your data should be extracted from your published Google Sheet, and y
 
 ## Issue Reporting
 
-If you find a bug with this project, please report them on [GitHub](https://github.com/ngblaylock/extract-gsheet/issues). Pull requests are welcome.
+If you find a bug with this project, please report them on [GitHub]({{global.gitHubRepoURL}}/issues). Pull requests are welcome.
 
 </div>
