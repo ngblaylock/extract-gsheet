@@ -180,22 +180,26 @@
 <h2>Load the Script</h2>
 <p><strong>NPM:</strong></p>
 <pre><code class="language-bash">npm install extract-gsheet
+# Then in your file:
+# import extractGSheet from 'extract-gsheet'; 
 </code></pre>
 <p><strong>CDN:</strong></p>
 <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/extract-gsheet/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- OR --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/extract-gsheet/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.</p>
 <h2>Use the Script</h2>
 <p>Call the <code>extractGSheet()</code> function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the <code>.then().catch()</code> syntax.</p>
 <pre><code class="language-html">&lt;script&gt;
-  extractGSheet(&quot;https://docs.google.com/spreadsheets/d/1...&quot;)
+  extractGSheet(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml&quot;)
     .then((res) =&gt; {
       // res is the data object
       console.log(res);
     })
     .catch((err) =&gt; {
       // handle the error if there is one
-      console.err(err);
+      console.error(err);
     });
 &lt;/script&gt;
 </code></pre>
@@ -215,7 +219,7 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2021</div>
-      <div class="px-3">Last Updated: November 13, 2021</div>
+      <div class="px-3">Last Updated: November 14, 2021</div>
     </div>
   </div>
 </footer>
