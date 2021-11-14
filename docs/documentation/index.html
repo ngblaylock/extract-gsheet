@@ -126,6 +126,7 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <a class="dropdown-item" href="/extract-gsheet/examples/vue/">Vue</a>
+          <a class="dropdown-item" href="#">jQuery (Coming Soon)</a>
           <a class="dropdown-item" href="#">React (Coming Soon)</a>
           <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
           <a class="dropdown-item" href="#">Handlebars (Coming Soon)</a>
@@ -177,13 +178,13 @@
 <p>Once your tabs or document is selected, click &quot;Publish&quot; and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.</p>
 <p><img src="/extract-gsheet/img/documentation/publish-window.png" alt="Publish Sheet Dialog Screenshot"></p>
 <h2>Load the Script</h2>
-<h3>TODO:</h3>
-<ul>
-<li>NPM</li>
-<li>CDN</li>
-</ul>
-<h3>Download from GitHub</h3>
-<p>Download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.</p>
+<p><strong>NPM:</strong></p>
+<pre><code class="language-bash">npm install extract-gsheet
+</code></pre>
+<p><strong>CDN:</strong></p>
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/extract-gsheet/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.</p>
 <h2>Use the Script</h2>
 <p>Call the <code>extractGSheet()</code> function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the <code>.then().catch()</code> syntax.</p>
 <pre><code class="language-html">&lt;script&gt;

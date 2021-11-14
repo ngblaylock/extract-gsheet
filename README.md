@@ -53,15 +53,19 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 
 ## Load the Script
 
+**NPM:**
 
-### TODO:
+``` bash
+npm install extract-gsheet
+```
 
-- NPM
-- CDN
+**CDN:**
 
-### Download from GitHub
+``` html
+<script src="https://unpkg.com/extract-gsheet/dist/extract-gsheet.min.js"></script>
+```
 
-Download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
+Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
 
 ## Use the Script
 

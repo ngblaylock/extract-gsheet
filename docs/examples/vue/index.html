@@ -118,6 +118,7 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <a class="dropdown-item" href="/extract-gsheet/examples/vue/">Vue</a>
+          <a class="dropdown-item" href="#">jQuery (Coming Soon)</a>
           <a class="dropdown-item" href="#">React (Coming Soon)</a>
           <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
           <a class="dropdown-item" href="#">Handlebars (Coming Soon)</a>
@@ -176,7 +177,7 @@
       },
       created() {
         extractGSheet(
-          "https://docs.google.com/spreadsheets/d/e/2PACX-1vSB4PU-EfzraMpAWZ61XFIoAhgV_cgAWYql9uHi266tEWFSHaFIqO2ILHbEFRTnO8iY6MPlBV2tBY_E/pubhtml"
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
         ).then((res) => {
           this.sheet = res;
         });
