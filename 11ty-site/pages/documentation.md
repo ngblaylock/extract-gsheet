@@ -9,12 +9,12 @@ prism: true
 
 ## Features
 
-- Simply add the publicHTML url provided
+- Include the script and call `extractGSheet(<published sheet url>)`
 - No API Keys required
-- Will extract all tabs in the sheet
+- Will extract all tabs in the published sheet
 - Transforms column headers into usable keys
 - Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values
-- Clears out columns without a column header
+- Clears out columns without a column header (key)
 - Clears out empty rows
 - Transforms 'TRUE' and 'FALSE' to true and false (Boolean)
 - Preserves text formatting from the sheet ('$1.00' does not transform to '1')
@@ -24,16 +24,17 @@ prism: true
 ### Warning
 
 - This is not thoroughly tested, so I would not recommend this for production, unless maybe your user base is super small and they can let you know when things change.
-- This heavily depends on the output HTML that Google provides. If Googles page changes a little bit, this script will break as well.
+- This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script will likely break as well.
 - Checkboxes are not preserved (possible future enhancement)
-- Images, charts, comments, etc are not included (possible future enhancement)
+- Images are not included (possible future enhancement)
+- Charts and comments will not be included
 - Some changes may take up to 5 minuts to reflect in the browser
 
 </div>
 
 ## Setup Google Sheet
 
-The first row in your document will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an `_`. Multiple spaces and/or special characters will be replaced with a single `_`. Any key that begins with a number will be prefixed with an `_`.
+The first row in your tab will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an `_`. Multiple spaces and/or special characters will be replaced with a single `_`. Any key that begins with a number will be prefixed with an `_`.
 
 ```js
             HeLlO => hello
@@ -43,11 +44,9 @@ The first row in your document will be the keys to your values. All characters w
 # of Participants => _of_participants
 ```
 
-![screenshot](https://via.placeholder.com/600x300)
+![Google Sheet Screenshot]({{root}}/img/documentation/spreadsheet.png)
 
 Make sure that your Google Sheet has a title, and the tabs have names.
-
-![screenshot](https://via.placeholder.com/600x300)
 
 ## Publish the Google Sheet
 
@@ -55,18 +54,23 @@ In Google Sheets, go to "File", "Share", "Publish to the web". Inside the dialog
 
 Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
 
-![screenshot](https://via.placeholder.com/600x300)
+![Publish Sheet Dialog Screenshot]({{root}}/img/documentation/publish-window.png)
 
 ## Load the Script
 
--- NPM
--- CDN
 
-Download the JS from this git repo: `extract-gsheet/dist/extract-sgheet.min.js`.
+### TODO:
+
+- NPM
+- CDN
+
+## Download from GitHub
+
+Download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
 
 ## Use the Script
 
-This script will return a promise, so you will need either Async/Await, or you can use the `.then().catch()` syntax.
+Call the `extractGSheet()` function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the `.then().catch()` syntax.
 
 ```html
 <script>
@@ -82,7 +86,7 @@ This script will return a promise, so you will need either Async/Await, or you c
 </script>
 ```
 
-That's it. Options will be coming soon. How you consume the data is up to you.
+That's it. Your data should be extracted from your published Google Sheet, and you can incorporate it into your website.
 
 ## Issue Reporting
 

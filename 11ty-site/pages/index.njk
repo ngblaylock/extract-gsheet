@@ -11,7 +11,7 @@ prism: true
       />
       <div class="mx-4">
         <h1 class="text-white mt-0">Extract GSheet</h1>
-        <p class="text-white">
+        <p class="text-white lead">
           Quickly extract JSON data from a public Google Sheet without any API
           keys.
         </p>
@@ -126,7 +126,7 @@ prism: true
   var singleLink =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true";
   var multipleLink =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSB4PU-EfzraMpAWZ61XFIoAhgV_cgAWYql9uHi266tEWFSHaFIqO2ILHbEFRTnO8iY6MPlBV2tBY_E/pubhtml";
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml";
   extractGSheet(multipleLink).then((res) => {
     var mj = $("#multiple-json");
     var ml = $("#multiple-link");

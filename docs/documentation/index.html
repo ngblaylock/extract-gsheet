@@ -117,12 +117,12 @@
 <h1>Documentation</h1>
 <h2>Features</h2>
 <ul>
-<li>Simply add the publicHTML url provided</li>
+<li>Include the script and call <code>extractGSheet(&lt;published sheet url&gt;)</code></li>
 <li>No API Keys required</li>
-<li>Will extract all tabs in the sheet</li>
+<li>Will extract all tabs in the published sheet</li>
 <li>Transforms column headers into usable keys</li>
 <li>Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values</li>
-<li>Clears out columns without a column header</li>
+<li>Clears out columns without a column header (key)</li>
 <li>Clears out empty rows</li>
 <li>Transforms 'TRUE' and 'FALSE' to true and false (Boolean)</li>
 <li>Preserves text formatting from the sheet ('$1.00' does not transform to '1')</li>
@@ -131,33 +131,37 @@
 <h3>Warning</h3>
 <ul>
 <li>This is not thoroughly tested, so I would not recommend this for production, unless maybe your user base is super small and they can let you know when things change.</li>
-<li>This heavily depends on the output HTML that Google provides. If Googles page changes a little bit, this script will break as well.</li>
+<li>This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script will likely break as well.</li>
 <li>Checkboxes are not preserved (possible future enhancement)</li>
-<li>Images, charts, comments, etc are not included (possible future enhancement)</li>
+<li>Images are not included (possible future enhancement)</li>
+<li>Charts and comments will not be included</li>
 <li>Some changes may take up to 5 minuts to reflect in the browser</li>
 </ul>
 </div>
 <h2>Setup Google Sheet</h2>
-<p>The first row in your document will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an <code>_</code>. Multiple spaces and/or special characters will be replaced with a single <code>_</code>. Any key that begins with a number will be prefixed with an <code>_</code>.</p>
+<p>The first row in your tab will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an <code>_</code>. Multiple spaces and/or special characters will be replaced with a single <code>_</code>. Any key that begins with a number will be prefixed with an <code>_</code>.</p>
 <pre><code class="language-js">            HeLlO =&gt; hello
          Movie ID =&gt; movie_id
          Is True? =&gt; is_true_
            8 Eggs =&gt; _8_eggs
 # of Participants =&gt; _of_participants
 </code></pre>
-<p><img src="https://via.placeholder.com/600x300" alt="screenshot"></p>
+<p><img src="/extract-gsheet/img/documentation/spreadsheet.png" alt="Google Sheet Screenshot"></p>
 <p>Make sure that your Google Sheet has a title, and the tabs have names.</p>
-<p><img src="https://via.placeholder.com/600x300" alt="screenshot"></p>
 <h2>Publish the Google Sheet</h2>
 <p>In Google Sheets, go to &quot;File&quot;, &quot;Share&quot;, &quot;Publish to the web&quot;. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document. If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a <code>:</code>).</p>
 <p>Once your tabs or document is selected, click &quot;Publish&quot; and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.</p>
-<p><img src="https://via.placeholder.com/600x300" alt="screenshot"></p>
+<p><img src="/extract-gsheet/img/documentation/publish-window.png" alt="Publish Sheet Dialog Screenshot"></p>
 <h2>Load the Script</h2>
-<p>-- NPM
--- CDN</p>
-<p>Download the JS from this git repo: <code>extract-gsheet/dist/extract-sgheet.min.js</code>.</p>
+<h3>TODO:</h3>
+<ul>
+<li>NPM</li>
+<li>CDN</li>
+</ul>
+<h2>Download from GitHub</h2>
+<p>Download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.</p>
 <h2>Use the Script</h2>
-<p>This script will return a promise, so you will need either Async/Await, or you can use the <code>.then().catch()</code> syntax.</p>
+<p>Call the <code>extractGSheet()</code> function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the <code>.then().catch()</code> syntax.</p>
 <pre><code class="language-html">&lt;script&gt;
   extractGSheet(&quot;https://docs.google.com/spreadsheets/d/1...&quot;)
     .then((res) =&gt; {
@@ -170,7 +174,7 @@
     });
 &lt;/script&gt;
 </code></pre>
-<p>That's it. Options will be coming soon. How you consume the data is up to you.</p>
+<p>That's it. Your data should be extracted from your published Google Sheet, and you can incorporate it into your website.</p>
 <h2>Issue Reporting</h2>
 <p>If you find a bug with this project, please report them on <a href="https://github.com/ngblaylock/extract-gsheet/issues">GitHub</a>. Pull requests are welcome.</p>
 </div>
