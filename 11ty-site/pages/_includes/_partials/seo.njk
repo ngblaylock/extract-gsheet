@@ -1,0 +1,26 @@
+{% if title %}
+<title>{{ title }} | Extract GSheet</title>
+<meta property="og:title" content="{{title}} | Extract GSheet" />
+{% else %}
+<title>Extract GSheet</title>
+<meta property="og:title" content="Extract GSheet" />
+{% endif %} {% if description %}
+<meta name="description" content="{{description}}" />
+<meta property="og:description" content="{{description}}" />
+{% else %}
+<meta
+  name="description"
+  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
+/>
+<meta
+  property="og:description"
+  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
+/>
+{% endif %}
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{global.baseURL}}{{root}}{{page.url}}" />
+<link rel="canonical" href="{{global.baseURL}}{{root}}{{page.url}}" />
+<meta
+  property="og:image"
+  content="{{global.baseURL}}{{root}}/img/og-image.png"
+/>

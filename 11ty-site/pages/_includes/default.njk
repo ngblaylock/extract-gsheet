@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% include "_partials/favicons.njk" %}
+    {% include "_partials/seo.njk" %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,11 +16,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
     <link rel="stylesheet" href="{{root}}/styles/custom.css" />
-    {% if title %}
-    <title>{{ title }} | Extract GSheet</title>
-    {% else %}
-    <title>Extract GSheet</title>
-    {% endif %}
     <link rel="stylesheet" href="{{root}}/" />
     {% if prism %}
     <link
