@@ -39,7 +39,7 @@ The first row in your tab will be the keys to your values. All characters will b
 # of Participants => _of_participants
 ```
 
-![Google Sheet Screenshot](/extract-gsheet/img/documentation/spreadsheet.png)
+![Google Sheet Screenshot](https://ngblaylock.github.io/extract-gsheet/img/documentation/spreadsheet.png)
 
 Make sure that your Google Sheet has a title, and the tabs have names.
 
@@ -49,7 +49,7 @@ In Google Sheets, go to "File", "Share", "Publish to the web". Inside the dialog
 
 Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
 
-![Publish Sheet Dialog Screenshot](/extract-gsheet/img/documentation/publish-window.png)
+![Publish Sheet Dialog Screenshot](https://ngblaylock.github.io/extract-gsheet/img/documentation/publish-window.png)
 
 ## Load the Script
 
