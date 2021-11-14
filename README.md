@@ -59,7 +59,7 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 - NPM
 - CDN
 
-## Download from GitHub
+### Download from GitHub
 
 Download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
 
