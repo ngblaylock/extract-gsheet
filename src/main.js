@@ -21,16 +21,16 @@ const hasCheckbox = function (content) {
   return false;
 };
 
-const checkboxStatus = function(content){
-  let c = content.innerHTML
-    if(c.includes(`<use href="#checkedCheckboxId"`)){
-      return "true"
-    } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
-      return "false"
-    } else {
-      return ""
-    }
-}
+const checkboxStatus = function (content) {
+  let c = content.innerHTML;
+  if (c.includes(`<use href="#checkedCheckboxId"`)) {
+    return "true";
+  } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
+    return "false";
+  } else {
+    return "";
+  }
+};
 
 const getTables = function (doc) {
   let tables = [];
@@ -80,15 +80,28 @@ const getTables = function (doc) {
         rows[x].querySelectorAll("td").forEach((td, tdIndex) => {
           if (data[tableIndex].keys[tdIndex]) {
             let key = data[tableIndex].keys[tdIndex].key;
-            let content = td.textContent;
-            if(!content){
-              content = checkboxStatus(td);
-              
-            }
-            if (content && content.toLowerCase() === "true") content = true;
-            else if (content && content.toLowerCase() === "false")
-              content = false;
+            // Only do this if there is a column header
             if (key) {
+              // set initial content
+              let content = td.textContent.trim();
+
+              // make checkbox a true/false value
+              if (!content) {
+                content = checkboxStatus(td);
+              }
+
+              // make "TRUE", "FAlse" a Boolean
+              if (content && content.toLowerCase() === "true") {
+                content = true;
+              } else if (content && content.toLowerCase() === "false") {
+                content = false;
+              }
+
+              // make "123" a Number
+              if (content && typeof content == "string" && !isNaN(content)) {
+                content = parseFloat(content);
+              }
+
               data[tableIndex].data[x - 1][key] = content;
             }
           }
