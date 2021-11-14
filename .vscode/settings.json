@@ -17,5 +17,19 @@
   },
   "prettier.documentSelectors": [
     "**/*.njk"
-  ]
+  ],
+  "actionButtons": {
+    "defaultColor": "#546E7A",
+    "loadNpmCommands": false,
+    "commands": [
+      {
+        "name": "DEV",
+        "command": "npm run dev",
+      },
+      {
+        "name": "BUILD",
+        "command": "npm run build",
+      }
+    ]
+  }
 }
