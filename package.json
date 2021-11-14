@@ -2,7 +2,7 @@
   "name": "extract-gsheet",
   "version": "0.1.0",
   "description": "A semi-reliable half-hacky way to extract data from a Google Sheet.",
-  "main": "index.js",
+  "main": "./src/main.js",
   "scripts": {
     "dev": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
     "build": "npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
