@@ -123,6 +123,15 @@
       });
     });
 
+    // Add ID if no id present
+    data.forEach(d => {
+      d.data.forEach((obj, index) => {
+        if(!obj.id){
+          obj.id = index + 1;
+        }
+      });
+    });
+
     return data;
   };
 

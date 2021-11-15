@@ -26,10 +26,6 @@
         "name": "DEV",
         "command": "npm run dev",
       },
-      {
-        "name": "BUILD",
-        "command": "npm run build",
-      }
     ]
   }
 }
