@@ -125,11 +125,16 @@
 
     // Add ID if no id present
     data.forEach(d => {
+      let missingID = false;
       d.data.forEach((obj, index) => {
         if(!obj.id){
+          missingID = true;
           obj.id = index + 1;
         }
       });
+      if(missingID){
+        d.keys.push({name: 'ID', key: 'id'});
+      }
     });
 
     return data;
