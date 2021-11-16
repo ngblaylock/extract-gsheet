@@ -26,10 +26,11 @@ prism: true
   
 ### Warning
 
-- This is not thoroughly tested, so I would not recommend this for production, unless maybe your user base is super small and they can let you know when things change.
+- This is not thoroughly tested, so I would not recommend this for production.
 - This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.
-- Most non-text features will not be included (images, charts, comments, etc.)
-- Some changes to a published sheet may take up to 5 minuts to reflect in the browser
+- Most non-text features will not be included (images, charts, comments, etc.).
+- Some changes to a published sheet may take up to 5 minuts to reflect in the browser.
+- This version does not support server-side parsing as it relies on `window.fetch` and `window.DOMParser`. An enhancement for this is being considered.
 
 </div>
 
@@ -41,7 +42,7 @@ The first row in your tab will be the keys to your values. All characters will b
             HeLlO => hello
          Movie ID => movie_id
          Is True? => is_true_
-           8 Eggs => _8_eggs
+           8 Keys => _8_keys
 # of Participants => _of_participants
 ```
 
@@ -59,7 +60,7 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 
 ## Load the Script
 
-**NPM:**
+**NPM:** (This has not been thoroughly tested)
 
 ``` bash
 npm install extract-gsheet
