@@ -11,19 +11,22 @@
 - Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values
 - Clears out columns without a column header (key)
 - Clears out empty rows
-- Transforms 'TRUE' and 'FALSE' to true and false (Boolean)
+- 'TRUE' and 'FALSE' values are transformed to true and false (Boolean)
+- Checkboxes are transformed to true and false (Boolean)
+- Numbers are transformed to a numeric value ("2.5" is transformed to 2.5)
 - Preserves text formatting from the sheet ('$1.00' does not transform to '1')
+- If there is no key for "ID", a unique ID for the row will be provided. **However**, this id can change on each page load. Since Extract GSheet is a read-only tool, this should not be a problem.
 
 <div class="alert alert-warning">
   
 ### Warning
 
-- This is not thoroughly tested, so I would not recommend this for production, unless maybe your user base is super small and they can let you know when things change.
-- This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script will likely break as well.
-- Checkboxes are not preserved (possible future enhancement)
-- Images are not included (possible future enhancement)
-- Charts and comments will not be included
-- Some changes may take up to 5 minuts to reflect in the browser
+- This is not thoroughly tested, so I would not recommend this for production.
+- This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.
+- Most non-text features will not be included (images, charts, comments, etc.).
+- Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
+- This will not natively work on Internet Explorer.
+- This version does not support server-side parsing as it relies on `window.fetch` and `window.DOMParser`. An enhancement for this is being considered.
 
 </div>
 
@@ -35,7 +38,7 @@ The first row in your tab will be the keys to your values. All characters will b
             HeLlO => hello
          Movie ID => movie_id
          Is True? => is_true_
-           8 Eggs => _8_eggs
+           8 Keys => _8_keys
 # of Participants => _of_participants
 ```
 
@@ -53,7 +56,7 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 
 ## Load the Script
 
-**NPM:**
+**NPM:** (This has not been thoroughly tested)
 
 ``` bash
 npm install extract-gsheet

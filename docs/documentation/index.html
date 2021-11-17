@@ -149,18 +149,21 @@
 <li>Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values</li>
 <li>Clears out columns without a column header (key)</li>
 <li>Clears out empty rows</li>
-<li>Transforms 'TRUE' and 'FALSE' to true and false (Boolean)</li>
+<li>'TRUE' and 'FALSE' values are transformed to true and false (Boolean)</li>
+<li>Checkboxes are transformed to true and false (Boolean)</li>
+<li>Numbers are transformed to a numeric value (&quot;2.5&quot; is transformed to 2.5)</li>
 <li>Preserves text formatting from the sheet ('$1.00' does not transform to '1')</li>
+<li>If there is no key for &quot;ID&quot;, a unique ID for the row will be provided. <strong>However</strong>, this id can change on each page load. Since Extract GSheet is a read-only tool, this should not be a problem.</li>
 </ul>
 <div class="alert alert-warning">
 <h3>Warning</h3>
 <ul>
-<li>This is not thoroughly tested, so I would not recommend this for production, unless maybe your user base is super small and they can let you know when things change.</li>
-<li>This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script will likely break as well.</li>
-<li>Checkboxes are not preserved (possible future enhancement)</li>
-<li>Images are not included (possible future enhancement)</li>
-<li>Charts and comments will not be included</li>
-<li>Some changes may take up to 5 minuts to reflect in the browser</li>
+<li>This is not thoroughly tested, so I would not recommend this for production.</li>
+<li>This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.</li>
+<li>Most non-text features will not be included (images, charts, comments, etc.).</li>
+<li>Some changes to a published sheet may take up to 5 minutes to reflect in the browser.</li>
+<li>This will not natively work on Internet Explorer.</li>
+<li>This version does not support server-side parsing as it relies on <code>window.fetch</code> and <code>window.DOMParser</code>. An enhancement for this is being considered.</li>
 </ul>
 </div>
 <h2>Setup Google Sheet</h2>
@@ -168,7 +171,7 @@
 <pre><code class="language-js">            HeLlO =&gt; hello
          Movie ID =&gt; movie_id
          Is True? =&gt; is_true_
-           8 Eggs =&gt; _8_eggs
+           8 Keys =&gt; _8_keys
 # of Participants =&gt; _of_participants
 </code></pre>
 <p><img src="/extract-gsheet/img/documentation/spreadsheet.png" alt="Google Sheet Screenshot"></p>
@@ -178,7 +181,7 @@
 <p>Once your tabs or document is selected, click &quot;Publish&quot; and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.</p>
 <p><img src="/extract-gsheet/img/documentation/publish-window.png" alt="Publish Sheet Dialog Screenshot"></p>
 <h2>Load the Script</h2>
-<p><strong>NPM:</strong></p>
+<p><strong>NPM:</strong> (This has not been thoroughly tested)</p>
 <pre><code class="language-bash">npm install extract-gsheet
 # Then in your file:
 # import extractGSheet from 'extract-gsheet'; 
@@ -219,7 +222,7 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2021</div>
-      <div class="px-3">Last Updated: November 14, 2021</div>
+      <div class="px-3">Last Updated: November 16, 2021</div>
     </div>
   </div>
 </footer>
