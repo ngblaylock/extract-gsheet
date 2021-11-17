@@ -1,7 +1,7 @@
 {
   "name": "extract-gsheet",
   "version": "0.1.5",
-  "description": "A semi-reliable half-hacky way to extract data from a Google Sheet.",
+  "description": "Quickly parse a public Google Sheet into JSON for use on any website.",
   "main": "./src/main.js",
   "repository": {
     "type": "git",
