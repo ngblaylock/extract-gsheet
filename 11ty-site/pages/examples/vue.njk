@@ -1,5 +1,4 @@
 <div class="container">
-  {% raw %}
   <h1>Vue.js Example</h1>
   <a
     href="{{global.gitHubRepoURL}}/blob/master/docs/examples/vue/index.html"
@@ -8,6 +7,7 @@
     ><span class="fab fa-github"></span> See Code on GitHub</a
   >
   <hr />
+  {% raw %}
   <div id="app" v-cloak>
     <div v-if="sheet != 'loading'">
       <h2>{{sheet.title}} <small>Sheet Title</small></h2>
