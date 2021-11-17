@@ -1,8 +1,13 @@
 {
   "name": "extract-gsheet",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A semi-reliable half-hacky way to extract data from a Google Sheet.",
   "main": "./src/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngblaylock/extract-gsheet"
+  },
+  "homepage": "https://animate.style/",
   "scripts": {
     "dev": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
     "build": "npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
