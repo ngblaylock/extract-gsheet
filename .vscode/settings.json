@@ -27,5 +27,8 @@
         "command": "npm run dev",
       },
     ]
-  }
+  },
+  "cSpell.words": [
+    "gsheet"
+  ]
 }

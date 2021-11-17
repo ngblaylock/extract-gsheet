@@ -29,7 +29,8 @@ prism: true
 - This is not thoroughly tested, so I would not recommend this for production.
 - This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.
 - Most non-text features will not be included (images, charts, comments, etc.).
-- Some changes to a published sheet may take up to 5 minuts to reflect in the browser.
+- Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
+- This will not natively work on Internet Explorer.
 - This version does not support server-side parsing as it relies on `window.fetch` and `window.DOMParser`. An enhancement for this is being considered.
 
 </div>
