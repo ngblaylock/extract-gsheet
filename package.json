@@ -1,6 +1,6 @@
 {
   "name": "extract-gsheet",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A semi-reliable half-hacky way to extract data from a Google Sheet.",
   "main": "./src/main.js",
   "repository": {
