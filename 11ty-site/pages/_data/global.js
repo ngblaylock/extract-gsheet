@@ -1,4 +1,5 @@
 const dayjs = require('dayjs');
+const package = require('../../../package')
 
 module.exports = function(){
   return {
@@ -7,5 +8,6 @@ module.exports = function(){
     copyrightYear: new Date().getFullYear(),
     today: dayjs().format('MMMM D, YYYY'),
     gitHubRepoURL: 'https://github.com/ngblaylock/extract-gsheet',
+    version: package.version,
   }
 }
