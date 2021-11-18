@@ -1,6 +1,8 @@
+.eleventy.js
+.prettierrc
 .vscode
 11ty-site
 dev
 docs
-.eleventy.js
-.prettierrc
+move-readme.js
+test
