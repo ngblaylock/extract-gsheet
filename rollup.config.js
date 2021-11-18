@@ -5,12 +5,12 @@ export default {
   output: [
     {
       file: "dist/extract-gsheet.js",
-      format: "umd",
+      format: "iife",
       name: "extractGSheet",
     },
     {
       file: "dist/extract-gsheet.min.js",
-      format: "umd",
+      format: "iife",
       name: "extractGSheet",
       plugins: [terser()],
     },
