@@ -1,8 +1,5 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.extractGSheet = factory());
-})(this, (function () { 'use strict';
+var extractGSheet = (function () {
+  'use strict';
 
   const extractGSheet = async function (url) {
     let page = await FetchHtml(url).then((text) => {
@@ -142,4 +139,4 @@
 
   return extractGSheet;
 
-}));
+})();
