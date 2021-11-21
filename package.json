@@ -2,7 +2,7 @@
   "name": "extract-gsheet",
   "version": "0.1.7",
   "description": "Quickly parse a public Google Sheet into JSON for use on any website.",
-  "main": "./src/main.js",
+  "main": "./dist/extract-gsheet.cjs.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ngblaylock/extract-gsheet"

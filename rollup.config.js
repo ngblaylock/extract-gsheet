@@ -14,5 +14,18 @@ export default {
       name: "extractGSheet",
       plugins: [terser()],
     },
+    {
+      file: "dist/extract-gsheet.cjs.js",
+      format: "cjs",
+    },
+    {
+      file: "dist/extract-gsheet.umd.js",
+      format: "umd",
+      name: "extractGSheet",
+    },
+    {
+      file: "dist/extract-gsheet.esm.js",
+      format: "esm",
+    },
   ],
 };
