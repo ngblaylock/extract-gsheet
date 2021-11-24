@@ -30,22 +30,13 @@
 <title>Documentation | Extract GSheet</title>
 <meta property="og:title" content="Documentation | Extract GSheet" />
  
-<meta
-  name="description"
-  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
-/>
-<meta
-  property="og:description"
-  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
-/>
+<meta name="description" content="Learn about Extract GSheet features and how to quickly extract JSON data from a public Google Sheet." />
+<meta property="og:description" content="Learn about Extract GSheet features and how to quickly extract JSON data from a public Google Sheet." />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/documentation/" />
 <link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/documentation/" />
-<meta
-  property="og:image"
-  content="https://ngblaylock.github.io/extract-gsheet/og-image.png"
-/>
+<meta property="og:image" content="https://ngblaylock.github.io/extract-gsheet/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -102,14 +93,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="/extract-gsheet/documentation/">Documentation</a>
       </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://github.com/ngblaylock/extract-gsheet"
-          target="_blank"
-          >GitHub <i class="fas fa-sm fa-external-link-alt"></i
-        ></a>
-      </li>
       <li class="nav-item dropdown ">
         <a
           class="nav-link dropdown-toggle"
@@ -126,11 +109,19 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <a class="dropdown-item" href="/extract-gsheet/examples/vue/">Vue</a>
-          <a class="dropdown-item" href="#">jQuery (Coming Soon)</a>
+          <a class="dropdown-item" href="/extract-gsheet/examples/jquery/">jQuery</a>
           <a class="dropdown-item" href="#">React (Coming Soon)</a>
           <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
           <a class="dropdown-item" href="#">Handlebars (Coming Soon)</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="https://github.com/ngblaylock/extract-gsheet"
+          target="_blank"
+          >GitHub <i class="fas fa-sm fa-external-link-alt"></i
+        ></a>
       </li>
       
     </ul>
@@ -156,14 +147,14 @@
 <li>If there is no key for &quot;ID&quot;, a unique ID for the row will be provided. <strong>However</strong>, this id can change on each page load. Since Extract GSheet is a read-only tool, this should not be a problem.</li>
 </ul>
 <div class="alert alert-warning">
-<h3>Warning</h3>
+<h3>However...</h3>
 <ul>
 <li>This is not thoroughly tested, so I would not recommend this for production.</li>
 <li>This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.</li>
 <li>Most non-text features will not be included (images, charts, comments, etc.).</li>
 <li>Some changes to a published sheet may take up to 5 minutes to reflect in the browser.</li>
 <li>This will not natively work on Internet Explorer.</li>
-<li>This version does not support server-side parsing as it relies on <code>window.fetch</code> and <code>window.DOMParser</code>. An enhancement for this is being considered.</li>
+<li>This version does not support server-side parsing as it relies on <code>fetch</code> and <code>DOMParser</code>. An enhancement for this is being considered.</li>
 </ul>
 </div>
 <h2>Setup Google Sheet</h2>
@@ -177,7 +168,8 @@
 <p><img src="/extract-gsheet/img/documentation/spreadsheet.png" alt="Google Sheet Screenshot"></p>
 <p>Make sure that your Google Sheet has a title, and the tabs have names.</p>
 <h2>Publish the Google Sheet</h2>
-<p>In Google Sheets, go to &quot;File&quot;, &quot;Share&quot;, &quot;Publish to the web&quot;. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document. If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a <code>:</code>).</p>
+<p>In Google Sheets, go to <strong>File &gt; Share &gt; Publish to the web</strong>. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.</p>
+<p><strong>NOTE:</strong> If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a <code>:</code>).</p>
 <p>Once your tabs or document is selected, click &quot;Publish&quot; and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.</p>
 <p><img src="/extract-gsheet/img/documentation/publish-window.png" alt="Publish Sheet Dialog Screenshot"></p>
 <h2>Load the Script</h2>
@@ -209,6 +201,8 @@
 <p>That's it. Your data should be extracted from your published Google Sheet, and you can incorporate it into your website.</p>
 <h2>Issue Reporting</h2>
 <p>If you find a bug with this project, please report them on <a href="https://github.com/ngblaylock/extract-gsheet/issues">GitHub</a>. Pull requests are welcome.</p>
+<h2>Special Thanks</h2>
+<p>This project was heavily inspired by <a href="https://github.com/jsoma/tabletop">Tabletop.js by jsoma</a>. I used it in a lot of projects, but now that its time has passed, I decided to make my own script. I hope you find this project beneficial.</p>
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">
@@ -222,8 +216,8 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2021</div>
-      <div class="px-3">Last Updated: November 21, 2021</div>
-      <div class="px-3">Version 0.1.8</div>
+      <div class="px-3">Last Updated: November 23, 2021</div>
+      <div class="px-3">Version 0.1.9</div>
     </div>
   </div>
 </footer>

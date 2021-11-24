@@ -27,15 +27,15 @@
 <meta name="theme-color" content="#ffffff" />
 
     
-<title>Vue Example | Extract GSheet</title>
-<meta property="og:title" content="Vue Example | Extract GSheet" />
+<title>jQuery Example | Extract GSheet</title>
+<meta property="og:title" content="jQuery Example | Extract GSheet" />
  
-<meta name="description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Vue.js." />
-<meta property="og:description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Vue.js." />
+<meta name="description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with jQuery." />
+<meta property="og:description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with jQuery." />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/examples/vue/" />
-<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/examples/vue/" />
+<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/examples/jquery/" />
+<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/examples/jquery/" />
 <meta property="og:image" content="https://ngblaylock.github.io/extract-gsheet/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -123,63 +123,46 @@
     </header>
     <main class="egs py-3 flex-grow-1">
 <div class="container">
-  <h1>Vue.js Example</h1>
-  <p>This example uses Vue to take the data from the Google Sheet and formats it in a table that matches the style of the website.</p>
+  <h1>jQuery Example</h1>
+  <p>This example uses jQuery to loop over the characters in the character tab and formats the data into a custom card.</p>
   <p>
     <a
-      href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/vue/index.html"
+      href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/jquery/index.html"
       target="_blank"
       class="btn btn-secondary"
       ><span class="fab fa-github"></span> See Code on GitHub</a
     >
   </p>
-  <hr />
-  
-  <div id="app" v-cloak>
-    <div v-if="sheet != 'loading'">
-      <h2>{{sheet.title}} <small>Sheet Title</small></h2>
-      <div v-for="(table, tableIndex) in sheet.tables" :key="tableIndex">
-        <h3>{{table.tab}} <small>Tab Name</small></h3>
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered">
-            <thead>
-              <tr>
-                <th v-for="(keys, keyIndex) in table.keys" :key="keyIndex">
-                  {{keys.name}}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(data, dataIndex) in table.data" :key="dataIndex">
-                <td v-for="(d, dIndex) in data" :key="dIndex">{{d}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  
+  <hr>
+  <h2 id="sheet-name"></h2>
+  <div class="character-cards"></div>
+
   <script>
-    var app = new Vue({
-      el: "#app",
-      data() {
-        return {
-          sheet: "loading",
-        };
-      },
-      created() {
-        extractGSheet(
-          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
-        ).then((res) => {
-          this.sheet = res;
-        });
-      },
-    });
+    extractGSheet(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
+    )
+      .then((res) => {
+        $('#sheet-name').text(res.title)
+        let characters = res.tables[0]
+        characters.data.forEach(character => {
+          $('.character-cards').append(/*html*/`
+          <div class="card mb-3" style="border-color: ${character.favorite_color}; background: ${character.favorite_color}">
+            <div class="card-body" style="background: rgba(255, 255, 255, .95);">
+              <h5 class="mt-0">${character.first_name} ${character.last_name}</h5>
+              <ul>
+                <li><strong>Favorite Color:</strong> ${character.favorite_color}</li>
+                <li><strong>Height:</strong> ${character.height}</li>
+                <li><strong>Catch Phrase:</strong> &ldquo;${character.catch_phrase}&rdquo;</li>
+              </ul>
+            </div>
+          </div>
+          `)
+        })
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   </script>
-  
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">
