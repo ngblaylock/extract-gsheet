@@ -1,6 +1,7 @@
 ---
 title: Documentation
 prism: true
+description: Learn about Extract GSheet features and how to quickly extract JSON data from a public Google Sheet.
 ---
 
 <div class="container documentation">
@@ -24,14 +25,14 @@ prism: true
 
 <div class="alert alert-warning">
   
-### Warning
+### However...
 
 - This is not thoroughly tested, so I would not recommend this for production.
 - This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.
 - Most non-text features will not be included (images, charts, comments, etc.).
 - Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
 - This will not natively work on Internet Explorer.
-- This version does not support server-side parsing as it relies on `window.fetch` and `window.DOMParser`. An enhancement for this is being considered.
+- This version does not support server-side parsing as it relies on `fetch` and `DOMParser`. An enhancement for this is being considered.
 
 </div>
 
@@ -53,7 +54,9 @@ Make sure that your Google Sheet has a title, and the tabs have names.
 
 ## Publish the Google Sheet
 
-In Google Sheets, go to "File", "Share", "Publish to the web". Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document. If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a `:`).
+In Google Sheets, go to **File > Share > Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document. 
+
+**NOTE:** If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a `:`).
 
 Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
 
@@ -102,5 +105,9 @@ That's it. Your data should be extracted from your published Google Sheet, and y
 ## Issue Reporting
 
 If you find a bug with this project, please report them on [GitHub]({{global.gitHubRepoURL}}/issues). Pull requests are welcome.
+
+## Special Thanks
+
+This project was heavily inspired by [Tabletop.js by jsoma](https://github.com/jsoma/tabletop). I used it in a lot of projects, but now that its time has passed, I decided to make my own script. I hope you find this project beneficial.
 
 </div>

@@ -27,14 +27,6 @@
       <li class="nav-item {{ 'active' if '/documentation' in page.url }}">
         <a class="nav-link" href="{{root}}/documentation/">Documentation</a>
       </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="{{global.gitHubRepoURL}}"
-          target="_blank"
-          >GitHub <i class="fas fa-sm fa-external-link-alt"></i
-        ></a>
-      </li>
       <li class="nav-item dropdown {{ 'active' if '/examples' in page.url }}">
         <a
           class="nav-link dropdown-toggle"
@@ -51,11 +43,19 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <a class="dropdown-item" href="{{root}}/examples/vue/">Vue</a>
-          <a class="dropdown-item" href="#">jQuery (Coming Soon)</a>
+          <a class="dropdown-item" href="{{root}}/examples/jquery/">jQuery</a>
           <a class="dropdown-item" href="#">React (Coming Soon)</a>
           <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
           <a class="dropdown-item" href="#">Handlebars (Coming Soon)</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="{{global.gitHubRepoURL}}"
+          target="_blank"
+          >GitHub <i class="fas fa-sm fa-external-link-alt"></i
+        ></a>
       </li>
       {% if global.env == 'dev' %}
       <li class="nav-item {{ 'active' if '/uikit' in page.url }}">

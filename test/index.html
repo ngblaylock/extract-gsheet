@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Rollup</title>
-  <script src="../dist/extract-gsheet.js"></script>
-  <script>
-    extractGSheet("https://docs.google.com/spreadsheets/d/e/2PACX-1vSB4PU-EfzraMpAWZ61XFIoAhgV_cgAWYql9uHi266tEWFSHaFIqO2ILHbEFRTnO8iY6MPlBV2tBY_E/pubhtml")
-      .then((res) => {
-        // res is the data object
-        console.log(res);
-      })
-      .catch((err) => {
-        // handle the error if there is one
-        console.error(err);
-      });
-  </script>
-</head>
-<body>
-  <h1>Test</h1>
-  <p>Open the console.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Rollup</title>
+    <script src="../dist/extract-gsheet.js"></script>
+    <script>
+      // Existing Google Sheet
+      extractGSheet(
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
+      )
+        .then((res) => {
+          console.log("1--------");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("1--------");
+          console.error(err);
+        });
+
+        
+        // Non-Existing Google Sheet
+        extractGSheet("https://docs.google.com/spreadsheets/d/e/FooBarBaz")
+        .then((res) => {
+          console.log("2--------");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("2--------");
+          console.error(err);
+        });
+        
+
+        // Existing Page But Not Google Sheet
+        extractGSheet(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vSB4PU-EfzraMpAWZ61XFIoAhgV_cgAWYql9uHi266tEWFSHaFIqO2ILHbEFRTnO8iY6MPlBV2tB"
+          )
+          .then((res) => {
+          console.log("3--------");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("3--------");
+          console.error(err);
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Test</h1>
+    <p>Open the console.</p>
+  </body>
 </html>

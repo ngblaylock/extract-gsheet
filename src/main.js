@@ -1,17 +1,25 @@
 const extractGSheet = async function (url) {
-  let page = await FetchHtml(url).then((text) => {
-    return text;
-  });
-  var doc = new DOMParser().parseFromString(page, "text/html");
-  return {
-    title: doc.querySelector("#doc-title .name").textContent,
-    tables: getTables(doc),
-  };
+  try {
+    if (!url.startsWith("https://docs.google.com/spreadsheets")) {
+      throw "Invalid Public Google Sheet";
+    } else {
+      let page = await FetchHtml(url).then((text) => {
+        return text;
+      });
+      var doc = new DOMParser().parseFromString(page, "text/html");
+      return {
+        title: doc.querySelector("#doc-title .name").textContent,
+        tables: getTables(doc),
+      };
+    }
+  } catch (err) {
+    throw new Error(err);
+  }
 };
 
 async function FetchHtml(url) {
   let response = await fetch(url);
-  return await response.text(); // Returns it as Promise
+  return await response.text();
 }
 
 const hasCheckbox = function (content) {
@@ -118,18 +126,18 @@ const getTables = function (doc) {
   });
 
   // Add ID if no id present
-  data.forEach(d => {
-    let missingID = false
+  data.forEach((d) => {
+    let missingID = false;
     d.data.forEach((obj, index) => {
-      if(!obj.id){
-        missingID = true
+      if (!obj.id) {
+        missingID = true;
         obj.id = index + 1;
       }
-    })
-    if(missingID){
-      d.keys.push({name: 'ID', key: 'id'})
+    });
+    if (missingID) {
+      d.keys.push({ name: "ID", key: "id" });
     }
-  })
+  });
 
   return data;
 };
