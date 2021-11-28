@@ -1,46 +1,22 @@
-const extractGSheet = async function (url) {
-  try {
-    if (!url.startsWith("https://docs.google.com/spreadsheets")) {
-      throw "Invalid Public Google Sheet";
-    } else {
-      let page = await FetchHtml(url).then((text) => {
-        return text;
-      });
-      var doc = new DOMParser().parseFromString(page, "text/html");
-      return {
-        title: doc.querySelector("#doc-title .name").textContent,
-        tables: getTables(doc),
-      };
+module.exports = function (doc) {
+  const hasCheckbox = function (content) {
+    if (content.innerHTML.match(/<use href="#(un)?checkedCheckboxId"/g)) {
+      return true;
     }
-  } catch (err) {
-    throw new Error(err);
-  }
-};
+    return false;
+  };
+  
+  const checkboxStatus = function (content) {
+    let c = content.innerHTML;
+    if (c.includes(`<use href="#checkedCheckboxId"`)) {
+      return "true";
+    } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
+      return "false";
+    } else {
+      return "";
+    }
+  };
 
-async function FetchHtml(url) {
-  let response = await fetch(url);
-  return await response.text();
-}
-
-const hasCheckbox = function (content) {
-  if (content.innerHTML.match(/<use href="#(un)?checkedCheckboxId"/g)) {
-    return true;
-  }
-  return false;
-};
-
-const checkboxStatus = function (content) {
-  let c = content.innerHTML;
-  if (c.includes(`<use href="#checkedCheckboxId"`)) {
-    return "true";
-  } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
-    return "false";
-  } else {
-    return "";
-  }
-};
-
-const getTables = function (doc) {
   let tables = [];
   let data = [];
 
@@ -141,5 +117,3 @@ const getTables = function (doc) {
 
   return data;
 };
-
-export default extractGSheet;

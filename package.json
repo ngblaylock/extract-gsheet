@@ -34,5 +34,8 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.59.0",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "jsdom": "^18.1.1"
   }
 }
