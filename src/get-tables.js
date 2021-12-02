@@ -5,7 +5,7 @@ module.exports = function (doc) {
     }
     return false;
   };
-  
+
   const checkboxStatus = function (content) {
     let c = content.innerHTML;
     if (c.includes(`<use href="#checkedCheckboxId"`)) {
@@ -115,5 +115,8 @@ module.exports = function (doc) {
     }
   });
 
-  return data;
+  return JSON.stringify({
+    title: doc.querySelector("#doc-title .name").textContent,
+    tables: data,
+  });
 };

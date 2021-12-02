@@ -1,49 +1,25 @@
 var extractGSheet = (function () {
   'use strict';
 
-  const extractGSheet = async function (url) {
-    try {
-      if (!url.startsWith("https://docs.google.com/spreadsheets")) {
-        throw "Invalid Public Google Sheet";
-      } else {
-        let page = await FetchHtml(url).then((text) => {
-          return text;
-        });
-        var doc = new DOMParser().parseFromString(page, "text/html");
-        return {
-          title: doc.querySelector("#doc-title .name").textContent,
-          tables: getTables(doc),
-        };
+  var getTables$1 = function (doc) {
+    const hasCheckbox = function (content) {
+      if (content.innerHTML.match(/<use href="#(un)?checkedCheckboxId"/g)) {
+        return true;
       }
-    } catch (err) {
-      throw new Error(err);
-    }
-  };
+      return false;
+    };
 
-  async function FetchHtml(url) {
-    let response = await fetch(url);
-    return await response.text();
-  }
+    const checkboxStatus = function (content) {
+      let c = content.innerHTML;
+      if (c.includes(`<use href="#checkedCheckboxId"`)) {
+        return "true";
+      } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
+        return "false";
+      } else {
+        return "";
+      }
+    };
 
-  const hasCheckbox = function (content) {
-    if (content.innerHTML.match(/<use href="#(un)?checkedCheckboxId"/g)) {
-      return true;
-    }
-    return false;
-  };
-
-  const checkboxStatus = function (content) {
-    let c = content.innerHTML;
-    if (c.includes(`<use href="#checkedCheckboxId"`)) {
-      return "true";
-    } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
-      return "false";
-    } else {
-      return "";
-    }
-  };
-
-  const getTables = function (doc) {
     let tables = [];
     let data = [];
 
@@ -142,9 +118,35 @@ var extractGSheet = (function () {
       }
     });
 
-    return data;
+    return JSON.stringify({
+      title: doc.querySelector("#doc-title .name").textContent,
+      tables: data,
+    });
   };
 
-  return extractGSheet;
+  const getTables = getTables$1;
+
+  var client = async function (url) {
+    const fetchHtml = async function(url) {
+      let response = await fetch(url);
+      return await response.text();
+    };
+
+    try {
+      if (!url.startsWith("https://docs.google.com/spreadsheets")) {
+        throw "Invalid Public Google Sheet";
+      } else {
+        let page = await fetchHtml(url).then((text) => {
+          return text;
+        });
+        var doc = new DOMParser().parseFromString(page, "text/html");
+        return getTables(doc);
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
+  return client;
 
 })();

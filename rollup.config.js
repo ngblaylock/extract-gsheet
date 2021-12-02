@@ -1,7 +1,9 @@
 import { terser } from "rollup-plugin-terser";
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
-  input: "src/main.js",
+  input: "src/client.js",
   output: [
     {
       file: "dist/extract-gsheet.js",
@@ -28,4 +30,5 @@ export default {
       format: "esm",
     },
   ],
+  plugins: [nodeResolve(), commonjs()]
 };
