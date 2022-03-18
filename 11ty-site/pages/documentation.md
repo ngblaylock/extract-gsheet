@@ -12,7 +12,7 @@ description: Learn about Extract GSheet features and how to quickly extract JSON
 
 - Include the script and call `extractGSheet(<published sheet url>)`
 - No API Keys required
-- Will extract all tabs in the published sheet
+- Can extract all tabs or single tab in the published sheet
 - Transforms column headers into usable keys
 - Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values
 - Clears out columns without a column header (key)
@@ -21,10 +21,10 @@ description: Learn about Extract GSheet features and how to quickly extract JSON
 - Checkboxes are transformed to true and false (Boolean)
 - Numbers are transformed to a numeric value ("2.5" is transformed to 2.5)
 - Preserves text formatting from the sheet ('$1.00' does not transform to '1')
-- If there is no key for "ID", a unique ID for the row will be provided. **However**, this id can change on each page load. Since Extract GSheet is a read-only tool, this should not be a problem.
-
+- If there is no key for "ID", a unique ID for the row will be provided
+- Extract GSheet now works on servers (see below for details)
 <div class="alert alert-warning">
-  
+
 ### However...
 
 - This is not thoroughly tested, so I would not recommend this for production.
@@ -32,7 +32,6 @@ description: Learn about Extract GSheet features and how to quickly extract JSON
 - Most non-text features will not be included (images, charts, comments, etc.).
 - Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
 - This will not natively work on Internet Explorer.
-- This version does not support server-side parsing as it relies on `fetch` and `DOMParser`. An enhancement for this is being considered.
 
 </div>
 
@@ -41,11 +40,11 @@ description: Learn about Extract GSheet features and how to quickly extract JSON
 The first row in your tab will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an `_`. Multiple spaces and/or special characters will be replaced with a single `_`. Any key that begins with a number will be prefixed with an `_`.
 
 ```js
-            HeLlO => hello
-         Movie ID => movie_id
-         Is True? => is_true_
-           8 Keys => _8_keys
-# of Participants => _of_participants
+            HeLlO ➔ hello
+         Movie ID ➔ movie_id
+         Is True? ➔ is_true_
+           8 Keys ➔ _8_keys
+# of Participants ➔ _of_participants
 ```
 
 ![Google Sheet Screenshot]({{root}}/img/documentation/spreadsheet.png)
@@ -54,7 +53,7 @@ Make sure that your Google Sheet has a title, and the tabs have names.
 
 ## Publish the Google Sheet
 
-In Google Sheets, go to **File > Share > Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document. 
+In Google Sheets, go to **File ➔ Share ➔ Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.
 
 **NOTE:** If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a `:`).
 
@@ -62,19 +61,17 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 
 ![Publish Sheet Dialog Screenshot]({{root}}/img/documentation/publish-window.png)
 
-## Load the Script
+## Load the Script (Client)
 
-**NPM:** (This has not been thoroughly tested)
+**NPM:**
 
-``` bash
+```bash
 npm install extract-gsheet
-# Then in your file:
-# import extractGSheet from 'extract-gsheet'; 
 ```
 
 **CDN:**
 
-``` html
+```html
 <script src="https://unpkg.com/extract-gsheet/dist/extract-gsheet.min.js"></script>
 <!-- OR -->
 <script src="https://cdn.jsdelivr.net/npm/extract-gsheet/dist/extract-gsheet.min.js"></script>
@@ -86,11 +83,15 @@ Or download the JS from this <a href="{{global.gitHubRepoURL}}/tree/master/dist"
 
 Call the `extractGSheet()` function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the `.then().catch()` syntax.
 
+**Browser:**
+
 ```html
 <script>
-  extractGSheet("https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml")
+  extractGSheet(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+  )
     .then((res) => {
-      // res is the data object
+      // res is the data as a JavaScript object
       console.log(res);
     })
     .catch((err) => {
@@ -98,6 +99,42 @@ Call the `extractGSheet()` function and pass in the entire URL from the publishe
       console.error(err);
     });
 </script>
+```
+
+**Client-Side with Node:**
+
+```js
+const extractGSheet = require("extract-gsheet");
+
+extractGSheet(
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+)
+  .then((res) => {
+    // res is the data as a JavaScript object
+    console.log(res);
+  })
+  .catch((err) => {
+    // handle the error if there is one
+    console.error(err);
+  });
+```
+
+**Server-Side with Node:**
+
+```js
+const extractGSheet = require("extract-gsheet/src/server");
+
+extractGSheet(
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+)
+  .then((res) => {
+    // res is the data as JSON
+    console.log(res);
+  })
+  .catch((err) => {
+    // handle the error if there is one
+    console.error(err);
+  });
 ```
 
 That's it. Your data should be extracted from your published Google Sheet, and you can incorporate it into your website.

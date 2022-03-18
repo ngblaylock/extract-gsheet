@@ -140,7 +140,7 @@ var extractGSheet = (function () {
           return text;
         });
         var doc = new DOMParser().parseFromString(page, "text/html");
-        return getTables(doc);
+        return JSON.parse(getTables(doc));
       }
     } catch (err) {
       throw new Error(err);
