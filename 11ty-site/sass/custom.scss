@@ -42,6 +42,9 @@ header {
   }
 }
 .egs {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
   pre[class*="language-"] {
     border: none;
     border-radius: 0.25rem;
