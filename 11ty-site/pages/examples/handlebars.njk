@@ -50,18 +50,6 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
         var source = document.getElementById("entry-template");
         var sourceHTML = source.innerHTML;
         var template = Handlebars.compile(sourceHTML);
-        var context = {
-          posts: [
-            {
-              title: "My New Post",
-              body: "This is my first post!",
-            },
-            {
-              title: "My Second Post",
-              body: "This is my second post!",
-            },
-          ],
-        };
         var html = template(res.tables[1]);
         source.insertAdjacentHTML("afterend", html);
       })

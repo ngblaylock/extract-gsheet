@@ -7,3 +7,4 @@ docs
 move-readme.js
 test
 README-DEV.md
+rollup.config.js
