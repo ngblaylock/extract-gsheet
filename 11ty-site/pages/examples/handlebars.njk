@@ -3,58 +3,42 @@ title: Handlebars Example
 description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Handlebars.js.
 ---
 
-<div class="container">
-  <h1>Handlebars Example</h1>
-  <p>
-    This example uses Handlebars to take the data from the Google Sheet and
-    formats it in a table that matches the style of the website.
-  </p>
-  <p>
-    <a
-      href="{{global.gitHubRepoURL}}/blob/master/docs/examples/handlebars/index.html"
-      target="_blank"
-      class="btn btn-secondary"
-      ><span class="fab fa-github"></span> See Code on GitHub</a
-    >
-  </p>
-  <hr />
-  {% raw %}
-  <script id="entry-template" type="text/x-handlebars-template">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>Scooby-Doo Villians</h2>
-      </div>
-      {{#each data}}
-        <div class="col-sm-4 mb-3">
-          <div class="card h-100">
-            <div class="card-body">
-              <h3 class="h4 my-0">{{this.villian}}</h3>
-              <p><small>AKA: {{this.actual_person}}</small></p>
-              <p>
-                {{this.episode}}
-              </p>
-            </div>
+{% raw %}
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Scooby-Doo Villians</h2>
+    </div>
+    {{#each data}}
+      <div class="col-sm-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="h4 my-0">{{this.villian}}</h3>
+            <p><small>AKA: {{this.actual_person}}</small></p>
+            <p>
+              {{this.episode}}
+            </p>
           </div>
         </div>
-      {{/each}}
-    </div>
-  </script>
-  {% endraw %}
-  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-  <script>
-    extractGSheet(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
-    )
-      .then((res) => {
-        console.log(res);
-        var source = document.getElementById("entry-template");
-        var sourceHTML = source.innerHTML;
-        var template = Handlebars.compile(sourceHTML);
-        var html = template(res.tables[1]);
-        source.insertAdjacentHTML("afterend", html);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  </script>
-</div>
+      </div>
+    {{/each}}
+  </div>
+</script>
+{% endraw %}
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script>
+  extractGSheet(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+  )
+    .then((res) => {
+      console.log(res);
+      var source = document.getElementById("entry-template");
+      var sourceHTML = source.innerHTML;
+      var template = Handlebars.compile(sourceHTML);
+      var html = template(res.tables[1]);
+      source.insertAdjacentHTML("afterend", html);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+</script>

@@ -1,77 +1,61 @@
 ---
 title: Angular.js Example
-description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Handlebars.js.
+description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Angular.js.
 ---
 
-<div class="container">
-  <h1>{{title}}</h1>
-  <p>
-    This example uses Angular.js to take the data from the Google Sheet and
-    formats it in a table that matches the style of the website.
-  </p>
-  <p>
-    <a
-      href="{{global.gitHubRepoURL}}/blob/master/docs/examples/handlebars/index.html"
-      target="_blank"
-      class="btn btn-secondary"
-      ><span class="fab fa-github"></span> See Code on GitHub</a
-    >
-  </p>
-  <hr />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
 
-  {% raw %}
-  <div ng-app="App">
-    <div ng-controller="appCtrl">
-      <ul>
-        <li ng-repeat="movie in movies">
-          <label class="checkbox">
-           {{movie.movie}}, {{movie.year_released}}, {{movie.watched}}
-           <span ng-if="movie.watched">Yeppers</span>
-          </label>
-        </li>
-      </ul>
-    </div>
+{% raw %}
+<div ng-app="App">
+  <div ng-controller="appCtrl">
+    <ul>
+      <li ng-repeat="movie in movies">
+        <label class="checkbox">
+          {{movie.movie}}, {{movie.year_released}}, {{movie.watched}}
+          <span ng-if="movie.watched">Yeppers</span>
+        </label>
+      </li>
+    </ul>
   </div>
-  <script>
-      angular
-        .module("App", [])
-        .service("appService", appService)
-        .controller("appCtrl", appCtrl);
-
-      function appService($q) {
-        var movies = undefined;
-        this.getMovies = function () {
-          if (!movies) {
-            var deferred = $q.defer();
-            extractGSheet(
-              "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
-            )
-              .then((res) => {
-                console.log(res)
-                // get just the data in the movies tab
-                movies = res.tables[2].data;
-                deferred.resolve(movies);
-              })
-              .catch((err) => {
-                movies = err;
-                deferred.reject(error);
-              });
-            movies = deferred.promise;
-          }
-          return $q.when(movies);
-        };
-      }
-
-      function appCtrl($scope, appService) {
-        $scope.movies = [];
-        $scope.getMovies = function () {
-          appService.getMovies().then(function (movies) {
-            $scope.movies = movies;
-          });
-        };
-        $scope.getMovies();
-      }
-  </script>
-  {% endraw %}
 </div>
+<script>
+  angular
+    .module("App", [])
+    .service("appService", appService)
+    .controller("appCtrl", appCtrl);
+
+  function appService($q) {
+    var movies = undefined;
+    this.getMovies = function () {
+      if (!movies) {
+        var deferred = $q.defer();
+        extractGSheet(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+        )
+          .then((res) => {
+            console.log(res);
+            // get just the data in the movies tab
+            movies = res.tables[2].data;
+            deferred.resolve(movies);
+          })
+          .catch((err) => {
+            movies = err;
+            deferred.reject(error);
+          });
+        movies = deferred.promise;
+      }
+      return $q.when(movies);
+    };
+  }
+
+  function appCtrl($scope, appService) {
+    $scope.movies = [];
+    $scope.getMovies = function () {
+      appService.getMovies().then(function (movies) {
+        $scope.movies = movies;
+      });
+    };
+    $scope.getMovies();
+  }
+</script>
+{% endraw %}

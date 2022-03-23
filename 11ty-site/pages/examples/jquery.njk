@@ -3,30 +3,18 @@ title: jQuery Example
 description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with jQuery.
 ---
 
-<div class="container">
-  <h1>jQuery Example</h1>
-  <p>This example uses jQuery to loop over the characters in the character tab and formats the data into a custom card.</p>
-  <p>
-    <a
-      href="{{global.gitHubRepoURL}}/blob/master/docs/examples/jquery/index.html"
-      target="_blank"
-      class="btn btn-secondary"
-      ><span class="fab fa-github"></span> See Code on GitHub</a
-    >
-  </p>
-  <hr>
-  <h2 id="sheet-name"></h2>
-  <div class="character-cards"></div>
+<h2 id="sheet-name"></h2>
+<div class="character-cards"></div>
 
-  <script>
-    extractGSheet(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
-    )
-      .then((res) => {
-        $('#sheet-name').text(res.title)
-        let characters = res.tables[0]
-        characters.data.forEach(character => {
-          $('.character-cards').append(/*html*/`
+<script>
+  extractGSheet(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
+  )
+    .then((res) => {
+      $("#sheet-name").text(res.title);
+      let characters = res.tables[0];
+      characters.data.forEach((character) => {
+        $(".character-cards").append(/*html*/ `
           <div class="card mb-3" style="border-color: ${character.favorite_color}; background: ${character.favorite_color}">
             <div class="card-body" style="background: rgba(255, 255, 255, .95);">
               <h5 class="mt-0">${character.first_name} ${character.last_name}</h5>
@@ -37,11 +25,10 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
               </ul>
             </div>
           </div>
-          `)
-        })
-      })
-      .catch((err) => {
-        console.error(err);
+          `);
       });
-  </script>
-</div>
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+</script>
