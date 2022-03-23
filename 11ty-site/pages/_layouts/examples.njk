@@ -2,19 +2,22 @@
 layout: default
 ---
 
+  <div class="bg-gradient-primary text-light mt-n3 pb-4">
+    <div class="container">
+      <h1 class="text-light">{{title}}</h1>
+      <p class="lead">{{description}}</p>
+      {% if description != 'Coming Soon' %}
+      <p>
+        <a
+          href="{{global.gitHubRepoURL}}/blob/master/docs/examples/{{page.fileSlug}}/index.html"
+          target="_blank"
+          class="btn btn-secondary"
+          ><span class="fab fa-github"></span> See Code on GitHub</a
+        >
+      </p>
+      {% endif %}
+    </div>
+  </div>
 <div class="container">
-  <h1>{{title}}</h1>
-  <p>{{description}}</p>
-  {% if description != 'Coming Soon' %}
-  <p>
-    <a
-      href="{{global.gitHubRepoURL}}/blob/master/docs/examples/{{page.fileSlug}}/index.html"
-      target="_blank"
-      class="btn btn-secondary"
-      ><span class="fab fa-github"></span> See Code on GitHub</a
-    >
-  </p>
-  {% endif %}
-  <hr />
   {{content | safe}}
 </div>
