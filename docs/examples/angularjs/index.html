@@ -27,24 +27,16 @@
 <meta name="theme-color" content="#ffffff" />
 
     
-<title>UI Kit | Extract GSheet</title>
-<meta property="og:title" content="UI Kit | Extract GSheet" />
+<title>Angular.js Example | Extract GSheet</title>
+<meta property="og:title" content="Angular.js Example | Extract GSheet" />
  
-<meta
-  name="description"
-  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
-/>
-<meta
-  property="og:description"
-  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
-/>
+<meta name="description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Angular.js." />
+<meta property="og:description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Angular.js." />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/uikit/" />
-<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/uikit/" />
+<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/examples/angularjs/" />
+<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/examples/angularjs/" />
 <meta property="og:image" content="https://ngblaylock.github.io/extract-gsheet/og-image.png" />
-
-<meta name="robots" content="noindex, nofollow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -92,7 +84,7 @@
       <li class="nav-item ">
         <a class="nav-link" href="/extract-gsheet/documentation/">Documentation</a>
       </li>
-      <li class="nav-item dropdown ">
+      <li class="nav-item dropdown active">
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -130,94 +122,109 @@
 
     </header>
     <main class="egs py-3">
+  <div class="bg-gradient-primary text-light mt-n3 pb-4">
+    <div class="container">
+      <h1 class="text-light">Angular.js Example</h1>
+      <p class="lead">An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Angular.js.</p>
+      
+      <p>
+        <a
+          href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/angularjs/index.html"
+          target="_blank"
+          class="btn btn-secondary"
+          ><span class="fab fa-github"></span> See Code on GitHub</a
+        >
+      </p>
+      
+    </div>
+  </div>
+<div class="container">
+  
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"
+  integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 <style>
-  .display {
-    font-family: monospace;
-    color: grey;
-    font-weight: 800;
-    border-bottom: 1px solid grey;
-  }
+.watched{
+  background: #e9f3ee;
+}
+.not-watched{
+  background: #fcebec;
+}
 </style>
 
-<div class="container">
-  <h2 class="display">Typography</h2>
-  <h1>Header 1</h1>
-  <h2>Header 2</h2>
-  <h3>Header 3</h3>
-  <h4>Header 4</h4>
-  <h5>Header 5</h5>
-  <h6>Header 6</h6>
 
-  <p>
-    Lorem ipsum dolor, sit amet <a href="#">consectetur</a> adipisicing elit.
-    Minus architecto alias perferendis ad, aut, delectus tenetur quidem, libero
-    inventore rem eveniet vero impedit laudantium et saepe eos autem suscipit
-    in?
-  </p>
-
-  <h2 class="display">Colors</h2>
-  <div class="d-flex mx-n4">
-    <div class="p-5 mx-4 bg-dark text-white">dark</div>
-    <div class="p-5 mx-4 bg-primary text-white">primary</div>
-    <div class="p-5 mx-4 bg-light">light</div>
-    <div class="p-5 mx-4 bg-white">white</div>
-  </div>
-  <div>
-    <h2 class="display">Logos</h2>
-    <div class="d-flex flex-wrap mx-n4 py-5">
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo.png" alt="EGS Logo Large" />
-      </div>
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo-medium.png" alt="EGS Logo Medium" />
-      </div>
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo-small.png" alt="EGS Logo Small" />
-      </div>
-    </div>
+<div ng-app="App">
+  <div ng-controller="appCtrl">
+  <h2>Scooby-Doo Movie Watch List</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Year Released</th>
+          <th class="text-center">Watched</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="movie in movies" ng-class="{true: 'watched', false: 'not-watched'}[movie.watched]">
+          <td>{{movie.movie}}</td>
+          <td>{{movie.year_released}}</td>
+          <td class="text-center">
+            <i
+              class="fas fa-check-circle text-primary"
+              ng-if="movie.watched"
+            ></i>
+            <i class="fas fa-times-circle text-danger" ng-if="!movie.watched"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-<div class="bg-gradient-primary py-5">
-  <div class="container">
-  <h2 class="display text-white border-white mb-5">Logos with a Stroke</h2>
-    <div class="d-flex flex-wrap mx-n4">
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo-stroke.png" alt="EGS Logo Large" />
-      </div>
-      <div class="m-4">
-        <img
-          src="/extract-gsheet/img/EGS-Logo-medium-stroke.png"
-          alt="EGS Logo Medium"
-        />
-      </div>
-      <div class="m-4">
-        <img
-          src="/extract-gsheet/img/EGS-Logo-small-stroke.png"
-          alt="EGS Logo Small"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <h2 class="display">Favicons</h2>
-  <div class="d-flex flex-wrap mx-n4">
-    <div class="m-4">
-      <img src="/extract-gsheet/android-chrome-384x384.png" alt="Android Icon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/android-chrome-192x192.png" alt="Android Icon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/apple-touch-icon.png" alt="Apple Touch Icon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/favicon-32x32.png" alt="Favicon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/favicon-16x16.png" alt="Favicon" />
-    </div>
-  </div>
+<script>
+  angular
+    .module("App", [])
+    .service("appService", appService)
+    .controller("appCtrl", appCtrl);
+
+  function appService($q) {
+    var movies = undefined;
+    this.getMovies = function () {
+      if (!movies) {
+        var deferred = $q.defer();
+        extractGSheet(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+        )
+          .then((res) => {
+            console.log(res);
+            // get just the data in the movies tab
+            movies = res.tables[2].data;
+            deferred.resolve(movies);
+          })
+          .catch((err) => {
+            movies = err;
+            deferred.reject(error);
+          });
+        movies = deferred.promise;
+      }
+      return $q.when(movies);
+    };
+  }
+
+  function appCtrl($scope, appService) {
+    $scope.movies = [];
+    $scope.getMovies = function () {
+      appService.getMovies().then(function (movies) {
+        $scope.movies = movies;
+      });
+    };
+    $scope.getMovies();
+  }
+</script>
+
+
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">

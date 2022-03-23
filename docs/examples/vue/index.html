@@ -104,8 +104,10 @@
           <a class="dropdown-item" href="/extract-gsheet/examples/handlebars/"
             >Handlebars</a
           >
-          <a class="dropdown-item" href="#">React (Coming Soon)</a>
-          <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
+          <a class="dropdown-item" href="/extract-gsheet/examples/angularjs/"
+            >Angular.js</a
+          >
+          <a class="dropdown-item" href="/extract-gsheet/examples/react/">React (Coming Soon)</a>
         </div>
       </li>
       <li class="nav-item">
@@ -120,64 +122,69 @@
 
     </header>
     <main class="egs py-3">
+  <div class="bg-gradient-primary text-light mt-n3 pb-4">
+    <div class="container">
+      <h1 class="text-light">Vue Example</h1>
+      <p class="lead">An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Vue.js.</p>
+      
+      <p>
+        <a
+          href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/vue/index.html"
+          target="_blank"
+          class="btn btn-secondary"
+          ><span class="fab fa-github"></span> See Code on GitHub</a
+        >
+      </p>
+      
+    </div>
+  </div>
 <div class="container">
-  <h1>Vue.js Example</h1>
-  <p>This example uses Vue to take the data from the Google Sheet and formats it in a table that matches the style of the website.</p>
-  <p>
-    <a
-      href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/vue/index.html"
-      target="_blank"
-      class="btn btn-secondary"
-      ><span class="fab fa-github"></span> See Code on GitHub</a
-    >
-  </p>
-  <hr />
   
-  <div id="app" v-cloak>
-    <div v-if="sheet != 'loading'">
-      <h2>{{sheet.title}} <small>Sheet Title</small></h2>
-      <div v-for="(table, tableIndex) in sheet.tables" :key="tableIndex">
-        <h3>{{table.tab}} <small>Tab Name</small></h3>
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered">
-            <thead>
-              <tr>
-                <th v-for="(keys, keyIndex) in table.keys" :key="keyIndex">
-                  {{keys.name}}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(data, dataIndex) in table.data" :key="dataIndex">
-                <td v-for="(d, dIndex) in data" :key="dIndex">{{d}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+
+<div id="app" v-cloak>
+  <div v-if="sheet != 'loading'">
+    <h2>{{sheet.title}} <small>Sheet Title</small></h2>
+    <div v-for="(table, tableIndex) in sheet.tables" :key="tableIndex">
+      <h3>{{table.tab}} <small>Tab Name</small></h3>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th v-for="(keys, keyIndex) in table.keys" :key="keyIndex">
+                {{keys.name}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(data, dataIndex) in table.data" :key="dataIndex">
+              <td v-for="(d, dIndex) in data" :key="dIndex">{{d}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  
-  <script>
-    var app = new Vue({
-      el: "#app",
-      data() {
-        return {
-          sheet: "loading",
-        };
-      },
-      created() {
-        extractGSheet(
-          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
-        ).then((res) => {
-          this.sheet = res;
-        });
-      },
-    });
-  </script>
-  
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        sheet: "loading",
+      };
+    },
+    created() {
+      extractGSheet(
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+      ).then((res) => {
+        this.sheet = res;
+      });
+    },
+  });
+</script>
+
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">
@@ -191,7 +198,7 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2022</div>
-      <div class="px-3">Last Updated: March 17, 2022</div>
+      <div class="px-3">Last Updated: March 22, 2022</div>
       <div class="px-3">Version 0.1.9</div>
     </div>
   </div>

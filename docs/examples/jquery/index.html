@@ -104,8 +104,10 @@
           <a class="dropdown-item" href="/extract-gsheet/examples/handlebars/"
             >Handlebars</a
           >
-          <a class="dropdown-item" href="#">React (Coming Soon)</a>
-          <a class="dropdown-item" href="#">Angular (Coming Soon)</a>
+          <a class="dropdown-item" href="/extract-gsheet/examples/angularjs/"
+            >Angular.js</a
+          >
+          <a class="dropdown-item" href="/extract-gsheet/examples/react/">React (Coming Soon)</a>
         </div>
       </li>
       <li class="nav-item">
@@ -120,30 +122,36 @@
 
     </header>
     <main class="egs py-3">
+  <div class="bg-gradient-primary text-light mt-n3 pb-4">
+    <div class="container">
+      <h1 class="text-light">jQuery Example</h1>
+      <p class="lead">An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with jQuery.</p>
+      
+      <p>
+        <a
+          href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/jquery/index.html"
+          target="_blank"
+          class="btn btn-secondary"
+          ><span class="fab fa-github"></span> See Code on GitHub</a
+        >
+      </p>
+      
+    </div>
+  </div>
 <div class="container">
-  <h1>jQuery Example</h1>
-  <p>This example uses jQuery to loop over the characters in the character tab and formats the data into a custom card.</p>
-  <p>
-    <a
-      href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/jquery/index.html"
-      target="_blank"
-      class="btn btn-secondary"
-      ><span class="fab fa-github"></span> See Code on GitHub</a
-    >
-  </p>
-  <hr>
-  <h2 id="sheet-name"></h2>
-  <div class="character-cards"></div>
+  
+<h2 id="sheet-name"></h2>
+<div class="character-cards"></div>
 
-  <script>
-    extractGSheet(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
-    )
-      .then((res) => {
-        $('#sheet-name').text(res.title)
-        let characters = res.tables[0]
-        characters.data.forEach(character => {
-          $('.character-cards').append(/*html*/`
+<script>
+  extractGSheet(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
+  )
+    .then((res) => {
+      $("#sheet-name").text(res.title);
+      let characters = res.tables[0];
+      characters.data.forEach((character) => {
+        $(".character-cards").append(/*html*/ `
           <div class="card mb-3" style="border-color: ${character.favorite_color}; background: ${character.favorite_color}">
             <div class="card-body" style="background: rgba(255, 255, 255, .95);">
               <h5 class="mt-0">${character.first_name} ${character.last_name}</h5>
@@ -154,13 +162,14 @@
               </ul>
             </div>
           </div>
-          `)
-        })
-      })
-      .catch((err) => {
-        console.error(err);
+          `);
       });
-  </script>
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+</script>
+
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">
@@ -174,7 +183,7 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2022</div>
-      <div class="px-3">Last Updated: March 17, 2022</div>
+      <div class="px-3">Last Updated: March 22, 2022</div>
       <div class="px-3">Version 0.1.9</div>
     </div>
   </div>
