@@ -30,8 +30,8 @@
 <title>React Example | Extract GSheet</title>
 <meta property="og:title" content="React Example | Extract GSheet" />
  
-<meta name="description" content="Coming Soon" />
-<meta property="og:description" content="Coming Soon" />
+<meta name="description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with React.js." />
+<meta property="og:description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with React.js." />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/examples/react/" />
@@ -99,15 +99,15 @@
           class="dropdown-menu dropdown-menu-right"
           aria-labelledby="navbarDropdownMenuLink"
         >
-          <a class="dropdown-item" href="/extract-gsheet/examples/vue/">Vue</a>
-          <a class="dropdown-item" href="/extract-gsheet/examples/jquery/">jQuery</a>
-          <a class="dropdown-item" href="/extract-gsheet/examples/handlebars/"
-            >Handlebars</a
-          >
           <a class="dropdown-item" href="/extract-gsheet/examples/angularjs/"
             >Angular.js</a
           >
-          <a class="dropdown-item" href="/extract-gsheet/examples/react/">React (Coming Soon)</a>
+          <a class="dropdown-item" href="/extract-gsheet/examples/handlebars/"
+            >Handlebars</a
+          >
+          <a class="dropdown-item" href="/extract-gsheet/examples/jquery/">jQuery</a>
+          <a class="dropdown-item" href="/extract-gsheet/examples/react/">React</a>
+          <a class="dropdown-item" href="/extract-gsheet/examples/vue/">Vue</a>
         </div>
       </li>
       <li class="nav-item">
@@ -124,13 +124,100 @@
     <main class="egs py-3">
   <div class="bg-gradient-primary text-light mt-n3 pb-4">
     <div class="container">
-      <h1 class="text-light">React Example</h1>
-      <p class="lead">Coming Soon</p>
+      <h1 class="text-white">React Example</h1>
+      <p class="lead">An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with React.js.</p>
+      
+      <p>
+        <a
+          href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/react/index.html"
+          target="_blank"
+          class="btn btn-secondary"
+          ><span class="fab fa-github"></span> See Code on GitHub</a
+        >
+      </p>
       
     </div>
   </div>
 <div class="container">
   
+
+
+<div id="app"></div>
+
+<script type="text/babel">
+  function ShowCharacters() {
+    const [characters, setCharacters] = React.useState([]);
+
+    const getData = () => {
+      return extractGSheet(
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
+      )
+        .then((res) => {
+          console.log(res.tables[0].data);
+          setCharacters(res.tables[0].data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+
+    React.useEffect(() => {
+      getData();
+    }, []);
+
+    return (
+      <div>
+        <h1 className="text-center">Characters</h1>
+        <div className="row mt-5 mb-n5 justify-content-center">
+          {characters.map((character, index) => (
+            <div className="col-sm-6 col-lg-4 mb-5" key={index}>
+              <div className="card text-center">
+                <div
+                  className="embed-responsive embed-responsive-1by1 text-center mx-auto mt-n4"
+                  style={{ width: "75px" }}
+                >
+                  <div
+                    className="embed-responsive-item rounded-circle d-flex align-items-center justify-content-center h3 mt-0 text-white"
+                    style={{ backgroundColor: character.favorite_color }}
+                  >
+                    {character.first_name[0]}
+                    {character.last_name[0]}
+                  </div>
+                </div>
+                <h4 className="mt-3">
+                  {character.first_name} {character.last_name}
+                </h4>
+                <p className="lead d-flex justify-content-center">
+                  <i className="fas fa-quote-left d-block mt-1 text-grey fa-xs"></i>{" "}
+                  <span className="d-flex mx-2">{character.catch_phrase}</span>{" "}
+                  <i className="fas fa-quote-right d-block mt-3 text-grey fa-xs"></i>
+                </p>
+                <p className="text-secondary small">
+                  <strong>{character.height}</strong>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  ReactDOM.render(<ShowCharacters />, document.getElementById("app"));
+</script>
+
+<script
+  src="https://unpkg.com/react@17/umd/react.development.js"
+  crossorigin
+></script>
+<script
+  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin
+></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">
@@ -144,7 +231,7 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2022</div>
-      <div class="px-3">Last Updated: March 22, 2022</div>
+      <div class="px-3">Last Updated: March 23, 2022</div>
       <div class="px-3">Version 0.1.9</div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 $blue: #258b52;
 $dark: darken($blue, 23);
+$grey: #d0ddd6;
 $light: #f4faf6;
 $secondary: #1f1f1f;
 
@@ -10,3 +11,7 @@ $headings-color: $dark;
 $border-width: 2px;
 
 $enable-gradients: true;
+
+$theme-colors: (
+  "grey": $grey,
+);

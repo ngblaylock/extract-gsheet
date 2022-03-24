@@ -1,4 +1,82 @@
 ---
 title: React Example
-description: Coming Soon
+description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with React.js.
 ---
+
+{% raw %}
+
+<div id="app"></div>
+
+<script type="text/babel">
+  function ShowCharacters() {
+    const [characters, setCharacters] = React.useState([]);
+
+    const getData = () => {
+      return extractGSheet(
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml?gid=0&single=true"
+      )
+        .then((res) => {
+          console.log(res.tables[0].data);
+          setCharacters(res.tables[0].data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+
+    React.useEffect(() => {
+      getData();
+    }, []);
+
+    return (
+      <div>
+        <h1 className="text-center">Characters</h1>
+        <div className="row mt-5 mb-n5 justify-content-center">
+          {characters.map((character, index) => (
+            <div className="col-sm-6 col-lg-4 mb-5" key={index}>
+              <div className="card text-center">
+                <div
+                  className="embed-responsive embed-responsive-1by1 text-center mx-auto mt-n4"
+                  style={{ width: "75px" }}
+                >
+                  <div
+                    className="embed-responsive-item rounded-circle d-flex align-items-center justify-content-center h3 mt-0 text-white"
+                    style={{ backgroundColor: character.favorite_color }}
+                  >
+                    {character.first_name[0]}
+                    {character.last_name[0]}
+                  </div>
+                </div>
+                <h4 className="mt-3">
+                  {character.first_name} {character.last_name}
+                </h4>
+                <p className="lead d-flex justify-content-center">
+                  <i className="fas fa-quote-left d-block mt-1 text-grey fa-xs"></i>{" "}
+                  <span className="d-flex mx-2">{character.catch_phrase}</span>{" "}
+                  <i className="fas fa-quote-right d-block mt-3 text-grey fa-xs"></i>
+                </p>
+                <p className="text-secondary small">
+                  <strong>{character.height}</strong>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  ReactDOM.render(<ShowCharacters />, document.getElementById("app"));
+</script>
+
+<script
+  src="https://unpkg.com/react@17/umd/react.development.js"
+  crossorigin
+></script>
+<script
+  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin
+></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+{% endraw %}
