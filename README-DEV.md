@@ -17,3 +17,10 @@ Run `npm run rollup` to build the files one time, or run `npm run rollup:watch` 
 Run `npm publish`. Make sure that you increment the version in `package.json`. If you don't it, won't let you publish it.
 
 **TIP:** You should update the version before building the website so the correct version appears in the footer of the site.
+
+## External References to This Project
+
+Here are a list of places that I have referenced this project. Changing the Google Sheet reference in the documentation should also be changed here:
+
+- https://dev.to/ngblaylock/extract-data-from-google-sheets-13jn
+- https://codepen.io/ngblaylock/pen/KKvGqvw
