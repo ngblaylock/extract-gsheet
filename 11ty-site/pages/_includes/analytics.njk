@@ -1,0 +1,15 @@
+{% if global.env != 'dev' %}
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-VTXKH3E78Y"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-VTXKH3E78Y");
+</script>
+{% endif %}
