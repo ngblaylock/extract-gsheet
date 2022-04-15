@@ -1,11 +1,5 @@
 {
   "liveServer.settings.port": 5502,
-  "files.associations": {
-    "*.njk": "html-nunjucks"
-  },
-  "emmet.includeLanguages": {
-    "html-nunjucks": "html"
-  },
   "path-autocomplete.pathMappings": {
     "$root": [
       "${folder}/dev",
@@ -15,9 +9,6 @@
       "${folder}/dev"
     ],
   },
-  "prettier.documentSelectors": [
-    "**/*.njk"
-  ],
   "actionButtons": {
     "defaultColor": "#546E7A",
     "loadNpmCommands": false,
