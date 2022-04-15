@@ -2,6 +2,10 @@
 @import "bootstrap-config";
 @import "bootstrap-options";
 
+img{
+  transform: rotate(0deg)
+}
+
 [v-cloak] {
   display: none;
 }

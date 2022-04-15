@@ -9,8 +9,11 @@
   },
   "homepage": "https://ngblaylock.github.io/extract-gsheet/",
   "scripts": {
-    "dev": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
-    "build": "npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
+    "sass:build:docs": "node-sass ./11ty-site/sass/egs.scss ./docs/styles/egs.css --output-style compressed",
+    "sass:build:dev": "node-sass ./11ty-site/sass/egs.scss ./dev/styles/egs.css",
+    "sass:watch:dev": "npm run sass:build:dev && node-sass ./11ty-site/sass/egs.scss ./dev/styles/egs.css -w",
+    "dev": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet & npm run sass:watch:dev",
+    "build": "npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy && npm run sass:build:docs",
     "clean:dev": "npx rimraf ./dev",
     "clean": "npx rimraf ./docs ./dev",
     "move-readme": "node move-readme",
@@ -26,11 +29,11 @@
   "author": "Nathan Blaylock",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0",
     "bootstrap": "^4.6.0",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.7",
-    "eleventy-plugin-sass": "^1.2.0",
+    "node-sass": "^7.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.59.0",
     "rollup-plugin-terser": "^7.0.2"
