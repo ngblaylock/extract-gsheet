@@ -2,7 +2,9 @@ const env = process.env.ELEVENTY_ENV;
 const inspect = require("util").inspect;
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addWatchTarget("./11ty-site/sass/");
+  eleventyConfig.setBrowserSyncConfig({
+		files: './dev/styles/*.css'
+	});
   // Passthrough Copy
   eleventyConfig.addPassthroughCopy({"./11ty-site/assets": "/"});
   eleventyConfig.addPassthroughCopy({ dist: "js" });

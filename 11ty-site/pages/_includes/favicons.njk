@@ -1,4 +1,8 @@
+{% if global.eng == dev %}
+<link rel="icon" href="{{root}}/favicon-dev.svg" type="image/svg+xml">  
+{% else %}
 <link rel="icon" href="{{root}}/favicon.ico" type="image/x-icon" />
+{% endif %}
 <link
   rel="apple-touch-icon"
   sizes="180x180"
