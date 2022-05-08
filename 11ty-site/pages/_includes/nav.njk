@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="{{root}}/"
+  <a class="navbar-brand" href="{{ root }}/"
     ><div class="d-flex justify-content-center align-items-center pl-3">
       <img
-        src="{{root}}/img/EGS-Logo-small-stroke.png"
+        src="{{ root }}/img/EGS-Logo-small-stroke.png"
         alt="Extract GSheet Logo"
       />
       <div class="h6 text-white p-0 my-0 mx-3">Extract GSheet</div>
@@ -22,10 +22,10 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item {{ 'active' if '/' == page.url }}">
-        <a class="nav-link" href="{{root}}/">Home</a>
+        <a class="nav-link" href="{{ root }}/">Home</a>
       </li>
       <li class="nav-item {{ 'active' if '/documentation' in page.url }}">
-        <a class="nav-link" href="{{root}}/documentation/">Documentation</a>
+        <a class="nav-link" href="{{ root }}/documentation/">Documentation</a>
       </li>
       <li class="nav-item dropdown {{ 'active' if '/examples' in page.url }}">
         <a
@@ -42,25 +42,26 @@
           class="dropdown-menu dropdown-menu-right"
           aria-labelledby="navbarDropdownMenuLink"
         >
-          <a class="dropdown-item" href="{{root}}/examples/angularjs/"
+          <a class="dropdown-item" href="{{ root }}/examples/alpine/">Alpine</a>
+          <a class="dropdown-item" href="{{ root }}/examples/angularjs/"
             >Angular.js</a
           >
-          <a class="dropdown-item" href="{{root}}/examples/handlebars/"
+          <a class="dropdown-item" href="{{ root }}/examples/handlebars/"
             >Handlebars</a
           >
-          <a class="dropdown-item" href="{{root}}/examples/jquery/">jQuery</a>
-          <a class="dropdown-item" href="{{root}}/examples/react/">React</a>
-          <a class="dropdown-item" href="{{root}}/examples/vue/">Vue</a>
+          <a class="dropdown-item" href="{{ root }}/examples/jquery/">jQuery</a>
+          <a class="dropdown-item" href="{{ root }}/examples/react/">React</a>
+          <a class="dropdown-item" href="{{ root }}/examples/vue/">Vue</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{global.gitHubRepoURL}}" target="_blank"
+        <a class="nav-link" href="{{ global.gitHubRepoURL }}" target="_blank"
           >GitHub <i class="fas fa-sm fa-external-link-alt"></i
         ></a>
       </li>
       {% if global.env == 'dev' %}
       <li class="nav-item {{ 'active' if '/uikit' in page.url }}">
-        <a class="nav-link" href="{{root}}/uikit/">UI Kit</a>
+        <a class="nav-link" href="{{ root }}/uikit/">UI Kit</a>
       </li>
       {% endif %}
     </ul>

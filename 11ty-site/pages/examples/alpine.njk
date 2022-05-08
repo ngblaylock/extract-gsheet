@@ -1,0 +1,85 @@
+---
+title: Alpine Example
+description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Alpine.js.
+---
+
+<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+<style>
+  [x-cloak] {
+    display: none;
+  }
+  .movie-poster {
+    color: white;
+    min-height: 300px;
+    position: relative;
+  }
+  .movie-title {
+    font-size: 1.8em;
+    text-align: center;
+    transform: rotate(-10deg);
+    padding: 1.5em 0.5em;
+  }
+  .movie-year {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0.5em;
+  }
+  .status-icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+    font-size: 2em;
+    background: white;
+    border-radius: 100%;
+    padding: 4px;
+  }
+</style>
+
+<script>
+  async function setup() {
+    let data = await extractGSheet(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+    );
+    return {
+      watched: data.tables[2].data.filter((d) => d.watched),
+      notWatched: data.tables[2].data.filter((d) => !d.watched),
+    };
+  }
+</script>
+
+<div x-data="{data: null}" x-init="data = await setup()" x-cloak>
+  <template x-if="data">
+    
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Watched</h2>
+    </div>
+      <template x-for="show in data.watched">
+        <div class="col-lg-3 col-md-4 col-sm-6 my-4">
+          <div class="movie-poster bg-gradient-secondary">
+            <div class="movie-title h5 text-white" x-text="show.movie"></div>
+            <div class="movie-year" x-text="show.year_released"></div>
+            <i class="status-icon fas fa-check-circle text-primary"></i>
+          </div>
+        </div>
+      </template>
+      <div class="col-sm-12">
+        <h2>Not Yet Watched</h2>
+      </div>
+      <template x-for="show in data.notWatched">
+        <div class="col-lg-3 col-md-4 col-sm-6 my-4">
+          <div class="movie-poster bg-gradient-secondary">
+            <div class="movie-title h5 text-white" x-text="show.movie"></div>
+            <div class="movie-year" x-text="show.year_released"></div>
+            <i class="status-icon fas fa-times-circle text-danger"></i>
+          </div>
+        </div>
+      </template>
+  </div>
+</template>
+</div>

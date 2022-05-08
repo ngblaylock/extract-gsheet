@@ -45,24 +45,16 @@
 <meta name="theme-color" content="#ffffff" />
 
     
-<title>UI Kit | Extract GSheet</title>
-<meta property="og:title" content="UI Kit | Extract GSheet" />
+<title>Alpine Example | Extract GSheet</title>
+<meta property="og:title" content="Alpine Example | Extract GSheet" />
  
-<meta
-  name="description"
-  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
-/>
-<meta
-  property="og:description"
-  content="Extract GSheet is a JavaScript library for JAMStack developers to quickly extract JSON data from a public Google Sheet without any API keys."
-/>
+<meta name="description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Alpine.js." />
+<meta property="og:description" content="An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Alpine.js." />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/uikit/" />
-<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/uikit/" />
+<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/examples/alpine/" />
+<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/examples/alpine/" />
 <meta property="og:image" content="https://ngblaylock.github.io/extract-gsheet/og-image.png" />
-
-<meta name="robots" content="noindex, nofollow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -110,7 +102,7 @@
       <li class="nav-item ">
         <a class="nav-link" href="/extract-gsheet/documentation/">Documentation</a>
       </li>
-      <li class="nav-item dropdown ">
+      <li class="nav-item dropdown active">
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -149,96 +141,105 @@
 
     </header>
     <main class="egs py-3">
+  <div class="bg-gradient-primary text-light mt-n3 pb-4">
+    <div class="container">
+      <h1 class="text-white">Alpine Example</h1>
+      <p class="lead">An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Alpine.js.</p>
+      
+      <p>
+        <a
+          href="https://github.com/ngblaylock/extract-gsheet/blob/master/docs/examples/alpine/index.html"
+          target="_blank"
+          class="btn btn-secondary"
+          ><span class="fab fa-github"></span> See Code on GitHub</a
+        >
+      </p>
+      
+    </div>
+  </div>
+<div class="container">
+  
+<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 <style>
-  .display {
-    font-family: monospace;
-    color: grey;
-    font-weight: 800;
-    border-bottom: 1px solid grey;
+  [x-cloak] {
+    display: none;
+  }
+  .movie-poster {
+    color: white;
+    min-height: 300px;
+    position: relative;
+  }
+  .movie-title {
+    font-size: 1.8em;
+    text-align: center;
+    transform: rotate(-10deg);
+    padding: 1.5em 0.5em;
+  }
+  .movie-year {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0.5em;
+  }
+  .status-icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+    font-size: 2em;
+    background: white;
+    border-radius: 100%;
+    padding: 4px;
   }
 </style>
 
-<div class="container">
-  <h2 class="display">Typography</h2>
-  <h1>Header 1</h1>
-  <h2>Header 2</h2>
-  <h3>Header 3</h3>
-  <h4>Header 4</h4>
-  <h5>Header 5</h5>
-  <h6>Header 6</h6>
+<script>
+  async function setup() {
+    let data = await extractGSheet(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
+    );
+    return {
+      watched: data.tables[2].data.filter((d) => d.watched),
+      notWatched: data.tables[2].data.filter((d) => !d.watched),
+    };
+  }
+</script>
 
-  <p>
-    Lorem ipsum dolor, sit amet <a href="#">consectetur</a> adipisicing elit.
-    Minus architecto alias perferendis ad, aut, delectus tenetur quidem, libero
-    inventore rem eveniet vero impedit laudantium et saepe eos autem suscipit
-    in?
-  </p>
+<div x-data="{data: null}" x-init="data = await setup()" x-cloak>
+  <template x-if="data">
+    
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Watched</h2>
+    </div>
+      <template x-for="show in data.watched">
+        <div class="col-lg-3 col-md-4 col-sm-6 my-4">
+          <div class="movie-poster bg-gradient-secondary">
+            <div class="movie-title h5 text-white" x-text="show.movie"></div>
+            <div class="movie-year" x-text="show.year_released"></div>
+            <i class="status-icon fas fa-check-circle text-primary"></i>
+          </div>
+        </div>
+      </template>
+      <div class="col-sm-12">
+        <h2>Not Yet Watched</h2>
+      </div>
+      <template x-for="show in data.notWatched">
+        <div class="col-lg-3 col-md-4 col-sm-6 my-4">
+          <div class="movie-poster bg-gradient-secondary">
+            <div class="movie-title h5 text-white" x-text="show.movie"></div>
+            <div class="movie-year" x-text="show.year_released"></div>
+            <i class="status-icon fas fa-times-circle text-danger"></i>
+          </div>
+        </div>
+      </template>
+  </div>
+</template>
+</div>
 
-  <h2 class="display">Colors</h2>
-  <div class="row text-center">
-    <div class="col-sm-4 py-5 bg-dark text-white">dark</div>
-    <div class="col-sm-4 py-5 bg-primary text-white">primary</div>
-    <div class="col-sm-4 py-5 bg-grey">grey</div>
-    <div class="col-sm-4 py-5 bg-light">light</div>
-    <div class="col-sm-4 py-5 bg-secondary text-white">secondary</div>
-    <div class="col-sm-4 py-5 bg-white border">white</div>
-  </div>
-  <div>
-    <h2 class="display">Logos</h2>
-    <div class="d-flex flex-wrap mx-n4 py-5">
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo.png" alt="EGS Logo Large" />
-      </div>
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo-medium.png" alt="EGS Logo Medium" />
-      </div>
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo-small.png" alt="EGS Logo Small" />
-      </div>
-    </div>
-  </div>
-</div>
-<div class="bg-gradient-primary py-5">
-  <div class="container">
-  <h2 class="display text-white border-white mb-5">Logos with a Stroke</h2>
-    <div class="d-flex flex-wrap mx-n4">
-      <div class="m-4">
-        <img src="/extract-gsheet/img/EGS-Logo-stroke.png" alt="EGS Logo Large" />
-      </div>
-      <div class="m-4">
-        <img
-          src="/extract-gsheet/img/EGS-Logo-medium-stroke.png"
-          alt="EGS Logo Medium"
-        />
-      </div>
-      <div class="m-4">
-        <img
-          src="/extract-gsheet/img/EGS-Logo-small-stroke.png"
-          alt="EGS Logo Small"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <h2 class="display">Favicons</h2>
-  <div class="d-flex flex-wrap mx-n4">
-    <div class="m-4">
-      <img src="/extract-gsheet/android-chrome-384x384.png" alt="Android Icon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/android-chrome-192x192.png" alt="Android Icon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/apple-touch-icon.png" alt="Apple Touch Icon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/favicon-32x32.png" alt="Favicon" />
-    </div>
-    <div class="m-4">
-      <img src="/extract-gsheet/favicon-16x16.png" alt="Favicon" />
-    </div>
-  </div>
 </div>
 </main>
     <footer class="bg-gradient-light mt-4">
