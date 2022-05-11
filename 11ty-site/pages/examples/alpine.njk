@@ -27,7 +27,7 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     text-align: center;
     padding: 0.5em;
   }
-  .status-icon{
+  .status-icon {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -51,35 +51,50 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
   }
 </script>
 
-<div x-data="{data: null}" x-init="data = await setup()" x-cloak>
+<div
+  x-data="{
+  data: null,
+  get watched() {
+    if(this.data){
+      return [
+        {
+          title: 'Watched',
+          data: this.data.tables[2].data.filter(x => x.watched)
+        },
+        {
+          title: 'Not Watched',
+          data: this.data.tables[2].data.filter(x => !x.watched)
+        },
+      ]
+    }
+  },
+}"
+  x-init="data = await extractGSheet(
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml'
+)"
+  x-cloak
+>
   <template x-if="data">
-    
-  
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Watched</h2>
-    </div>
-      <template x-for="show in data.watched">
-        <div class="col-lg-3 col-md-4 col-sm-6 my-4">
-          <div class="movie-poster bg-gradient-secondary">
-            <div class="movie-title h5 text-white" x-text="show.movie"></div>
-            <div class="movie-year" x-text="show.year_released"></div>
-            <i class="status-icon fas fa-check-circle text-primary"></i>
-          </div>
+    <template x-for="movieWatchedStatus in watched">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="mb-n2" x-text="movieWatchedStatus.title"></h2>
         </div>
-      </template>
-      <div class="col-sm-12">
-        <h2>Not Yet Watched</h2>
+        <template x-for="movie in movieWatchedStatus.data">
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="movie-poster bg-gradient-secondary">
+              <div class="movie-title h5 text-white" x-text="movie.movie"></div>
+              <div class="movie-year" x-text="movie.year_released"></div>
+              <template x-if="movie.watched">
+                <i class="status-icon fas fa-check-circle text-primary"></i>
+              </template>
+              <template x-if="!movie.watched">
+                <i class="status-icon fas fa-times-circle text-danger"></i>
+              </template>
+            </div>
+          </div>
+        </template>
       </div>
-      <template x-for="show in data.notWatched">
-        <div class="col-lg-3 col-md-4 col-sm-6 my-4">
-          <div class="movie-poster bg-gradient-secondary">
-            <div class="movie-title h5 text-white" x-text="show.movie"></div>
-            <div class="movie-year" x-text="show.year_released"></div>
-            <i class="status-icon fas fa-times-circle text-danger"></i>
-          </div>
-        </div>
-      </template>
-  </div>
-</template>
+    </template>
+  </template>
 </div>
