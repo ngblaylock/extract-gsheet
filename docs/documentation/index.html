@@ -198,15 +198,15 @@
 # import extractGSheet from 'extract-gsheet'; 
 </code></pre>
 <p><strong>CDN:</strong></p>
-<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/extract-gsheet/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/extract-gsheet@0.1.10/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
 &lt;!-- OR --&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/npm/extract-gsheet/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.10/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.</p>
 <h2>Use the Script</h2>
 <p>Call the <code>extractGSheet()</code> function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the <code>.then().catch()</code> syntax.</p>
 <pre><code class="language-html">&lt;script&gt;
-  extractGSheet(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml&quot;)
+  extractGSheet(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml&quot;)
     .then((res) =&gt; {
       // res is the data object
       console.log(res);
@@ -235,8 +235,8 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2022</div>
-      <div class="px-3">Last Updated: May 10, 2022</div>
-      <div class="px-3">Version 0.1.9</div>
+      <div class="px-3">Last Updated: May 28, 2022</div>
+      <div class="px-3">Version 0.1.10</div>
     </div>
   </div>
 </footer>

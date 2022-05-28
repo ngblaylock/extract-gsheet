@@ -7,7 +7,7 @@ module.exports = function(){
     baseURL: "https://ngblaylock.github.io",
     copyrightYear: new Date().getFullYear(),
     today: dayjs().format('MMMM D, YYYY'),
-    gitHubRepoURL: 'https://github.com/ngblaylock/extract-gsheet',
+    gitHubRepoURL: package.repository.url,
     version: package.version,
   }
 }

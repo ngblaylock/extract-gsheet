@@ -75,9 +75,9 @@ npm install extract-gsheet
 **CDN:**
 
 ``` html
-<script src="https://unpkg.com/extract-gsheet/dist/extract-gsheet.min.js"></script>
+<script src="https://unpkg.com/extract-gsheet@{{global.version}}/dist/extract-gsheet.min.js"></script>
 <!-- OR -->
-<script src="https://cdn.jsdelivr.net/npm/extract-gsheet/dist/extract-gsheet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/extract-gsheet@{{global.version}}/dist/extract-gsheet.min.js"></script>
 ```
 
 Or download the JS from this <a href="{{global.gitHubRepoURL}}/tree/master/dist" target="_blank">GitHub repo</a>.
@@ -88,7 +88,7 @@ Call the `extractGSheet()` function and pass in the entire URL from the publishe
 
 ```html
 <script>
-  extractGSheet("https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml")
+  extractGSheet("https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml")
     .then((res) => {
       // res is the data object
       console.log(res);

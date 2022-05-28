@@ -195,18 +195,6 @@
   }
 </style>
 
-<script>
-  async function setup() {
-    let data = await extractGSheet(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
-    );
-    return {
-      watched: data.tables[2].data.filter((d) => d.watched),
-      notWatched: data.tables[2].data.filter((d) => !d.watched),
-    };
-  }
-</script>
-
 <div
   x-data="{
   data: null,
@@ -226,7 +214,7 @@
   },
 }"
   x-init="data = await extractGSheet(
-  'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml'
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml'
 )"
   x-cloak
 >
@@ -268,8 +256,8 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2022</div>
-      <div class="px-3">Last Updated: May 10, 2022</div>
-      <div class="px-3">Version 0.1.9</div>
+      <div class="px-3">Last Updated: May 28, 2022</div>
+      <div class="px-3">Version 0.1.10</div>
     </div>
   </div>
 </footer>
