@@ -43,8 +43,8 @@
 <meta name="msapplication-TileColor" content="#00641d" />
 <meta name="theme-color" content="#ffffff" />
  
-<title>Page Not Found | Extract GSheet</title>
-<meta property="og:title" content="Page Not Found | Extract GSheet" />
+<title>Test | Extract GSheet</title>
+<meta property="og:title" content="Test | Extract GSheet" />
  
 <meta
   name="description"
@@ -56,8 +56,8 @@
 />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/404.html" />
-<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/404.html" />
+<meta property="og:url" content="https://ngblaylock.github.io/extract-gsheet/test/" />
+<link rel="canonical" href="https://ngblaylock.github.io/extract-gsheet/test/" />
 <meta property="og:image" content="https://ngblaylock.github.io/extract-gsheet/og-image.png" />
 
 <meta name="robots" content="noindex, nofollow" />
@@ -73,6 +73,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
     <link rel="stylesheet" href="/extract-gsheet/styles/egs.css" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-twilight.min.css"
+      integrity="sha512-ch9ThmrGmkVrVm9tL/puGmSfzQps4yk9LDrWuswb65ZnPOIKuYZBen1yn3ez/fEbgeBqrU/IJ443OqgallfE9Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     
@@ -147,17 +155,34 @@
 </nav>
 </header>
     <main class="egs py-3">
-<style>
-  body {
-    background: #258b52;
-  }
-</style>
-
-<div class="h-100 d-flex flex-column align-items-center justify-content-center">
-  <div class="display-1 text-light"><strong>404</strong></div>
-  <h1 class="h2 text-white mb-3 mt-2">Page Not Found</h1>
-  <a href="/extract-gsheet" class="btn btn-secondary">Go To Home</a>
+<div class="container">
+  <h1>Test</h1>
+  <div class="d-flex">
+    <input
+      id="input"
+      class="form-control"
+      type="text"
+      value="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=318262465&single=true"
+    />
+    <button class="btn btn-primary ml-2" id="submit-test">Submit</button>
+  </div>
+  <pre><code class="language-json" id="test-json"></code></pre>
 </div>
+
+<script>
+  const setPre = () => {
+    let input = $("#input");
+    extractGSheet(input.val()).then((res) => {
+      var tj = $("#test-json");
+      tj.html(JSON.stringify(res, null, 2));
+      Prism.highlightAll();
+    });
+  };
+  $(document).ready(function () {
+    setPre();
+  });
+  $('#submit-test').click(setPre)
+</script>
 </main>
     <footer class="bg-gradient-light mt-4">
   <div class="container py-3">
@@ -186,6 +211,9 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>
     
   </body>
 </html>

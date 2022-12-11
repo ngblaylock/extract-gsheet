@@ -26,7 +26,7 @@ var extractGSheet = (function () {
   }
 
   const hasCheckbox = function (content) {
-    if (content.innerHTML.match(/<use href="#(un)?checkedCheckboxId"/g)) {
+    if (content.innerHTML.match(/<use href="#(un)?checked/g)) {
       return true;
     }
     return false;
@@ -34,9 +34,9 @@ var extractGSheet = (function () {
 
   const checkboxStatus = function (content) {
     let c = content.innerHTML;
-    if (c.includes(`<use href="#checkedCheckboxId"`)) {
+    if (c.includes(`<use href="#checked`)) {
       return "true";
-    } else if (c.includes(`<use href="#uncheckedCheckboxId"`)) {
+    } else if (c.includes(`<use href="#unchecked`)) {
       return "false";
     } else {
       return "";
@@ -134,11 +134,11 @@ var extractGSheet = (function () {
       d.data.forEach((obj, index) => {
         if (!obj.id) {
           missingID = true;
-          obj.id = index + 1;
+          d.data[index] = {id: index + 1, ...obj};
         }
       });
       if (missingID) {
-        d.keys.push({ name: "ID", key: "id" });
+        d.keys.unshift({ name: "ID", key: "id" });
       }
     });
 

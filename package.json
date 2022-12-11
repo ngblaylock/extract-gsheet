@@ -1,6 +1,6 @@
 {
   "name": "extract-gsheet",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Quickly get a public Google Sheet data as JSON for use on any website.",
   "main": "./dist/extract-gsheet.cjs.js",
   "repository": {
@@ -12,8 +12,9 @@
     "sass:build:docs": "node-sass ./11ty-site/sass/egs.scss ./docs/styles/egs.css --output-style compressed",
     "sass:build:dev": "node-sass ./11ty-site/sass/egs.scss ./dev/styles/egs.css",
     "sass:watch:dev": "npm run sass:build:dev && node-sass ./11ty-site/sass/egs.scss ./dev/styles/egs.css -w",
-    "dev": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet & npm run sass:watch:dev",
-    "build": "npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy && npm run sass:build:docs",
+    "dev:website": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet & npm run sass:watch:dev",
+    "dev": "npm run dev:website & npm run rollup:watch",
+    "build": "npm run rollup && npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy && npm run sass:build:docs",
     "clean:dev": "npx rimraf ./dev",
     "clean": "npx rimraf ./docs ./dev",
     "move-readme": "node move-readme",
