@@ -1,16 +1,20 @@
 # Development Documentation
 
-## Develop the website only
+## Development
 
-Files are found in `/11ty-site` and uses Nunjucks for the templating language. To run it in development mode, run `npm run dev`. The files are hosted from the `/dev` directory.
+Run `npm run dev` to watch and build the `src` directory to `dist` (Extract GSheet script) and will build the `11ty-site` directory to `dev`. This will hot reload the 11ty documentation site.
 
-## Build and deploy the website publicly
+If you need to test out the output script in `dist` go to `/test` in the development server.
+
+## Deploy Steps
+
+1. Test in development mode.
+2. Update the version in `package.json`.
+3. Run `npm run build` to build the Extract GSheet script (`dist`) and the documentation site (`docs`).
+4. Stage, Commit, and push changes up to GitHub
 
 When the site is ready to launch publicly, make sure the changes are merged into the master branch. Run `npm run build` which will build the 11ty files to the `/docs` directory. Push the changes up to GitHub. The website is hosted with GitHub pages and it is configured to look in the master branch under the docs directory.
 
-## Build Rollup files
-
-Run `npm run rollup` to build the files one time, or run `npm run rollup:watch` to watch for file changes. You can easily check your changes using `/test/index.html`. It is best to use the live server extension which will hot-reload this page. Running this rollup script will build the script to the `/dist` directory in various formats.
 
 ## Deploy changes to NPM
 

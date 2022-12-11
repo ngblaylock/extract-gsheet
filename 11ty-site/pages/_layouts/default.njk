@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% include "analytics.njk" %}
-    {% include "favicons.njk" %}
-    {% include "seo.njk" %}
+    {% include "analytics.njk" %} {% include "favicons.njk" %} {% include
+    "seo.njk" %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +15,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="{{root}}/styles/egs.css" />
+    <link rel="stylesheet" href="{{ root }}/styles/egs.css" />
     {% if prism %}
     <link
       rel="stylesheet"
@@ -27,12 +26,14 @@
     />
     {% endif %}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="{{root}}/js/extract-gsheet.min.js"></script>
+    {% if global.env == 'dev' %}
+    <script src="{{ root }}/js/extract-gsheet.js"></script>
+    {% else %}
+    <script src="{{ root }}/js/extract-gsheet.min.js"></script>
+    {% endif %}
   </head>
-  <body class='d-flex flex-column'>
-    <header>
-      {% include "nav.njk" %}
-    </header>
+  <body class="d-flex flex-column">
+    <header>{% include "nav.njk" %}</header>
     <main class="egs py-3">{{ content | safe }}</main>
     {% include "footer.njk" %}
     <script

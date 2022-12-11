@@ -1,0 +1,34 @@
+---
+title: Test
+norobots: true
+prism: true
+---
+
+<div class="container">
+  <h1>Test</h1>
+  <div class="d-flex">
+    <input
+      id="input"
+      class="form-control"
+      type="text"
+      value="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=318262465&single=true"
+    />
+    <button class="btn btn-primary ml-2" id="submit-test">Submit</button>
+  </div>
+  <pre><code class="language-json" id="test-json"></code></pre>
+</div>
+
+<script>
+  const setPre = () => {
+    let input = $("#input");
+    extractGSheet(input.val()).then((res) => {
+      var tj = $("#test-json");
+      tj.html(JSON.stringify(res, null, 2));
+      Prism.highlightAll();
+    });
+  };
+  $(document).ready(function () {
+    setPre();
+  });
+  $('#submit-test').click(setPre)
+</script>

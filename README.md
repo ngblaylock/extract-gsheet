@@ -6,7 +6,7 @@
 
 - Include the script and call `extractGSheet(<published sheet url>)`
 - No API Keys required
-- Will extract all tabs in the published sheet
+- Extracts all or single tabs in the published sheet
 - Transforms column headers into usable keys
 - Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values
 - Clears out columns without a column header (key)
@@ -15,14 +15,14 @@
 - Checkboxes are transformed to true and false (Boolean)
 - Numbers are transformed to a numeric value ("2.5" is transformed to 2.5)
 - Preserves text formatting from the sheet ('$1.00' does not transform to '1')
-- If there is no key for "ID", a unique ID for the row will be provided. **However**, this id can change on each page load. Since Extract GSheet is a read-only tool, this should not be a problem.
+- If there is no "ID" column, a unique ID for the row will be provided.
 
 <div class="alert alert-warning">
   
-### However...
+### Warning
 
-- This is not thoroughly tested, so I would not recommend this for production.
-- This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.
+- Extract GSheet will never reach v1.x.x. This is intended for small or personal projects. Make sure to use the version number in your script to avoid any potential breaking changes.
+- Extract GSheet heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break. Submit a new issue on GitHub if you find something was working but no longer is.
 - Most non-text features will not be included (images, charts, comments, etc.).
 - Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
 - This will not natively work on Internet Explorer.
@@ -32,14 +32,21 @@
 
 ## Setup Google Sheet
 
-The first row in your tab will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an `_`. Multiple spaces and/or special characters will be replaced with a single `_`. Any key that begins with a number will be prefixed with an `_`.
+The first row in your Google Sheet will be the keys to your values (column headers). Some character transformations will occur in the JSON output:
 
-```js
-            HeLlO => hello
-         Movie ID => movie_id
-         Is True? => is_true_
-           8 Keys => _8_keys
-# of Participants => _of_participants
+1. All characters will be made lowercase
+2. Spaces and special characters will be replaced with an `_`
+3. Multiple spaces and/or special characters will be replaced with a single `_`
+4. Any key that begins with a number will be prefixed with an `_`
+
+```css
+    Column Header    JSON Output
+- - - - - - - - - - - - - - - - - - -
+            HeLlO    hello
+         Movie ID    movie_id
+         Is True?    is_true_
+           8 Keys    _8_keys
+# of Participants    _of_participants
 ```
 
 ![Google Sheet Screenshot](https://ngblaylock.github.io/extract-gsheet//img/documentation/spreadsheet.png)
@@ -48,7 +55,7 @@ Make sure that your Google Sheet has a title, and the tabs have names.
 
 ## Publish the Google Sheet
 
-In Google Sheets, go to **File > Share > Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document. 
+In Google Sheets, go to **File ➔ Share ➔ Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.
 
 **NOTE:** If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a `:`).
 
@@ -60,18 +67,18 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 
 **NPM:** (This has not been thoroughly tested)
 
-``` bash
-npm install extract-gsheet
+```bash
+npm install extract-gsheet@0.1.11
 # Then in your file:
-# import extractGSheet from 'extract-gsheet'; 
+# import extractGSheet from 'extract-gsheet';
 ```
 
 **CDN:**
 
-``` html
-<script src="https://unpkg.com/extract-gsheet@0.1.10/dist/extract-gsheet.min.js"></script>
+```html
+<script src="https://unpkg.com/extract-gsheet@0.1.11/dist/extract-gsheet.min.js"></script>
 <!-- OR -->
-<script src="https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.10/dist/extract-gsheet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.11/dist/extract-gsheet.min.js"></script>
 ```
 
 Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
@@ -82,7 +89,9 @@ Call the `extractGSheet()` function and pass in the entire URL from the publishe
 
 ```html
 <script>
-  extractGSheet("https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml")
+  extractGSheet(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
+  )
     .then((res) => {
       // res is the data object
       console.log(res);

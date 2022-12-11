@@ -18,8 +18,7 @@
   gtag("config", "G-VTXKH3E78Y");
 </script>
 
-
-    
+ 
 <link rel="icon" href="/extract-gsheet/favicon.ico" type="image/x-icon" />
 
 <link
@@ -43,8 +42,7 @@
 <link rel="mask-icon" href="/extract-gsheet/safari-pinned-tab.svg" color="#5bbad5" />
 <meta name="msapplication-TileColor" content="#00641d" />
 <meta name="theme-color" content="#ffffff" />
-
-    
+ 
 <title>Documentation | Extract GSheet</title>
 <meta property="og:title" content="Documentation | Extract GSheet" />
  
@@ -77,11 +75,12 @@
     />
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
     <script src="/extract-gsheet/js/extract-gsheet.min.js"></script>
+    
   </head>
-  <body class='d-flex flex-column'>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <body class="d-flex flex-column">
+    <header><nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="/extract-gsheet/"
     ><div class="d-flex justify-content-center align-items-center pl-3">
       <img
@@ -146,15 +145,14 @@
     </ul>
   </div>
 </nav>
-
-    </header>
+</header>
     <main class="egs py-3"><div class="container documentation">
 <h1>Documentation</h1>
 <h2>Features</h2>
 <ul>
 <li>Include the script and call <code>extractGSheet(&lt;published sheet url&gt;)</code></li>
 <li>No API Keys required</li>
-<li>Will extract all tabs in the published sheet</li>
+<li>Extracts all or single tabs in the published sheet</li>
 <li>Transforms column headers into usable keys</li>
 <li>Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values</li>
 <li>Clears out columns without a column header (key)</li>
@@ -163,13 +161,13 @@
 <li>Checkboxes are transformed to true and false (Boolean)</li>
 <li>Numbers are transformed to a numeric value (&quot;2.5&quot; is transformed to 2.5)</li>
 <li>Preserves text formatting from the sheet ('$1.00' does not transform to '1')</li>
-<li>If there is no key for &quot;ID&quot;, a unique ID for the row will be provided. <strong>However</strong>, this id can change on each page load. Since Extract GSheet is a read-only tool, this should not be a problem.</li>
+<li>If there is no &quot;ID&quot; column, a unique ID for the row will be provided.</li>
 </ul>
 <div class="alert alert-warning">
-<h3>However...</h3>
+<h3>Warning</h3>
 <ul>
-<li>This is not thoroughly tested, so I would not recommend this for production.</li>
-<li>This heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break.</li>
+<li>Extract GSheet will never reach v1.x.x. This is intended for small or personal projects. Make sure to use the version number in your script to avoid any potential breaking changes.</li>
+<li>Extract GSheet heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break. Submit a new issue on GitHub if you find something was working but no longer is.</li>
 <li>Most non-text features will not be included (images, charts, comments, etc.).</li>
 <li>Some changes to a published sheet may take up to 5 minutes to reflect in the browser.</li>
 <li>This will not natively work on Internet Explorer.</li>
@@ -177,36 +175,46 @@
 </ul>
 </div>
 <h2>Setup Google Sheet</h2>
-<p>The first row in your tab will be the keys to your values. All characters will be made lowercase. Spaces and special characters will be replaced with an <code>_</code>. Multiple spaces and/or special characters will be replaced with a single <code>_</code>. Any key that begins with a number will be prefixed with an <code>_</code>.</p>
-<pre><code class="language-js">            HeLlO =&gt; hello
-         Movie ID =&gt; movie_id
-         Is True? =&gt; is_true_
-           8 Keys =&gt; _8_keys
-# of Participants =&gt; _of_participants
+<p>The first row in your Google Sheet will be the keys to your values (column headers). Some character transformations will occur in the JSON output:</p>
+<ol>
+<li>All characters will be made lowercase</li>
+<li>Spaces and special characters will be replaced with an <code>_</code></li>
+<li>Multiple spaces and/or special characters will be replaced with a single <code>_</code></li>
+<li>Any key that begins with a number will be prefixed with an <code>_</code></li>
+</ol>
+<pre><code class="language-css">    Column Header    JSON Output
+- - - - - - - - - - - - - - - - - - -
+            HeLlO    hello
+         Movie ID    movie_id
+         Is True?    is_true_
+           8 Keys    _8_keys
+# of Participants    _of_participants
 </code></pre>
 <p><img src="/extract-gsheet/img/documentation/spreadsheet.png" alt="Google Sheet Screenshot"></p>
 <p>Make sure that your Google Sheet has a title, and the tabs have names.</p>
 <h2>Publish the Google Sheet</h2>
-<p>In Google Sheets, go to <strong>File &gt; Share &gt; Publish to the web</strong>. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.</p>
+<p>In Google Sheets, go to <strong>File ➔ Share ➔ Publish to the web</strong>. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.</p>
 <p><strong>NOTE:</strong> If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a <code>:</code>).</p>
 <p>Once your tabs or document is selected, click &quot;Publish&quot; and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.</p>
 <p><img src="/extract-gsheet/img/documentation/publish-window.png" alt="Publish Sheet Dialog Screenshot"></p>
 <h2>Load the Script</h2>
 <p><strong>NPM:</strong> (This has not been thoroughly tested)</p>
-<pre><code class="language-bash">npm install extract-gsheet
+<pre><code class="language-bash">npm install extract-gsheet@0.1.11
 # Then in your file:
-# import extractGSheet from 'extract-gsheet'; 
+# import extractGSheet from 'extract-gsheet';
 </code></pre>
 <p><strong>CDN:</strong></p>
-<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/extract-gsheet@0.1.10/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/extract-gsheet@0.1.11/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
 &lt;!-- OR --&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.10/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.11/dist/extract-gsheet.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.</p>
 <h2>Use the Script</h2>
 <p>Call the <code>extractGSheet()</code> function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the <code>.then().catch()</code> syntax.</p>
 <pre><code class="language-html">&lt;script&gt;
-  extractGSheet(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml&quot;)
+  extractGSheet(
+    &quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml&quot;
+  )
     .then((res) =&gt; {
       // res is the data object
       console.log(res);
@@ -235,8 +243,8 @@
         />
       </div>
       <div class="px-3">&copy; Nathan Blaylock 2022</div>
-      <div class="px-3">Last Updated: May 28, 2022</div>
-      <div class="px-3">Version 0.1.10</div>
+      <div class="px-3">Last Updated: December 10, 2022</div>
+      <div class="px-3">Version 0.1.11</div>
     </div>
   </div>
 </footer>
