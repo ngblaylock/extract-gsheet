@@ -55,16 +55,42 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ global.gitHubRepoURL }}" target="_blank"
+        <a
+          class="nav-link"
+          href="{{ global.gitHubRepoURL }}"
+          target="_blank"
+          rel="noopener"
           >GitHub <i class="fas fa-sm fa-external-link-alt"></i
         ></a>
       </li>
-      {% if global.env == 'dev' %}
-      <li class="nav-item {{ 'active' if '/uikit' in page.url }}">
-        <a class="nav-link" href="{{ root }}/uikit/">UI Kit</a>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="https://www.npmjs.com/package/extract-gsheet"
+          target="_blank"
+          rel="noopener"
+          >NPM <i class="fas fa-sm fa-external-link-alt"></i
+        ></a>
       </li>
-      <li class="nav-item {{ 'active' if '/test' in page.url }}">
-        <a class="nav-link" href="{{ root }}/test/">Test Page</a>
+      {% if global.env == 'dev' %}
+      <li class="nav-item dropdown">
+        <a
+          class="btn btn-danger btn-sm mt-1 ml-2 dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLinkDev"
+          role="button"
+          data-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Dev
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbarDropdownMenuLinkDev"
+        >
+          <a class="dropdown-item" href="{{ root }}/uikit/">UI Kit</a>
+          <a class="dropdown-item" href="{{ root }}/test/">Test Page</a>
+        </div>
       </li>
       {% endif %}
     </ul>
