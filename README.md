@@ -68,7 +68,7 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 **NPM:** (This has not been thoroughly tested)
 
 ```bash
-npm install extract-gsheet@0.1.12
+npm install extract-gsheet@0.1.13
 # Then in your file:
 # import extractGSheet from 'extract-gsheet';
 ```
@@ -76,9 +76,9 @@ npm install extract-gsheet@0.1.12
 **CDN:**
 
 ```html
-<script src="https://unpkg.com/extract-gsheet@0.1.12/dist/extract-gsheet.min.js"></script>
+<script src="https://unpkg.com/extract-gsheet@0.1.13/dist/extract-gsheet.min.js"></script>
 <!-- OR -->
-<script src="https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.12/dist/extract-gsheet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.13/dist/extract-gsheet.min.js"></script>
 ```
 
 Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
