@@ -3,94 +3,47 @@ title: UI Kit
 norobots: true
 ---
 
-<style>
-  .display {
-    font-family: monospace;
-    color: grey;
-    font-weight: 800;
-    border-bottom: 1px solid grey;
-  }
-</style>
+<div class="container vstack gap-5">
+  <h1>UI Kit</h1>
+  <div>
+    <h2>Typography</h2>
+    <div class="card card-body">
+      <h1>Header 1</h1>
+      <h2>Header 2</h2>
+      <h3>Header 3</h3>
+      <h4>Header 4</h4>
+      <h5>Header 5</h5>
+      <h6>Header 6</h6>
+      <p>
+        Lorem ipsum dolor, sit amet <a href="#">consectetur</a> adipisicing
+        elit. Minus architecto alias perferendis ad, aut, delectus tenetur
+        quidem, libero inventore rem eveniet vero impedit laudantium et saepe
+        eos autem suscipit in?
+      </p>
+    </div>
+  </div>
 
-<div class="container">
-  <h2 class="display">Typography</h2>
-  <h1>Header 1</h1>
-  <h2>Header 2</h2>
-  <h3>Header 3</h3>
-  <h4>Header 4</h4>
-  <h5>Header 5</h5>
-  <h6>Header 6</h6>
-
-  <p>
-    Lorem ipsum dolor, sit amet <a href="#">consectetur</a> adipisicing elit.
-    Minus architecto alias perferendis ad, aut, delectus tenetur quidem, libero
-    inventore rem eveniet vero impedit laudantium et saepe eos autem suscipit
-    in?
-  </p>
-
-  <h2 class="display">Colors</h2>
-  <div class="row text-center">
-    <div class="col-sm-4 py-5 bg-dark text-white">dark</div>
-    <div class="col-sm-4 py-5 bg-primary text-white">primary</div>
-    <div class="col-sm-4 py-5 bg-grey">grey</div>
-    <div class="col-sm-4 py-5 bg-light">light</div>
-    <div class="col-sm-4 py-5 bg-secondary text-white">secondary</div>
-    <div class="col-sm-4 py-5 bg-white border">white</div>
+  <div>
+    <h2>Colors</h2>
+    <div class="card card-body">
+      <div class="row g-0 text-center">
+        <div class="col-sm-4 py-5 text-bg-dark">dark</div>
+        <div class="col-sm-4 py-5 text-bg-primary">primary</div>
+        <div class="col-sm-4 py-5 text-bg-gray">gray</div>
+        <div class="col-sm-4 py-5 text-bg-light">light</div>
+        <div class="col-sm-4 py-5 text-bg-secondary">secondary</div>
+        <div class="col-sm-4 py-5 text-bg-white">white</div>
+      </div>
+    </div>
   </div>
   <div>
-    <h2 class="display">Logos</h2>
-    <div class="d-flex flex-wrap mx-n4 py-5">
-      <div class="m-4">
-        <img src="{{root}}/img/EGS-Logo.png" alt="EGS Logo Large" />
-      </div>
-      <div class="m-4">
-        <img src="{{root}}/img/EGS-Logo-medium.png" alt="EGS Logo Medium" />
-      </div>
-      <div class="m-4">
-        <img src="{{root}}/img/EGS-Logo-small.png" alt="EGS Logo Small" />
-      </div>
-    </div>
-  </div>
-</div>
-<div class="bg-gradient-primary py-5">
-  <div class="container">
-  <h2 class="display text-white border-white mb-5">Logos with a Stroke</h2>
-    <div class="d-flex flex-wrap mx-n4">
-      <div class="m-4">
-        <img src="{{root}}/img/EGS-Logo-stroke.png" alt="EGS Logo Large" />
-      </div>
-      <div class="m-4">
-        <img
-          src="{{root}}/img/EGS-Logo-medium-stroke.png"
-          alt="EGS Logo Medium"
-        />
-      </div>
-      <div class="m-4">
-        <img
-          src="{{root}}/img/EGS-Logo-small-stroke.png"
-          alt="EGS Logo Small"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <h2 class="display">Favicons</h2>
-  <div class="d-flex flex-wrap mx-n4">
-    <div class="m-4">
-      <img src="{{root}}/android-chrome-384x384.png" alt="Android Icon" />
-    </div>
-    <div class="m-4">
-      <img src="{{root}}/android-chrome-192x192.png" alt="Android Icon" />
-    </div>
-    <div class="m-4">
-      <img src="{{root}}/apple-touch-icon.png" alt="Apple Touch Icon" />
-    </div>
-    <div class="m-4">
-      <img src="{{root}}/favicon-32x32.png" alt="Favicon" />
-    </div>
-    <div class="m-4">
-      <img src="{{root}}/favicon-16x16.png" alt="Favicon" />
+    <h2>Logo</h2>
+    <div class="card card-body">
+      <img
+        src="{{ root }}/img/EGS-Logo.svg"
+        alt="EGS Logo Large"
+        style="max-width: 75%"
+      />
     </div>
   </div>
 </div>

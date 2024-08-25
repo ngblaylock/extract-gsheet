@@ -36,11 +36,11 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
             <div className="col-sm-6 col-lg-4 mb-5" key={index}>
               <div className="card text-center">
                 <div
-                  className="embed-responsive embed-responsive-1by1 text-center mx-auto mt-n4"
-                  style={{ width: "75px" }}
+                  className="text-center mx-auto mt-n4"
+                  style={{ width: "75px", height: "75px" }}
                 >
                   <div
-                    className="embed-responsive-item rounded-circle d-flex align-items-center justify-content-center h3 mt-0 text-white"
+                    className="h-100 rounded-pill d-flex align-items-center justify-content-center h3 mt-0 text-white"
                     style={{ backgroundColor: character.favorite_color }}
                   >
                     {character.first_name[0]}
@@ -51,9 +51,9 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
                   {character.first_name} {character.last_name}
                 </h4>
                 <p className="lead d-flex justify-content-center">
-                  <i className="fas fa-quote-left d-block mt-1 text-grey fa-xs"></i>{" "}
+                  <i className="fas fa-quote-left d-block mt-1 text-gray fa-xs"></i>{" "}
                   <span className="d-flex mx-2">{character.catch_phrase}</span>{" "}
-                  <i className="fas fa-quote-right d-block mt-3 text-grey fa-xs"></i>
+                  <i className="fas fa-quote-right d-block mt-3 text-gray fa-xs"></i>
                 </p>
                 <p className="text-secondary small">
                   <strong>{character.height}</strong>

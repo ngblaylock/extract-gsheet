@@ -1,9 +1,28 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="{{ root }}/"
-    ><div class="d-flex justify-content-center align-items-center pl-3">
+{% if global.env == 'dev' %}
+<div class="text-bg-dev hstack gap-2 small px-2">
+  <span>Dev</span>
+  <span class="badge rounded-pill text-bg-secondary me-auto">
+    <span class="d-sm-none">xs</span>
+    <span class="d-none d-sm-inline d-md-none">sm</span>
+    <span class="d-none d-md-inline d-lg-none">md</span>
+    <span class="d-none d-lg-inline d-xl-none">lg</span>
+    <span class="d-none d-xl-inline d-xxl-none">xl</span>
+    <span class="d-none d-xxl-inline">xxl</span>
+  </span>
+  <a href="{{ root }}/uikit/" class="link-white">UI Kit</a>
+  <a href="{{ root }}/test/" class="link-white">Test Page</a>
+</div>
+{% endif %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark px-3">
+  <a
+    class="navbar-brand"
+    href="{{ root }}/"
+    ><div class="d-flex justify-content-center align-items-center">
       <img
-        src="{{ root }}/img/EGS-Logo-small-stroke.png"
+        src="{{ root }}/img/EGS-Logo.svg"
         alt="Extract GSheet Logo"
+        style="max-height: 32px"
       />
       <div class="h6 text-white p-0 my-0 mx-3">Extract GSheet</div>
     </div></a
@@ -19,40 +38,82 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item {{ 'active' if '/' == page.url }}">
-        <a class="nav-link" href="{{ root }}/">Home</a>
-      </li>
-      <li class="nav-item {{ 'active' if '/documentation' in page.url }}">
-        <a class="nav-link" href="{{ root }}/documentation/">Documentation</a>
-      </li>
-      <li class="nav-item dropdown {{ 'active' if '/examples' in page.url }}">
+  <div
+    class="collapse navbar-collapse"
+    id="navbarNavDropdown"
+  >
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
         <a
-          class="nav-link dropdown-toggle"
+          class="nav-link {{ 'active' if '/' == page.url }}"
+          href="{{ root }}/"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link {{ 'active' if '/documentation' in page.url }}"
+          href="{{ root }}/documentation/"
+          >Documentation</a
+        >
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle {{ 'active' if '/examples' in page.url }}"
           href="#"
           id="navbarDropdownMenuLink"
           role="button"
-          data-toggle="dropdown"
+          data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           Examples
         </a>
-        <div
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdownMenuLink"
+        <ul
+          class="dropdown-menu dropdown-menu-end"
         >
-          <a class="dropdown-item" href="{{ root }}/examples/alpine/">Alpine</a>
-          <a class="dropdown-item" href="{{ root }}/examples/angularjs/"
-            >Angular.js</a
-          >
-          <a class="dropdown-item" href="{{ root }}/examples/handlebars/"
-            >Handlebars</a
-          >
-          <a class="dropdown-item" href="{{ root }}/examples/jquery/">jQuery</a>
-          <a class="dropdown-item" href="{{ root }}/examples/react/">React</a>
-          <a class="dropdown-item" href="{{ root }}/examples/vue/">Vue</a>
-        </div>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ root }}/examples/alpine/"
+              >Alpine</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ root }}/examples/angularjs/"
+              >Angular.js</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ root }}/examples/handlebars/"
+              >Handlebars</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ root }}/examples/jquery/"
+              >jQuery</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ root }}/examples/react/"
+              >React</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ root }}/examples/vue/"
+              >Vue</a
+            >
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a
@@ -72,27 +133,6 @@
           >NPM <i class="fas fa-sm fa-external-link-alt"></i
         ></a>
       </li>
-      {% if global.env == 'dev' %}
-      <li class="nav-item dropdown">
-        <a
-          class="btn btn-danger btn-sm mt-1 ml-2 dropdown-toggle"
-          href="#"
-          id="navbarDropdownMenuLinkDev"
-          role="button"
-          data-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Dev
-        </a>
-        <div
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdownMenuLinkDev"
-        >
-          <a class="dropdown-item" href="{{ root }}/uikit/">UI Kit</a>
-          <a class="dropdown-item" href="{{ root }}/test/">Test Page</a>
-        </div>
-      </li>
-      {% endif %}
     </ul>
   </div>
 </nav>

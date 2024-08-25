@@ -1,6 +1,5 @@
 ---
 title: Log
-prism: true
 ---
 
 <!-- prettier-ignore-start -->

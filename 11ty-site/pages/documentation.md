@@ -1,10 +1,25 @@
 ---
 title: Documentation
-prism: true
 description: Learn about Extract GSheet features and how to quickly extract JSON data from a public Google Sheet.
 ---
 
 <div class="container documentation">
+
+<style>
+  .documentation {
+    .alert-warning ul{
+      margin: 0;
+    }
+    img {
+      display: block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    pre{
+      margin-bottom: 24px;
+    }
+  }
+</style>
 
 # Documentation
 

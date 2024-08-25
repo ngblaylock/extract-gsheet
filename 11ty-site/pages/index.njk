@@ -1,24 +1,18 @@
 ---
-prism: true
 ---
 
-<div class="bg-gradient-primary py-5 mt-n3">
+<div class="bg-primary bg-gradient py-5 mt-n5">
   <div class="container">
     <div
-      class="
-        d-flex
-        flex-wrap
-        align-items-center
-        text-center text-lg-left
-        justify-content-center justify-content-lg-start
-      "
+      class="d-flex flex-wrap align-items-center text-center text-lg-start justify-content-center justify-content-lg-start"
     >
       <img
         class="d-inline-block py-3"
-        src="{{root}}/img/EGS-Logo-medium-stroke.png"
+        src="{{ root }}/img/EGS-Logo.svg"
         alt="Extract GSheet Logo"
+        style="max-width: 200px"
       />
-      <div class="mx-4 py-3">
+      <div class="mx-lg-4 py-3">
         <h1 class="text-white mt-0">Extract GSheet</h1>
         <p class="text-white lead mb-1">
           Quickly extract JSON data from a public Google Sheet without any API
@@ -26,13 +20,15 @@ prism: true
         </p>
         <p class="text-white">Perfect for entry-level JAMStack developers.</p>
         <p>
-          <a href="{{root}}/documentation/" class="btn btn-light"
-            >Documentation</a
+          <a
+          href="{{ root }}/documentation/"
+          class="btn btn-light"
+          ><span class="fas fa-book"></span> Documentation</a
           >
           <a
-            href="{{global.gitHubRepoURL}}"
+            href="{{ global.gitHubRepoURL }}"
             target="_blank"
-            class="btn btn-outline-light"
+            class="btn btn-secondary"
             ><span class="fab fa-github"></span> GitHub</a
           >
         </p>
@@ -40,100 +36,143 @@ prism: true
     </div>
   </div>
 </div>
-<div class="container pt-3">
+<div class="container pt-5">
   <h2 class="mb-4">Try It Out</h2>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a
-        class="nav-link active"
-        id="single-tab"
-        data-toggle="tab"
-        href="#single"
-        role="tab"
-        aria-controls="single"
-        aria-selected="true"
-        >Single Tab</a
+  <div class="card">
+    <div class="card-header">
+      <ul
+        class="nav nav-tabs card-header-tabs"
+        id="myTab"
+        role="tablist"
       >
-    </li>
-    <li class="nav-item" role="presentation">
-      <a
-        class="nav-link"
-        id="multiple-tab"
-        data-toggle="tab"
-        href="#multiple"
-        role="tab"
-        aria-controls="multiple"
-        aria-selected="false"
-        >Multiple Tabs</a
-      >
-    </li>
-    <li class="nav-item" role="presentation">
-      <a
-        class="nav-link"
-        id="custom-tab"
-        data-toggle="tab"
-        href="#custom"
-        role="tab"
-        aria-controls="custom"
-        aria-selected="false"
-        >Try Your Published Sheeet</a
-      >
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div
-      class="tab-pane fade show active"
-      id="single"
-      role="tabpanel"
-      aria-labelledby="single-tab"
-    >
-      <div class="mt-3 text-break">
-        <strong class="d-block">Public Sheet URL:</strong>
-        <a id="single-link" href="#" target="_blank"></a>
-      </div>
-      <pre><code class="language-json" id="single-json"></code></pre>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <a
+            class="nav-link active"
+            id="single-tab"
+            data-bs-toggle="tab"
+            href="#single"
+            role="tab"
+            aria-controls="single"
+            aria-selected="true"
+            >Single Tab</a
+          >
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <a
+            class="nav-link"
+            id="multiple-tab"
+            data-bs-toggle="tab"
+            href="#multiple"
+            role="tab"
+            aria-controls="multiple"
+            aria-selected="false"
+            >Multiple Tabs</a
+          >
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <a
+            class="nav-link"
+            id="custom-tab"
+            data-bs-toggle="tab"
+            href="#custom"
+            role="tab"
+            aria-controls="custom"
+            aria-selected="false"
+            >Try Your Published Sheeet</a
+          >
+        </li>
+      </ul>
     </div>
     <div
-      class="tab-pane fade"
-      id="multiple"
-      role="tabpanel"
-      aria-labelledby="multiple-tab"
+      class="tab-content card-body"
+      id="myTabContent"
     >
-      <div class="mt-3 text-break">
-        <strong class="d-block">Public Sheet URL:</strong>
-        <a id="multiple-link" href="#" target="_blank"></a>
+      <div
+        class="tab-pane fade show active"
+        id="single"
+        role="tabpanel"
+        aria-labelledby="single-tab"
+      >
+        <div class="text-break">
+          <strong class="d-block">Public Sheet URL:</strong>
+          <a
+            id="single-link"
+            href="#"
+            target="_blank"
+          ></a>
+        </div>
+        <pre><code class="language-json" id="single-json"></code></pre>
       </div>
-      <pre><code class="language-json" id="multiple-json"></code></pre>
-    </div>
-    <div
-      class="tab-pane fade"
-      id="custom"
-      role="tabpanel"
-      aria-labelledby="custom-tab"
-    >
-      <form class="mt-3" id="custom-form">
-        <label for="custom-url" class="col-form-label">Custom URL</label>
-        <small class="d-block mt-n1 mb-2">Enter the full URL provided when publishing to the web. For more details see the <a href="{{root}}/documentation/">Documentation</a>.</small>
-        <div class="form-group d-flex">
-          <div class="flex-grow-1">
-            <input
+      <div
+        class="tab-pane fade"
+        id="multiple"
+        role="tabpanel"
+        aria-labelledby="multiple-tab"
+      >
+        <div class="text-break">
+          <strong class="d-block">Public Sheet URL:</strong>
+          <a
+            id="multiple-link"
+            href="#"
+            target="_blank"
+          ></a>
+        </div>
+        <pre><code class="language-json" id="multiple-json"></code></pre>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="custom"
+        role="tabpanel"
+        aria-labelledby="custom-tab"
+      >
+        <form
+          id="custom-form"
+        >
+          <label
+            for="custom-url"
+            class="col-form-label"
+            ><strong>Custom URL:</strong></label
+          >
+          <div class="form-group d-flex">
+            <div class="flex-grow-1">
+              <input
               type="text"
               class="form-control"
               id="custom-url"
               placeholder="https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vQEBe3cgMNU7SnZGl5NEfLt3bD3__Ly_irTVFWcd3T6_ZC-9qhc-t2AIlAcNqDOZowdje3E2jZ1Z8dQ/pubhtml"
-            />
+              />
+              <div class="form-text"
+                >Enter the full URL provided when publishing to the web. For more
+                details see the
+                <a href="{{ root }}/documentation/">Documentation</a>.</div
+              >
+            </div>
+            <div class="ps-3">
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          <div class="pl-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-      </form>
-      <pre><code class="language-json" id="custom-json"></code></pre>
-      <div
-        class="alert alert-danger"
-        id="custom-error"
-        style="display: none"
-      ></div>
+        </form>
+        <pre><code class="language-json" id="custom-json"></code></pre>
+        <div
+          class="alert alert-danger"
+          id="custom-error"
+          style="display: none"
+        ></div>
+      </div>
     </div>
   </div>
 </div>
@@ -143,43 +182,52 @@ prism: true
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=852541930&single=true";
   var multipleLink =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml";
+
   extractGSheet(multipleLink).then((res) => {
-    var mj = $("#multiple-json");
-    var ml = $("#multiple-link");
-    mj.html(JSON.stringify(res, null, 2));
-    ml.attr("href", multipleLink).html(multipleLink);
+    var mj = document.getElementById("multiple-json");
+    var ml = document.getElementById("multiple-link");
+    mj.textContent = JSON.stringify(res, null, 2);
+    ml.setAttribute("href", multipleLink);
+    ml.textContent = multipleLink;
     Prism.highlightAll();
   });
+
   extractGSheet(singleLink).then((res) => {
-    var sj = $("#single-json");
-    var sl = $("#single-link");
-    sj.html(JSON.stringify(res, null, 2));
-    sl.attr("href", singleLink).html(singleLink);
+    var sj = document.getElementById("single-json");
+    var sl = document.getElementById("single-link");
+    sj.textContent = JSON.stringify(res, null, 2);
+    sl.setAttribute("href", singleLink);
+    sl.textContent = singleLink;
     Prism.highlightAll();
   });
-  $("#custom-form").submit(function (e) {
-    e.preventDefault();
-    var customURL = $("#custom-url").val();
-    if (customURL) {
-      $("#custom-error").slideUp();
-      extractGSheet(customURL)
-        .then((res) => {
-          var cj = $("#custom-json");
-          cj.html(JSON.stringify(res, null, 2));
-          Prism.highlightAll();
-        })
-        .catch((err) => {
-          console.log("Error?", err);
-          $("#custom-error")
-            .html(
-              "<strong>Error:</strong> There is no public Google Sheet at that URL."
-            )
-            .slideDown();
-        });
-    } else {
-      $("#custom-error")
-        .html("<strong>Error:</strong> Please enter a URL.")
-        .slideDown();
-    }
-  });
+
+  document
+    .getElementById("custom-form")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      var customURL = document.getElementById("custom-url").value;
+      var customError = document.getElementById("custom-error");
+
+      var cj = document.getElementById("custom-json");
+      cj.textContent = "";
+
+      if (customURL) {
+        customError.style.display = "none";
+        extractGSheet(customURL)
+          .then((res) => {
+            var cj = document.getElementById("custom-json");
+            cj.textContent = JSON.stringify(res, null, 2);
+            Prism.highlightAll();
+          })
+          .catch((err) => {
+            console.error("Error?", err);
+            customError.innerHTML =
+              "<strong>Error:</strong> There is no public Google Sheet at that URL.";
+            customError.style.display = "block";
+          });
+      } else {
+        customError.innerHTML = "<strong>Error:</strong> Please enter a URL.";
+        customError.style.display = "block";
+      }
+    });
 </script>
