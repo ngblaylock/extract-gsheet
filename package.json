@@ -1,8 +1,15 @@
 {
   "name": "extract-gsheet",
   "version": "0.2.0-beta.1",
-  "description": "Quickly get a public Google Sheet data as JSON for use on any website.",
+  "description": "Quickly get public Google Sheet data as JSON for use on any website.",
   "main": "./dist/extract-gsheet.cjs.js",
+  "module": "./dist/extract-gsheet.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/extract-gsheet.esm.js",
+      "require": "./dist/extract-gsheet.cjs.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ngblaylock/extract-gsheet"

@@ -18,16 +18,27 @@ norobots: true
 </div>
 
 <script>
-  const setPre = () => {
-    let input = $("#input");
-    extractGSheet(input.val()).then((res) => {
-      var tj = $("#test-json");
-      tj.html(JSON.stringify(res, null, 2));
-      Prism.highlightAll();
+    // Function to handle setting JSON
+    const setPre = () => {
+      const input = document.getElementById('input');
+      const url = input.value;
+      const tj = document.getElementById('test-json');
+
+      if(url){
+        extractGSheet(url).then((res) => {
+          tj.innerHTML = JSON.stringify(res, null, 2);
+          Prism.highlightAll();
+        });
+      } else {
+        tj.innerHTML = '';
+      }
+    };
+
+    // Initialize on document ready
+    document.addEventListener('DOMContentLoaded', () => {
+      setPre();
     });
-  };
-  $(document).ready(function () {
-    setPre();
-  });
-  $('#submit-test').click(setPre)
+
+    // Add click event listener to the button
+    document.getElementById('submit-test').addEventListener('click', setPre);
 </script>

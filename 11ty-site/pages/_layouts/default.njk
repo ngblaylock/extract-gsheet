@@ -49,7 +49,7 @@
     style="min-height: 100vh"
   >
     <header>{% include "nav.njk" %}</header>
-    <main class="flex-fill py-5">{{ content | safe }}</main>
+    <main class="d-flex flex-column flex-fill py-5">{{ content | safe }}</main>
     {% include "footer.njk" %}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
