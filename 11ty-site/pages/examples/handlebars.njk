@@ -5,6 +5,8 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
 
 {% raw %}
 
+<!-- Make sure that you have included the extract-gsheet.js file -->
+
 <script
   id="entry-template"
   type="text/x-handlebars-template"
@@ -29,7 +31,9 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     {{/each}}
   </div>
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
 <script>
   extractGSheet(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
