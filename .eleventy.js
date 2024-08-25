@@ -20,7 +20,7 @@ module.exports = (eleventyConfig) => {
   return {
     dir: {
       input: "./11ty-site/pages",
-      output: env == "dev" ? "dev" : "docs",
+      output: env === "dev" ? "dev" : "docs",
       layouts: "_layouts",
     },
     pathPrefix: "/extract-gsheet/",

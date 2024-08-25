@@ -1,98 +1,66 @@
+@import "../../node_modules/bootstrap/scss/mixins/banner";
+@include bsBanner("");
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 @import "egs-variables";
-@import "bootstrap-config";
-@import "bootstrap-options";
 
-[v-cloak] {
-  display: none;
-}
-.small,
-small {
-  font-size: 0.8em;
-  font-weight: 500;
-  color: $grey;
-}
-body{
-  min-height: 100vh;
-}
-header {
-  img{
-    max-height: 30px;
-  }
-  nav {
-    position: relative;
-    z-index: 1;
-    &.shadow {
-      box-shadow: 0px 3px 6px 0px rgba($dark, 0.25) !important;
-    }
-    a{
-      transition: $transition-base;
-      border-radius: .25rem;
-      &:hover{
-        background: rgba(0, 0, 0, 0.12);
-      }
-    }
-    .fa-sm{
-      display: inline-block;
-      font-size: .8em;
-      position: relative;
-      top: -1px;
-      padding-left: 2px;
-      opacity: .5;
-    }
-  }
-}
-.egs {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 0;
-  pre[class*="language-"] {
-    border: none;
-    border-radius: 0.25rem;
-    background: #191c1b;
-    code {
-      border: none;
-    }
-  }
-  .documentation {
-    .alert-warning h3{
-      color: #856404;
-      margin-top: 1rem;
-      font-size: 1.3rem;
-    }
-    img {
-      display: block;
-      margin: 2rem auto;
-      max-width: 100%;
-    }
-    pre{
-      margin-bottom: 24px;
-    }
-  }
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
-    margin-top: 1em;
-  }
-}
-code {
-  display: inline-block;
-  background: $gray-100;
-  padding: 0px 6px;
-  border-radius: 3px;
-  border: rgba($gray-300, 0.625) 1px solid;
-  color: $primary;
-  font-weight: bold;
+// scss-docs-start import-stack
+// Configuration
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+// Layout & components
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/accordion";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+@import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/toasts";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/tooltip";
+@import "../../node_modules/bootstrap/scss/popover";
+@import "../../node_modules/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/spinners";
+@import "../../node_modules/bootstrap/scss/offcanvas";
+@import "../../node_modules/bootstrap/scss/placeholders";
+
+// Helpers
+@import "../../node_modules/bootstrap/scss/helpers";
+
+// Utilities
+@import "../../node_modules/bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
+
+code, .code{
+  background: tint-color($dev, 95%);
+  color: $dev;
+  padding: $kbd-padding-y $kbd-padding-x;
+  font-size: $kbd-font-size;
+  border-radius: $border-radius;
 }
 
-footer{
-  border-top: 2px solid rgba($dark, 0.1);
+pre code{
+  padding: 0;
 }

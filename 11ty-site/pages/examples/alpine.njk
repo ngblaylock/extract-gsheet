@@ -3,7 +3,10 @@ title: Alpine Example
 description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Alpine.js.
 ---
 
-<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+<script
+  defer
+  src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+></script>
 <style>
   [x-cloak] {
     display: none;
@@ -31,7 +34,7 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     position: absolute;
     bottom: 0;
     right: 0;
-    transform: translate(50%, 50%);
+    transform: translate(25%, 25%);
     font-size: 2em;
     background: white;
     border-radius: 100%;
@@ -66,13 +69,21 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     <template x-for="movieWatchedStatus in watched">
       <div class="row">
         <div class="col-sm-12">
-          <h2 class="mb-n2" x-text="movieWatchedStatus.title"></h2>
+          <h2
+            x-text="movieWatchedStatus.title"
+          ></h2>
         </div>
         <template x-for="movie in movieWatchedStatus.data">
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="movie-poster bg-gradient-secondary">
-              <div class="movie-title h5 text-white" x-text="movie.movie"></div>
-              <div class="movie-year" x-text="movie.year_released"></div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="movie-poster bg-secondary bg-gradient">
+              <div
+                class="movie-title h5 text-white"
+                x-text="movie.movie"
+              ></div>
+              <div
+                class="movie-year"
+                x-text="movie.year_released"
+              ></div>
               <template x-if="movie.watched">
                 <i class="status-icon fas fa-check-circle text-primary"></i>
               </template>

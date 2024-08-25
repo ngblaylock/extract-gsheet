@@ -3,6 +3,8 @@ title: Angular.js Example
 description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with Angular.js.
 ---
 
+{% raw %}
+
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"
   integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA=="
@@ -10,36 +12,40 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
   referrerpolicy="no-referrer"
 ></script>
 <style>
-.watched{
-  background: #e9f3ee;
-}
-.not-watched{
-  background: #fcebec;
-}
+  .watched {
+    background: #e9f3ee;
+  }
+  .not-watched {
+    background: #fcebec;
+  }
 </style>
 
-{% raw %}
 <div ng-app="App">
   <div ng-controller="appCtrl">
-  <h2>Scooby-Doo Movie Watch List</h2>
+    <h2>Scooby-Doo Movie Watch List</h2>
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Movie</th>
-          <th>Year Released</th>
-          <th class="text-center">Watched</th>
+          <th class="text-bg-light bg-gradient">Movie</th>
+          <th class="text-bg-light bg-gradient">Year Released</th>
+          <th class="text-bg-light bg-gradient text-center">Watched</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="movie in movies" ng-class="{true: 'watched', false: 'not-watched'}[movie.watched]">
-          <td>{{movie.movie}}</td>
-          <td>{{movie.year_released}}</td>
+        <tr
+          ng-repeat="movie in movies"
+        >
+          <td>{{ movie.movie }}</td>
+          <td>{{ movie.year_released }}</td>
           <td class="text-center">
             <i
               class="fas fa-check-circle text-primary"
               ng-if="movie.watched"
             ></i>
-            <i class="fas fa-times-circle text-danger" ng-if="!movie.watched"></i>
+            <i
+              class="fas fa-times-circle text-danger"
+              ng-if="!movie.watched"
+            ></i>
           </td>
         </tr>
       </tbody>
@@ -86,4 +92,5 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     $scope.getMovies();
   }
 </script>
+
 {% endraw %}

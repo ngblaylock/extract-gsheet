@@ -1,17 +1,48 @@
-$blue: #258b52;
-$dark: darken($blue, 23);
-$grey: #d0ddd6;
-$light: #f4faf6;
-$secondary: #1f1f1f;
-
-$headings-font-family: 'Merriweather', serif;
-$headings-font-weight: 700;
-$headings-color: $dark;
-
-$border-width: 2px;
+$prefix: "bs-";
 
 $enable-gradients: true;
+$enable-negative-margins: true;
+
+$primary: #176539;
+$secondary: #1f1f1f;
+$dark: #0c2e1b;
+$light: #f4faf6;
+$gray: #e3e8e5;
+$white: white;
+$red: #a31515;
+$dev: $red;
+$danger: $red;
+$orange: #f0ce24;
+$warning: $orange;
 
 $theme-colors: (
-  "grey": $grey,
+  "primary": $primary,
+  "secondary": $secondary,
+  "dark": $dark,
+  "light": $light,
+  "gray": $gray,
+  "white": $white,
+  "dev": $dev,
+  "warning": $warning,
+  "danger": $danger,
+);
+
+$headings-font-family: "Merriweather", serif;
+$headings-font-weight: 700;
+
+$input-placeholder-color: var(--#{$prefix}gray-500);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
 );

@@ -17,6 +17,7 @@ export default {
     {
       file: "dist/extract-gsheet.cjs.js",
       format: "cjs",
+      exports: "default",
     },
     {
       file: "dist/extract-gsheet.umd.js",

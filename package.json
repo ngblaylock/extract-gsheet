@@ -1,25 +1,29 @@
 {
   "name": "extract-gsheet",
-  "version": "0.1.13",
-  "description": "Quickly get a public Google Sheet data as JSON for use on any website.",
+  "version": "0.2.0-beta.1",
+  "description": "Quickly get public Google Sheet data as JSON for use on any website.",
   "main": "./dist/extract-gsheet.cjs.js",
+  "module": "./dist/extract-gsheet.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/extract-gsheet.esm.js",
+      "require": "./dist/extract-gsheet.cjs.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ngblaylock/extract-gsheet"
   },
   "homepage": "https://ngblaylock.github.io/extract-gsheet/",
   "scripts": {
-    "sass:build:docs": "node-sass ./11ty-site/sass/egs.scss ./docs/styles/egs.css --output-style compressed",
-    "sass:build:dev": "node-sass ./11ty-site/sass/egs.scss ./dev/styles/egs.css",
-    "sass:watch:dev": "npm run sass:build:dev && node-sass ./11ty-site/sass/egs.scss ./dev/styles/egs.css -w",
-    "dev:website": "npm run clean:dev && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet & npm run sass:watch:dev",
-    "dev": "npm run dev:website & npm run rollup:watch",
-    "build": "npm run rollup && npm run move-readme && npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy && npm run sass:build:docs",
-    "clean:dev": "npx rimraf ./dev",
+    "build": "npm run build:rollup && npm run build:eleventy",
+    "build:eleventy": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy & npm run sass",
+    "build:rollup": "rollup -c",
     "clean": "npx rimraf ./docs ./dev",
-    "move-readme": "node move-readme",
-    "rollup": "rollup -c",
-    "rollup:watch": "rollup -c -w"
+    "dev": "npm run dev:eleventy & npm run dev:rollup",
+    "dev:eleventy": "npm run clean && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet & npm run sass -- --watch",
+    "dev:rollup": "rollup -c -w",
+    "sass": "npx sass ./11ty-site/sass/egs.scss ./dev/css/egs.min.css --style=compressed"
   },
   "keywords": [
     "Google",
@@ -31,12 +35,12 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.3.3",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.7",
-    "node-sass": "^7.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.59.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "1.77.4"
   }
 }
