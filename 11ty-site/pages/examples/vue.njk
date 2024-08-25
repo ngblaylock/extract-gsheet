@@ -5,11 +5,19 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
 
 {% raw %}
 
+<!-- Make sure that you have included the extract-gsheet.js file -->
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
 <div
   id="app"
   v-cloak
 >
-  <div v-if="sheet !== 'loading'">
+  <div v-if="sheet.title">
     <h2>{{ sheet.title }}</h2>
     <div
       v-for="(table, tableIndex) in sheet.tables"
@@ -46,23 +54,24 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     </div>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
 <script>
-  var app = new Vue({
-    el: "#app",
-    data() {
+  const { onBeforeMount, createApp, ref } = Vue;
+  createApp({
+    setup() {
+      const sheet = ref({});
+      onBeforeMount(async () => {
+        sheet.value = await extractGSheet(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
+        );
+      });
       return {
-        sheet: "loading",
+        sheet,
       };
     },
-    created() {
-      extractGSheet(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
-      ).then((res) => {
-        this.sheet = res;
-      });
-    },
-  });
+  }).mount("#app");
 </script>
 
 {% endraw %}

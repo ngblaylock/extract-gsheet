@@ -7,9 +7,10 @@ layout: default
       <h1 class="text-white">{{title}}</h1>
       <p class="lead">{{description}}</p>
       {% if description != 'Coming Soon' %}
+      
       <p>
         <a
-          href="{{global.gitHubRepoURL}}/blob/master/docs/examples/{{page.fileSlug}}/index.html"
+          href="{{global.gitHubRepoURL}}/blob/master/{{page.inputPath}}"
           target="_blank"
           class="btn btn-secondary"
           ><span class="fab fa-github"></span> See Code on GitHub</a
