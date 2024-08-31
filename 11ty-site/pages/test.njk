@@ -4,7 +4,7 @@ norobots: true
 ---
 
 <div class="container">
-  <h1>Test</h1>
+  <h1>{{ title }}</h1>
   <div class="d-flex">
     <input
       id="input"
@@ -12,33 +12,38 @@ norobots: true
       type="text"
       value="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=318262465&single=true"
     />
-    <button class="btn btn-primary ms-2" id="submit-test">Submit</button>
+    <button
+      class="btn btn-primary ms-2"
+      id="submit-test"
+    >
+      Submit
+    </button>
   </div>
   <pre><code class="language-json" id="test-json"></code></pre>
 </div>
 
 <script>
-    // Function to handle setting JSON
-    const setPre = () => {
-      const input = document.getElementById('input');
-      const url = input.value;
-      const tj = document.getElementById('test-json');
+  // Function to handle setting JSON
+  const setPre = () => {
+    const input = document.getElementById("input");
+    const url = input.value;
+    const tj = document.getElementById("test-json");
 
-      if(url){
-        extractGSheet(url).then((res) => {
-          tj.innerHTML = JSON.stringify(res, null, 2);
-          Prism.highlightAll();
-        });
-      } else {
-        tj.innerHTML = '';
-      }
-    };
+    if (url) {
+      extractGSheet(url).then((res) => {
+        tj.innerHTML = JSON.stringify(res, null, 2);
+        Prism.highlightAll();
+      });
+    } else {
+      tj.innerHTML = "";
+    }
+  };
 
-    // Initialize on document ready
-    document.addEventListener('DOMContentLoaded', () => {
-      setPre();
-    });
+  // Initialize on document ready
+  document.addEventListener("DOMContentLoaded", () => {
+    setPre();
+  });
 
-    // Add click event listener to the button
-    document.getElementById('submit-test').addEventListener('click', setPre);
+  // Add click event listener to the button
+  document.getElementById("submit-test").addEventListener("click", setPre);
 </script>

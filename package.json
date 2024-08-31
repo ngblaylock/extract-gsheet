@@ -20,10 +20,10 @@
     "build:eleventy": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy & npm run sass",
     "build:rollup": "rollup -c",
     "clean": "npx rimraf ./docs ./dev",
-    "dev": "npm run dev:eleventy & npm run dev:rollup",
-    "dev:eleventy": "npm run clean && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet & npm run sass -- --watch",
+    "dev": "npm run dev:eleventy & npm run sass -- --watch & npm run dev:rollup",
+    "dev:eleventy": "npm run clean && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
     "dev:rollup": "rollup -c -w",
-    "sass": "npx sass ./11ty-site/sass/egs.scss ./dev/css/egs.min.css --style=compressed"
+    "sass": "sass ./sass/egs.scss ./dev/css/egs.min.css --style=compressed"
   },
   "keywords": [
     "Google",
@@ -35,10 +35,11 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "@ngblaylock/bootstrap-extensions": "0.1.0-beta.18",
     "bootstrap": "^5.3.3",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.7",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.0.1",
     "rollup": "^2.59.0",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "1.77.4"
