@@ -4,14 +4,12 @@
     "$root": [
       "${folder}/dev",
       "${folder}/11ty-site/pages/_includes",
-    ],
-    "{{root}}": [
-      "${folder}/dev"
-    ],
+    ]
   },
   "cSpell.words": [
     "endraw",
     "gsheet",
+    "pathprefix",
     "Scooby"
   ]
 }

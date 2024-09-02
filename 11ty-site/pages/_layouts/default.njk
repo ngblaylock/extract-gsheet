@@ -26,7 +26,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
     <link
-      href="{{ root }}/css/egs.min.css"
+      href="/css/egs.min.css"
       rel="stylesheet"
     />
 
@@ -39,9 +39,9 @@
     />
 
     {% if global.env == 'dev' %}
-    <script src="{{ root }}/js/extract-gsheet.js"></script>
+    <script src="/js/extract-gsheet.js"></script>
     {% else %}
-    <script src="{{ root }}/js/extract-gsheet.min.js"></script>
+    <script src="/js/extract-gsheet.min.js"></script>
     {% endif %}
   </head>
   <body
@@ -51,7 +51,7 @@
     <header>{% include "nav.njk" %}</header>
     <main class="d-flex flex-column flex-fill py-5">{{ content | safe }}</main>
     {% include "footer.njk" %}
-    <script src="{{ root }}/js/bootstrap-extensions.min.js"></script>
+    <script src="/js/bootstrap-extensions.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
