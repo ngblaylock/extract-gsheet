@@ -17,11 +17,11 @@
   "homepage": "https://ngblaylock.github.io/extract-gsheet/",
   "scripts": {
     "build": "npm run build:rollup && npm run build:eleventy",
-    "build:eleventy": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy & npm run sass",
+    "build:eleventy": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy && npm run sass",
     "build:rollup": "rollup -c",
     "clean": "npx rimraf ./docs ./dev",
-    "dev": "npm run dev:eleventy & npm run sass -- --watch & npm run dev:rollup",
-    "dev:eleventy": "npm run clean && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
+    "dev": "npm run dev:eleventy & npm run dev:rollup",
+    "dev:eleventy": "npm run clean && npm run sass && npm run sass -- --watch & cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
     "dev:rollup": "rollup -c -w",
     "sass": "sass ./sass/egs.scss ./dev/css/egs.min.css --style=compressed"
   },

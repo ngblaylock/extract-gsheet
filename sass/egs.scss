@@ -1,7 +1,7 @@
 @import "../node_modules/bootstrap/scss/mixins/banner";
 @include bsBanner("");
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 @import "egs-variables";
 
 // scss-docs-start import-stack
@@ -53,10 +53,20 @@
 @import "../node_modules/bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
 
-@import "../node_modules/@ngblaylock/bootstrap-extensions/src/scss/_theme-switch.scss";
+// Bootstrap Extensions
+@import "../node_modules/@ngblaylock/bootstrap-extensions/src/scss/theme-switch";
+@import "../node_modules/@ngblaylock/bootstrap-extensions/src/scss/base-theme";
 
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: darken($gray-900, 3%) !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: $border-radius !important;
+}
 
-code, .code{
+code,
+.code {
   background: tint-color($dev, 95%);
   color: $dev;
   padding: $kbd-padding-y $kbd-padding-x;
@@ -64,6 +74,6 @@ code, .code{
   border-radius: $border-radius;
 }
 
-pre code{
+pre code {
   padding: 0;
 }
