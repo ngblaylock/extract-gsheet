@@ -4,6 +4,7 @@ const inspect = require("util").inspect;
 module.exports = (eleventyConfig) => {
   // Passthrough Copy
   eleventyConfig.addPassthroughCopy({"./11ty-site/assets": "/"});
+  eleventyConfig.addPassthroughCopy({"./node_modules/@ngblaylock/bootstrap-extensions/dist/js/bootstrap-extensions.min.js": "js/bootstrap-extensions.min.js"});
   eleventyConfig.addPassthroughCopy({ dist: "js" });
 
   // Filter

@@ -9,8 +9,16 @@
     <span class="d-none d-xl-inline d-xxl-none">xl</span>
     <span class="d-none d-xxl-inline">xxl</span>
   </span>
-  <a href="{{ root }}/uikit/" class="link-white">UI Kit</a>
-  <a href="{{ root }}/test/" class="link-white">Test Page</a>
+  <a
+    href="{{ root }}/uikit/"
+    class="link-white"
+    >UI Kit</a
+  >
+  <a
+    href="{{ root }}/test/"
+    class="link-white"
+    >Test Page</a
+  >
 </div>
 {% endif %}
 
@@ -30,8 +38,8 @@
   <button
     class="navbar-toggler"
     type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown"
     aria-expanded="false"
     aria-label="Toggle navigation"
@@ -68,9 +76,7 @@
         >
           Examples
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-        >
+        <ul class="dropdown-menu dropdown-menu-end">
           <li>
             <a
               class="dropdown-item"
@@ -114,6 +120,14 @@
             >
           </li>
         </ul>
+      </li>
+      <li class="align-self-md-end">
+        <input
+          type="checkbox"
+          aria-label="Switch Theme"
+          class="theme-switch theme-switch-light ms-md-3"
+          data-bse-theme-switch
+        />
       </li>
     </ul>
   </div>

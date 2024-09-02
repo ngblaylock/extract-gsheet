@@ -9,16 +9,6 @@
       "${folder}/dev"
     ],
   },
-  "actionButtons": {
-    "defaultColor": "#546E7A",
-    "loadNpmCommands": false,
-    "commands": [
-      {
-        "name": "DEV",
-        "command": "npm run dev",
-      },
-    ]
-  },
   "cSpell.words": [
     "endraw",
     "gsheet",
