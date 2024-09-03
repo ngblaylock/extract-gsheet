@@ -1,6 +1,6 @@
 {
   "name": "@ngblaylock/extract-gsheet",
-  "version": "0.2.0-beta.3",
+  "version": "0.2.0-beta.4",
   "description": "Quickly get public Google Sheet data as JSON for use on any website.",
   "main": "./dist/extract-gsheet.cjs.js",
   "module": "./dist/extract-gsheet.esm.js",
@@ -19,11 +19,11 @@
     "build": "npm run build:rollup && npm run build:eleventy",
     "build:eleventy": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy && npm run sass",
     "build:rollup": "rollup -c",
-    "clean": "npx rimraf ./docs ./dev",
+    "clean": "npx rimraf ./docs",
     "dev": "npm run dev:eleventy & npm run dev:rollup",
     "dev:eleventy": "npm run clean && npm run sass && npm run sass -- --watch & cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --quiet",
     "dev:rollup": "rollup -c -w",
-    "sass": "sass ./sass/egs.scss ./dev/css/egs.min.css --style=compressed"
+    "sass": "sass ./sass/egs.scss ./docs/css/egs.min.css --style=compressed"
   },
   "keywords": [
     "Google",
