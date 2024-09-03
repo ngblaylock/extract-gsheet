@@ -1,6 +1,6 @@
 # Extract GSheet
 
-Extract GSheet allows developers to pull data out of a published (public) Google Sheet, and convert it to JSON. From there, you could do about whatever you want with it from there.
+Extract GSheet allows developers to pull data out of a published (public) Google Sheet, and convert it to JSON. You could do about whatever you want with it from there.
 
 This currently only works in the browser and not in a server environment.
 

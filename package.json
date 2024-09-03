@@ -1,5 +1,5 @@
 {
-  "name": "extract-gsheet",
+  "name": "@ngblaylock/extract-gsheet",
   "version": "0.2.0-beta.2",
   "description": "Quickly get public Google Sheet data as JSON for use on any website.",
   "main": "./dist/extract-gsheet.cjs.js",
