@@ -1,10 +1,25 @@
 ---
 title: Documentation
-prism: true
 description: Learn about Extract GSheet features and how to quickly extract JSON data from a public Google Sheet.
 ---
 
-<div class="container documentation">
+<div class=" container documentation">
+
+<style>
+  .documentation {
+    .alert-warning ul{
+      margin: 0;
+    }
+    img {
+      display: block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    pre{
+      margin-bottom: 24px;
+    }
+  }
+</style>
 
 # Documentation
 
@@ -45,17 +60,18 @@ The first row in your Google Sheet will be the keys to your values (column heade
 3. Multiple spaces and/or special characters will be replaced with a single `_`
 4. Any key that begins with a number will be prefixed with an `_`
 
-```css
-    Column Header    JSON Output
-- - - - - - - - - - - - - - - - - - -
-            HeLlO    hello
-         Movie ID    movie_id
-         Is True?    is_true_
-           8 Keys    _8_keys
-# of Participants    _of_participants
+
+```txt
+| Column Header     | JSON Output      |
+| ----------------- | ---------------- |
+| HeLlO             | hello            |
+| Movie ID          | movie_id         |
+| Is True?          | is_true_         |
+| 8 Keys            | _8_keys          |
+| # of Participants | _of_participants |
 ```
 
-![Google Sheet Screenshot]({{root}}/img/documentation/spreadsheet.png)
+![Google Sheet Screenshot](/img/documentation/spreadsheet.png)
 
 Make sure that your Google Sheet has a title, and the tabs have names.
 
@@ -67,16 +83,17 @@ In Google Sheets, go to **File ➔ Share ➔ Publish to the web**. Inside the di
 
 Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
 
-![Publish Sheet Dialog Screenshot]({{root}}/img/documentation/publish-window.png)
+![Publish Sheet Dialog Screenshot](/img/documentation/publish-window.png)
 
 ## Load the Script
 
-**NPM:** (This has not been thoroughly tested)
+**NPM:** (This has not been thoroughly tested, but should work)
 
 ```bash
 npm install extract-gsheet@{{global.version}}
 # Then in your file:
-# import extractGSheet from 'extract-gsheet';
+# import extractGSheet from 'extract-gsheet'; // ESM
+# const extractGSheet = require('extract-gsheet'); // CJS
 ```
 
 **CDN:**

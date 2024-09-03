@@ -4,7 +4,13 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
 ---
 
 {% raw %}
-<script id="entry-template" type="text/x-handlebars-template">
+
+<!-- Make sure that you have included the extract-gsheet.js file -->
+
+<script
+  id="entry-template"
+  type="text/x-handlebars-template"
+>
   <div class="row">
     <div class="col-sm-12">
       <h2>Scooby-Doo Villians</h2>
@@ -14,19 +20,20 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
         <div class="card h-100">
           <div class="card-body">
             <h3 class="h4 my-0">{{this.villian}}</h3>
-            <p><small class="text-grey">AKA: {{this.actual_person}}</small></p>
+            <p><small class="text-primary">AKA: {{this.actual_person}}</small></p>
             <p>
               {{this.episode_title}}
             </p>
-            <div><span class="badge badge-pill badge-dark">S{{this.season}}, E{{this.episode}}</span></div>
+            <div><span class="badge badge-pill text-bg-dark">S{{this.season}}, E{{this.episode}}</span></div>
           </div>
         </div>
       </div>
     {{/each}}
   </div>
 </script>
-{% endraw %}
+
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
 <script>
   extractGSheet(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
@@ -43,3 +50,5 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
       console.error(err);
     });
 </script>
+
+{% endraw %}

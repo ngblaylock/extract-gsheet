@@ -4,23 +4,49 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
 ---
 
 {% raw %}
-<div id="app" v-cloak>
-  <div v-if="sheet != 'loading'">
-    <h2>{{sheet.title}} <small>Sheet Title</small></h2>
-    <div v-for="(table, tableIndex) in sheet.tables" :key="tableIndex">
-      <h3>{{table.tab}} <small>Tab Name</small></h3>
+
+<!-- Make sure that you have included the extract-gsheet.js file -->
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+<div
+  id="app"
+  v-cloak
+>
+  <div v-if="sheet.title">
+    <h2>{{ sheet.title }}</h2>
+    <div
+      v-for="(table, tableIndex) in sheet.tables"
+      :key="tableIndex"
+    >
+      <h3 class="mt-4">{{ table.tab }}</h3>
       <div class="table-responsive">
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
-              <th v-for="(keys, keyIndex) in table.keys" :key="keyIndex">
-                {{keys.name}}
+              <th
+                v-for="(keys, keyIndex) in table.keys"
+                :key="keyIndex"
+              >
+                {{ keys.name }}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(data, dataIndex) in table.data" :key="dataIndex">
-              <td v-for="(d, dIndex) in data" :key="dIndex">{{d}}</td>
+            <tr
+              v-for="(data, dataIndex) in table.data"
+              :key="dataIndex"
+            >
+              <td
+                v-for="(d, dIndex) in data"
+                :key="dIndex"
+              >
+                {{ d }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -28,22 +54,24 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
     </div>
   </div>
 </div>
-{% endraw %}
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
 <script>
-  var app = new Vue({
-    el: "#app",
-    data() {
+  const { onBeforeMount, createApp, ref } = Vue;
+  createApp({
+    setup() {
+      const sheet = ref({});
+      onBeforeMount(async () => {
+        sheet.value = await extractGSheet(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
+        );
+      });
       return {
-        sheet: "loading",
+        sheet,
       };
     },
-    created() {
-      extractGSheet(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
-      ).then((res) => {
-        this.sheet = res;
-      });
-    },
-  });
+  }).mount("#app");
 </script>
+
+{% endraw %}

@@ -2,14 +2,15 @@
 layout: default
 ---
 
-  <div class="bg-gradient-primary text-light mt-n3 pb-4">
+  <div class="bg-primary bg-gradient text-light mt-n5 py-4">
     <div class="container">
       <h1 class="text-white">{{title}}</h1>
       <p class="lead">{{description}}</p>
       {% if description != 'Coming Soon' %}
+      
       <p>
         <a
-          href="{{global.gitHubRepoURL}}/blob/master/docs/examples/{{page.fileSlug}}/index.html"
+          href="{{global.gitHubRepoURL}}/blob/master/{{page.inputPath}}"
           target="_blank"
           class="btn btn-secondary"
           ><span class="fab fa-github"></span> See Code on GitHub</a
@@ -18,6 +19,6 @@ layout: default
       {% endif %}
     </div>
   </div>
-<div class="container">
+<div class="container pt-5">
   {{content | safe}}
 </div>

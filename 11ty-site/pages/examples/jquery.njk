@@ -3,9 +3,12 @@ title: jQuery Example
 description: An Extract GSheet example to pull data from a public Google Sheet into a website and formatting that data with jQuery.
 ---
 
+<!-- Make sure that you have included the extract-gsheet.js file -->
+
 <h2 id="sheet-name"></h2>
 <div class="character-cards"></div>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
   extractGSheet(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=852541930&single=true"
@@ -15,10 +18,10 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
       let characters = res.tables[0];
       characters.data.forEach((character) => {
         $(".character-cards").append(/*html*/ `
-          <div class="card mb-3" style="border-color: ${character.favorite_color}; background: ${character.favorite_color}">
+          <div class="card mb-3 overflow-hidden" style="border-color: ${character.favorite_color}; background: ${character.favorite_color}">
             <div class="card-body" style="background: rgba(255, 255, 255, .95);">
-              <h5 class="mt-0">${character.first_name} ${character.last_name}</h5>
-              <ul>
+              <h5>${character.first_name} ${character.last_name}</h5>
+              <ul class="mb-0">
                 <li><strong>Favorite Color:</strong> ${character.favorite_color}</li>
                 <li><strong>Height:</strong> ${character.height}</li>
                 <li><strong>Catch Phrase:</strong> &ldquo;${character.catch_phrase}&rdquo;</li>

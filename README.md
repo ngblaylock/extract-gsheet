@@ -1,114 +1,20 @@
-# Extract GSheet Documentation
+# Extract GSheet
 
-[Examples & Documentation](https://ngblaylock.github.io/extract-gsheet/)
+Extract GSheet allows developers to pull data out of a published (public) Google Sheet, and convert it to JSON. You could do about whatever you want with it from there.
 
-## Features
+This currently only works in the browser and not in a server environment.
 
-- Include the script and call `extractGSheet(<published sheet url>)`
-- No API Keys required
-- Extracts all or single tabs in the published sheet
-- Transforms column headers into usable keys
-- Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values
-- Clears out columns without a column header (key)
-- Clears out empty rows
-- 'TRUE' and 'FALSE' values are transformed to true and false (Boolean)
-- Checkboxes are transformed to true and false (Boolean)
-- Numbers are transformed to a numeric value ("2.5" is transformed to 2.5)
-- Preserves text formatting from the sheet ('$1.00' does not transform to '1')
-- If there is no "ID" column, a unique ID for the row will be provided.
+## Quick Links
 
-<div class="alert alert-warning">
-  
-### Warning
+- [Test Drive](https://ngblaylock.github.io/extract-gsheet/)
+- [Documentation](https://ngblaylock.github.io/extract-gsheet/documentation/)
+- [GitHub](https://github.com/ngblaylock/extract-gsheet)
+- [NPM](https://www.npmjs.com/package/extract-gsheet)
 
-- Extract GSheet will never reach v1.x.x. This is intended for small or personal projects. Make sure to use the version number in your script to avoid any potential breaking changes.
-- Extract GSheet heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break. Submit a new issue on GitHub if you find something was working but no longer is.
-- Most non-text features will not be included (images, charts, comments, etc.).
-- Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
-- This will not natively work on Internet Explorer.
-- This version does not support server-side parsing as it relies on `fetch` and `DOMParser`. An enhancement for this is being considered.
-
-</div>
-
-## Setup Google Sheet
-
-The first row in your Google Sheet will be the keys to your values (column headers). Some character transformations will occur in the JSON output:
-
-1. All characters will be made lowercase
-2. Spaces and special characters will be replaced with an `_`
-3. Multiple spaces and/or special characters will be replaced with a single `_`
-4. Any key that begins with a number will be prefixed with an `_`
-
-```css
-    Column Header    JSON Output
-- - - - - - - - - - - - - - - - - - -
-            HeLlO    hello
-         Movie ID    movie_id
-         Is True?    is_true_
-           8 Keys    _8_keys
-# of Participants    _of_participants
-```
-
-![Google Sheet Screenshot](https://ngblaylock.github.io/extract-gsheet//img/documentation/spreadsheet.png)
-
-Make sure that your Google Sheet has a title, and the tabs have names.
-
-## Publish the Google Sheet
-
-In Google Sheets, go to **File ➔ Share ➔ Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.
-
-**NOTE:** If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a `:`).
-
-Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
-
-![Publish Sheet Dialog Screenshot](https://ngblaylock.github.io/extract-gsheet//img/documentation/publish-window.png)
-
-## Load the Script
-
-**NPM:** (This has not been thoroughly tested)
-
-```bash
-npm install extract-gsheet@0.1.13
-# Then in your file:
-# import extractGSheet from 'extract-gsheet';
-```
-
-**CDN:**
-
-```html
-<script src="https://unpkg.com/extract-gsheet@0.1.13/dist/extract-gsheet.min.js"></script>
-<!-- OR -->
-<script src="https://cdn.jsdelivr.net/npm/extract-gsheet@0.1.13/dist/extract-gsheet.min.js"></script>
-```
-
-Or download the JS from this <a href="https://github.com/ngblaylock/extract-gsheet/tree/master/dist" target="_blank">GitHub repo</a>.
-
-## Use the Script
-
-Call the `extractGSheet()` function and pass in the entire URL from the published sheet. This script will return a promise, so you will probably want to use Async/Await or the `.then().catch()` syntax.
-
-```html
-<script>
-  extractGSheet(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
-  )
-    .then((res) => {
-      // res is the data object
-      console.log(res);
-    })
-    .catch((err) => {
-      // handle the error if there is one
-      console.error(err);
-    });
-</script>
-```
-
-That's it. Your data should be extracted from your published Google Sheet, and you can incorporate it into your website.
-
-## Issue Reporting
-
-If you find a bug with this project, please report them on [GitHub](https://github.com/ngblaylock/extract-gsheet/issues). Pull requests are welcome.
-
-## Special Thanks
-
-This project was heavily inspired by [Tabletop.js by jsoma](https://github.com/jsoma/tabletop). I used it in a lot of projects, but now that its time has passed, I decided to make my own script. I hope you find this project beneficial.
+### Basic Examples
+- [Alpine](https://ngblaylock.github.io/extract-gsheet/examples/alpine/)
+- [Angular JS](https://ngblaylock.github.io/extract-gsheet/examples/angularjs/)
+- [Handlebars](https://ngblaylock.github.io/extract-gsheet/examples/handlebars/)
+- [jQuery](https://ngblaylock.github.io/extract-gsheet/examples/jquery/)
+- [React](https://ngblaylock.github.io/extract-gsheet/examples/react/)
+- [Vue](https://ngblaylock.github.io/extract-gsheet/examples/vue/)

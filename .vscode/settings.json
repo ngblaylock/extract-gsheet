@@ -4,24 +4,12 @@
     "$root": [
       "${folder}/dev",
       "${folder}/11ty-site/pages/_includes",
-    ],
-    "{{root}}": [
-      "${folder}/dev"
-    ],
-  },
-  "actionButtons": {
-    "defaultColor": "#546E7A",
-    "loadNpmCommands": false,
-    "commands": [
-      {
-        "name": "DEV",
-        "command": "npm run dev",
-      },
     ]
   },
   "cSpell.words": [
     "endraw",
     "gsheet",
+    "pathprefix",
     "Scooby"
   ]
 }
