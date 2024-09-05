@@ -1,3 +1,5 @@
+<img src="https://ngblaylock.github.io/extract-gsheet/img/EGS-Logo.svg" alt="Extract GSheet Logo" style="max-width: 200px">
+
 # Extract GSheet
 
 Extract GSheet allows developers to pull data out of a published (public) Google Sheet, and convert it to JSON. You could do about whatever you want with it from there.
