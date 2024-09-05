@@ -1,4 +1,4 @@
-<img src="https://ngblaylock.github.io/extract-gsheet/img/EGS-Logo.svg" alt="Extract GSheet Logo" style="max-width: 200px">
+<img src="https://ngblaylock.github.io/extract-gsheet/img/EGS-Logo.png" alt="Extract GSheet Logo" />
 
 # Extract GSheet
 
@@ -11,7 +11,8 @@ This currently only works in the browser and not in a server environment.
 - [Test Drive](https://ngblaylock.github.io/extract-gsheet/)
 - [Documentation](https://ngblaylock.github.io/extract-gsheet/documentation/)
 - [GitHub](https://github.com/ngblaylock/extract-gsheet)
-- [NPM](https://www.npmjs.com/package/extract-gsheet)
+- [NPM](https://www.npmjs.com/package/@ngblaylock/extract-gsheet)
+- [jsDelivr](https://www.jsdelivr.com/package/npm/@ngblaylock/extract-gsheet)
 
 ### Basic Examples
 - [Alpine](https://ngblaylock.github.io/extract-gsheet/examples/alpine/)
