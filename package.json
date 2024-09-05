@@ -1,8 +1,8 @@
 {
   "name": "@ngblaylock/extract-gsheet",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Quickly get public Google Sheet data as JSON for use on any website.",
-  "main": "./dist/extract-gsheet.cjs.js",
+  "main": "./dist/extract-gsheet.js",
   "module": "./dist/extract-gsheet.esm.js",
   "exports": {
     ".": {
