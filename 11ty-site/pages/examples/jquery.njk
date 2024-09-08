@@ -18,7 +18,7 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
       let characters = res.tables[0];
       characters.data.forEach((character) => {
         $(".character-cards").append(/*html*/ `
-          <div class="card mb-3 overflow-hidden" style="border-color: ${character.favorite_color}; background: ${character.favorite_color}">
+          <div class="card mb-3 overflow-hidden" style="color: ${character.favorite_color}; border-color: currentcolor; background: currentcolor">
             <div class="card-body" style="background: rgba(255, 255, 255, .95);">
               <h5>${character.first_name} ${character.last_name}</h5>
               <ul class="mb-0">

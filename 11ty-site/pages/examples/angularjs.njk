@@ -16,9 +16,11 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
 <style>
   .watched {
     background: #e9f3ee;
+    padding: 2px;
   }
   .not-watched {
     background: #fcebec;
+    padding: 2px;
   }
 </style>
 
@@ -41,11 +43,11 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
           <td>{{ movie.year_released }}</td>
           <td class="text-center">
             <i
-              class="fas fa-check-circle text-primary"
+              class="fas fa-check-circle text-primary watched rounded-pill fs-5"
               ng-if="movie.watched"
             ></i>
             <i
-              class="fas fa-times-circle text-danger"
+              class="fas fa-times-circle text-danger not-watched rounded-pill fs-5"
               ng-if="!movie.watched"
             ></i>
           </td>
