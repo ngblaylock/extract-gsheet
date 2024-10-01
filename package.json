@@ -1,6 +1,6 @@
 {
   "name": "@ngblaylock/extract-gsheet",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Quickly get public Google Sheet data as JSON for use on any website.",
   "main": "./dist/extract-gsheet.js",
   "module": "./dist/extract-gsheet.esm.js",
@@ -35,7 +35,7 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@ngblaylock/bootstrap-extensions": "0.1.0-beta.18",
+    "@ngblaylock/bootstrap-extensions": "0.1.0-beta.19",
     "bootstrap": "^5.3.3",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.7",

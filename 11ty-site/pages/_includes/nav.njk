@@ -1,24 +1,26 @@
 {% if global.env == 'dev' %}
-<div class="text-bg-dev hstack gap-2 small px-2">
-  <span>Dev</span>
-  <span class="badge rounded-pill text-bg-secondary me-auto">
-    <span class="d-sm-none">xs</span>
-    <span class="d-none d-sm-inline d-md-none">sm</span>
-    <span class="d-none d-md-inline d-lg-none">md</span>
-    <span class="d-none d-lg-inline d-xl-none">lg</span>
-    <span class="d-none d-xl-inline d-xxl-none">xl</span>
-    <span class="d-none d-xxl-inline">xxl</span>
-  </span>
-  <a
-    href="/uikit/"
-    class="link-white"
-    >UI Kit</a
-  >
-  <a
-    href="/test/"
-    class="link-white"
-    >Test Page</a
-  >
+<div class="dev-mq-helper"></div>
+<div class="dev-toolbar-collapse-container position-sticky top-0 z-3">
+  <div class="dev-toolbar-collapse">
+    <div class="dev-toolbar">
+      <div class="dev-toolbar-body">
+        Development
+        <span class="flex-fill"></span>
+        <div class="hstack gap-2">
+          <a
+            href="/test/"
+            class="link-white"
+            >Test Page</a
+          >
+          <a
+            href="/uikit/"
+            class="btn btn-sm btn-light"
+            >UI Kit</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endif %}
 
