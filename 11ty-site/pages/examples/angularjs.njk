@@ -71,7 +71,7 @@ description: An Extract GSheet example to pull data from a public Google Sheet i
           "https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml"
         )
           .then((res) => {
-            console.log(res);
+            console.info(res);
             // get just the data in the movies tab
             movies = res.tables[2].data;
             deferred.resolve(movies);

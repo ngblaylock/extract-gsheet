@@ -10,12 +10,12 @@ norobots: true
       id="input"
       class="form-control"
       type="text"
-      value="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=318262465&single=true"
+      value="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgvXupDYstjqSQTShlqPet-ljdH0LH7vtfgsmTaLf87XReuzl0Y9lkM4-WwkTIxOKsFfT4dRW1ui7_/pubhtml"
     />
-    <button
-      class="btn btn-primary ms-2"
-      id="submit-test"
-    >
+    {#
+    value="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRI47Ifj6D_US-HpggfPwSGU1nBSz81IaQ3FL3eqqjr2m8ZIdr6ia9L_FqsJqYVeUI_A2SDjm25FjG/pubhtml?gid=318262465&single=true"
+    #}
+    <button class="btn btn-primary ms-2" id="submit-test" onclick="setPre()">
       Submit
     </button>
   </div>
@@ -39,11 +39,5 @@ norobots: true
     }
   };
 
-  // Initialize on document ready
-  document.addEventListener("DOMContentLoaded", () => {
-    setPre();
-  });
-
-  // Add click event listener to the button
-  document.getElementById("submit-test").addEventListener("click", setPre);
+  setPre();
 </script>
