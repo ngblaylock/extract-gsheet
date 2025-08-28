@@ -80,7 +80,7 @@ Make sure that your Google Sheet has a title, and the tabs have names.
 
 In Google Sheets, go to **File ➔ Share ➔ Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.
 
-**NOTE:** If you publish only one tab, the title will be the sheet title and the tab name separated by a `:`.
+**NOTE:** If only one tab is published, the title will be the sheet title and the tab name separated by a `:`.
 
 Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
 

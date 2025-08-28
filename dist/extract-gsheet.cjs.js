@@ -50,10 +50,8 @@ async function getTables(pageText) {
     }
   }
 
-  // Assuming you already parsed the JSON into a JS object called `data`
-  const urls = tables.map((t) => t.tableUrl);
-
   // Fetch all at once
+  const urls = tables.map((t) => t.tableUrl);
   const tableResults = await Promise.all(
     urls.map(async (url, index) => {
       const res = await fetch(url);
@@ -137,7 +135,6 @@ async function getTables(pageText) {
     d.data.forEach((obj, index) => {
       if (!obj.id) {
         missingID = true;
-        
         d.data[index] = { id: index + 1, ...obj };
       }
     });
