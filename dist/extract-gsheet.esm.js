@@ -1,35 +1,22 @@
-const extractGSheet = async function (url) {
+async function extractGSheet(url) {
   try {
     if (!url.startsWith("https://docs.google.com/spreadsheets")) {
       throw "Invalid Public Google Sheet";
     } else {
-      let page = await FetchHtml(url).then((text) => {
-        return text;
-      });
-      var doc = new DOMParser().parseFromString(page, "text/html");
+      let pageResponse = await fetch(url);
+      let pageText = await pageResponse.text();
+      var doc = new DOMParser().parseFromString(pageText, "text/html");
       return {
         title: doc.querySelector("#doc-title .name").textContent,
-        tables: getTables(doc),
+        tables: await getTables(pageText),
       };
     }
   } catch (err) {
     throw new Error(err);
   }
-};
-
-async function FetchHtml(url) {
-  let response = await fetch(url);
-  return await response.text();
 }
 
-const hasCheckbox = function (content) {
-  if (content.innerHTML.match(/<use href="#(un)?checked/g)) {
-    return true;
-  }
-  return false;
-};
-
-const checkboxStatus = function (content) {
+function checkboxStatus(content) {
   let c = content.innerHTML;
   if (c.includes(`<use href="#checked`)) {
     return "true";
@@ -38,100 +25,115 @@ const checkboxStatus = function (content) {
   } else {
     return "";
   }
-};
+}
 
-const getTables = function (doc) {
+async function getTables(pageText) {
   let tables = [];
-  let data = [];
 
-  // Find and Add Tables
-  doc.querySelectorAll("#sheets-viewport table").forEach((table) => {
-    if (table.textContent) {
-      tables.push(table);
-    }
-  });
-
-  // Setup Table
-  tables.forEach((table, tableIndex) => {
-    let rows = [];
-    let tab = doc.querySelectorAll("#sheet-menu li")[tableIndex];
-    data.push({
-      tab: tab ? tab.textContent : "",
-      keys: [],
-      data: [],
-    });
-
-    // Add All Rows
-    table.querySelectorAll("tr").forEach((tr) => {
-      if (tr.textContent || hasCheckbox(tr)) {
-        rows.push(tr);
-      }
-    });
-
-    // Get Keys
-    rows[0].querySelectorAll("td").forEach((key) => {
-      if (key.textContent) {
-        data[tableIndex].keys.push({
-          name: key.textContent,
-          key: key.textContent
-            .replace(/\W+/gi, "_")
-            .replace(/^\d/, "_$&")
-            .toLowerCase(),
+  const matches = pageText.matchAll(/items.push\({name: ([\s\S]*?), gid:\s/g);
+  for (const match of matches) {
+    if (match[1]) {
+      const split = match[1].split(", pageUrl: ");
+      if (split.length === 2) {
+        split[0] = split[0].slice(1, -1).trim();
+        split[1] = split[1].slice(1, -1).trim();
+        const tableUrl = Function(
+          'return "' + split[1].replace(/"/g, '\\"') + '";'
+        )();
+        tables.push({
+          tab: split[0],
+          tableUrl,
         });
       }
-    });
+    }
+  }
 
-    // Extract Data
-    for (let x = 0; x < rows.length; x++) {
-      if (x != 0) {
-        data[tableIndex].data.push({});
-        rows[x].querySelectorAll("td").forEach((td, tdIndex) => {
-          if (data[tableIndex].keys[tdIndex]) {
-            let key = data[tableIndex].keys[tdIndex].key;
-            // Only do this if there is a column header
-            if (key) {
-              // set initial content
-              let content = td.textContent.trim();
+  // Fetch all at once
+  const urls = tables.map((t) => t.tableUrl);
+  const tableResults = await Promise.all(
+    urls.map(async (url, index) => {
+      const res = await fetch(url);
+      const text = await res.text();
+      const doc = new DOMParser().parseFromString(text, "text/html");
 
-              // make checkbox a true/false value
-              if (!content) {
-                content = checkboxStatus(td);
-              }
+      return {
+        tab: tables[index].tab,
+        url,
+        text,
+        doc,
+      };
+    })
+  );
 
-              // make "TRUE", "FAlse" a Boolean
-              if (content && content.toLowerCase() === "true") {
-                content = true;
-              } else if (content && content.toLowerCase() === "false") {
-                content = false;
-              }
+  tableResults.forEach((result) => {
+    result.keys = [];
+    result.data = [];
+    const tbody = result.doc.querySelector("table tbody");
+    const rows = tbody.querySelectorAll("tr");
 
-              // make "123" a Number
-              if (content && typeof content == "string" && !isNaN(content)) {
-                content = parseFloat(content);
-              }
+    rows.forEach((row, rowIndex) => {
+      const rowHasText = !![...row.querySelectorAll("td")]
+        .map((td) => td.innerText)
+        .join("");
+      if (rowIndex === 0) {
+        // header row
+        const cells = row.querySelectorAll("td");
+        cells.forEach((cell) => {
+          result.keys.push({
+            name: cell.textContent,
+            key: cell.textContent
+              .replace(/\W+/gi, "_")
+              .replace(/^\d/, "_$&")
+              .toLowerCase()
+              .trim(),
+          });
+        });
+      } else if (rowHasText) {
+        // data row
+        const rowData = {};
+        const cells = row.querySelectorAll("td");
+        cells.forEach((cell, cellIndex) => {
+          const key = result.keys[cellIndex].key;
+          if (key) {
+            // set initial content
+            let content = cell.textContent.trim();
 
-              data[tableIndex].data[x - 1][key] = content;
+            // make checkbox a true/false value
+            if (!content) {
+              content = checkboxStatus(cell);
             }
+
+            // make "TRUE", "FAlse" a Boolean
+            if (content && content.toLowerCase() === "true") {
+              content = true;
+            } else if (content && content.toLowerCase() === "false") {
+              content = false;
+            }
+
+            // make "123" a Number
+            if (content && typeof content == "string" && !isNaN(content)) {
+              content = parseFloat(content);
+            }
+
+            rowData[key] = content;
           }
         });
+        result.data.push(rowData);
       }
-    }
-  });
-
-  // Remove Empty Rows
-  data.forEach((d) => {
-    d.data = d.data.filter((row) => {
-      return !Object.values(row).every((v) => v === "");
     });
+    delete result.doc;
+    delete result.text;
+    delete result.url;
+    result.keys = result.keys.filter((k) => k.name);
   });
 
   // Add ID if no id present
-  data.forEach((d) => {
+  tableResults.forEach((d) => {
     let missingID = false;
     d.data.forEach((obj, index) => {
       if (!obj.id) {
         missingID = true;
-        d.data[index] = {id: index + 1, ...obj};
+        d.data[index] = { id: index + 1, ...obj };
       }
     });
     if (missingID) {
@@ -139,7 +141,7 @@ const getTables = function (doc) {
     }
   });
 
-  return data;
-};
+  return tableResults;
+}
 
 export { extractGSheet as default };

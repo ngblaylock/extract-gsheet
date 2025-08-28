@@ -29,9 +29,10 @@ description: Learn about Extract GSheet features and how to quickly extract JSON
 - No API Keys required
 - Extracts all or single tabs in the published sheet
 - Transforms column headers into usable keys
-- Each table includes the title, name of the tab (if publishing multiple tabs), keys, and data values
+- Each table includes the title, name of the tab, keys, and data
 - Clears out columns without a column header (key)
 - Clears out empty rows
+  - Note: if the row only contains checkboxes, this is considered empty whether it is checked or not
 - 'TRUE' and 'FALSE' values are transformed to true and false (Boolean)
 - Checkboxes are transformed to true and false (Boolean)
 - Numbers are transformed to a numeric value ("2.5" is transformed to 2.5)
@@ -42,7 +43,7 @@ description: Learn about Extract GSheet features and how to quickly extract JSON
   
 ### Warning
 
-- Extract GSheet will never reach v1.x.x. This is intended for small or personal projects. Make sure to use the version number in your script to avoid any potential breaking changes.
+- Extract GSheet will never reach v1.x.x. This is intended for small or personal projects.
 - Extract GSheet heavily depends on the output HTML that Google provides. If Google's page changes a little bit, this script may break. Submit a new issue on GitHub if you find something was working but no longer is.
 - Most non-text features will not be included (images, charts, comments, etc.).
 - Some changes to a published sheet may take up to 5 minutes to reflect in the browser.
@@ -79,7 +80,7 @@ Make sure that your Google Sheet has a title, and the tabs have names.
 
 In Google Sheets, go to **File ➔ Share ➔ Publish to the web**. Inside the dialog, you can choose to publish one tab, specific tabs, or the entire document.
 
-**NOTE:** If you have multiple tabs published, you will get the title of the tab separate from the document title. If you publish only one tab, the tab title will be returned included in the document title (probably separated by a `:`).
+**NOTE:** If only one tab is published, the title will be the sheet title and the tab name separated by a `:`.
 
 Once your tabs or document is selected, click "Publish" and you will be given a URL. Copy the entire URL. You will use the entire URL in your script.
 
@@ -113,7 +114,7 @@ Call the `extractGSheet()` function and pass in the entire URL from the publishe
   )
     .then((res) => {
       // res is the data object
-      console.log(res);
+      console.info(res);
     })
     .catch((err) => {
       // handle the error if there is one
