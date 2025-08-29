@@ -91,10 +91,9 @@ Once your tabs or document is selected, click "Publish" and you will be given a 
 **NPM:** (This has not been thoroughly tested, but should work)
 
 ```bash
-npm i @ngblaylock/extract-gsheet
-# Then in your file:
-# import extractGSheet from 'extract-gsheet'; // ESM
-# const extractGSheet = require('extract-gsheet'); // CJS
+npm install @ngblaylock/extract-gsheet
+# const extractGSheet = require('@ngblaylock/extract-gsheet'); // CJS
+# import extractGSheet from '@ngblaylock/extract-gsheet'; // ESM
 ```
 
 **CDN:**
